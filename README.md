@@ -208,6 +208,3 @@ And that's exactly the point.
 </p>
 
 ---
-<p align="center">
-  <b>⭐ Follow the journey. Watch the progress. Learn from the mistakes. ⭐</b>
-</p>
