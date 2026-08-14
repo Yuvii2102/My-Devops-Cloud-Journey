@@ -46,6 +46,13 @@ Now, I'm changing that.
 
 From this point forward, this repository will document my journey — including the things I learn, the commands I practice, the problems I face, the mistakes I make, and the projects I build.
 
+<p align="center">
+  🚀 <b>Learning Started:</b> July 2026
+  &nbsp;&nbsp; → &nbsp;&nbsp;
+  📝 <b>Documentation Started:</b> August 14, 2026
+</p>
+
+
 ---
 
 ## 🚀 Why This Repository?
