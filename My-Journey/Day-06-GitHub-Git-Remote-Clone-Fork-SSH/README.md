@@ -1,4 +1,4 @@
-# 🚀 DAY 06 — GITHUB, GIT REMOTE, CLONE, FORK & SSH
+# DAY 06 — GITHUB, GIT REMOTE, CLONE, FORK & SSH
 
 <p align="center">
 
@@ -817,29 +817,29 @@ gitGraph
 
 ---
 
-# 🧪 28. PRACTICAL TASKS
+# 🧪 28. PRACTICAL TASKS THAT I LEARNT
 
-- [ ] Create a Git project
-- [ ] Run `git init`
-- [ ] Explore `.git`
-- [ ] Create a Shell script
-- [ ] Run `git add`
-- [ ] Check `git status`
-- [ ] Create a GitHub repository
-- [ ] Add GitHub as a remote
-- [ ] Verify using `git remote -v`
-- [ ] Understand `git push`
-- [ ] Understand `git fetch`
-- [ ] Clone a repository
-- [ ] Understand GitHub Fork
-- [ ] Compare Clone vs Fork
-- [ ] Generate SSH keys
-- [ ] Understand public/private keys
-- [ ] Add public key to GitHub
-- [ ] Test SSH authentication
-- [ ] Understand feature branches
-- [ ] Understand hotfix branches
-- [ ] Understand GitFlow
+- [ ] Created a Git project
+- [ ] Runned `git init`
+- [ ] Explored `.git`
+- [ ] Created a Shell script
+- [ ] Runned `git add`
+- [ ] Checked `git status`
+- [ ] Created a GitHub repository
+- [ ] Added GitHub as a remote
+- [ ] Verified using `git remote -v`
+- [ ] Understood `git push`
+- [ ] Understood `git fetch`
+- [ ] Cloned a repository
+- [ ] Understood GitHub Fork
+- [ ] Compared Clone vs Fork
+- [ ] Generated SSH keys
+- [ ] Understood public/private keys
+- [ ] Added a public key to GitHub
+- [ ] Tested SSH authentication
+- [ ] Understood feature branches
+- [ ] Understood hotfix branches
+- [ ] Understood GitFlow
 
 ---
 
