@@ -172,39 +172,143 @@ And that's exactly the point.
 
 ---
 
----
-
 ## 📅 Journey Timeline
 
-<div align="center">
+### 🧭 My Learning & Documentation Routine
 
-| 🚀 Milestone | 📅 Date |
-|:---:|:---:|
-| 🐧 **Learning Started** | **July 2026** |
-| 📝 **Documentation Started** | **August 14, 2026** |
-| ☁️ **The End Goal** | **DevOps & Cloud Engineering** |
+<br>
 
-</div>
+<table>
+<tr>
+<td align="center" width="50%">
+
+### 🧠 WEEKDAYS
+
+**Monday – Friday**
+
+📚 **Learn** concepts & technologies
+💻 **Practice** commands & skills
+🛠️ **Build** hands-on projects
+🐛 **Debug** problems & errors
+☁️ **Experiment** with Cloud & DevOps tools
+
+</td>
+
+<td align="center" width="50%">
+
+### 📝 WEEKENDS
+
+**Saturday – Sunday**
+
+📖 **Document** what I learned
+✍️ **Write** blogs & README files
+🗂️ **Organize** notes & resources
+📊 **Review** weekly progress
+🚀 **Push** updates to GitHub
+
+</td>
+</tr>
+</table>
+
+<br>
+
+### 🔄 My Weekly Cycle
+
+<br>
+
+**🧠 LEARN**
+↓
+**💻 PRACTICE**
+↓
+**🛠️ BUILD**
+↓
+**🐛 BREAK & FIX**
+↓
+**📝 DOCUMENT**
+↓
+**🚀 PUBLISH**
+
+<br>
+
+> 💡 **Documentation Philosophy**
+>
+> I focus on **learning and hands-on implementation during the weekdays**.
+> Every weekend, I dedicate time to **documenting my progress, writing technical blogs,
+> organizing my notes, and pushing structured updates to GitHub.**
+>
+> ### **Learning comes first. Documentation follows. 🚀**
+
+<br>
+
+### 🏁 Journey Milestones
+
+<table align="left">
+<tr>
+<th>🚀 Milestone</th>
+<th>📅 Date</th>
+</tr>
+
+<tr>
+<td align="center">🐧 <b>Learning Started</b></td>
+<td align="center"><b>July 2026</b></td>
+</tr>
+
+<tr>
+<td align="center">📝 <b>Documentation Started</b></td>
+<td align="center"><b>August 14, 2026</b></td>
+</tr>
+
+<tr>
+<td align="center">☁️ <b>The End Goal</b></td>
+<td align="center"><b>DevOps & Cloud Engineering</b></td>
+</tr>
+</table>
+
+<br clear="left">
 
 ---
 
-## 🔥 The Mission
+### 🎯 The Routine
 
-<p align="center">
-  <b>Learn → Build → Break → Fix → Automate → Repeat</b>
-</p>
-
-<p align="center">
-  ☁️ &nbsp; 🐧 &nbsp; 🔀 &nbsp; 🐳 &nbsp; ☸️ &nbsp; 🏗️ &nbsp; 🔄 &nbsp; 📊 &nbsp; 🚀
+<p>
+  🧠 <b>Weekdays</b> = Learn &nbsp;•&nbsp; Practice &nbsp;•&nbsp; Build
+  <br><br>
+  📝 <b>Weekends</b> = Document &nbsp;•&nbsp; Organize &nbsp;•&nbsp; Publish
 </p>
 
 <br>
 
-<p align="center">
-  <i>The journey has already started.</i>
-  <br>
-  <b>Now I'm documenting every step.</b>
+<table align="left">
+<tr>
+<td width="100%" align="center">
+
+<h2>🔥 The Mission</h2>
+
+<h3>
+Learn → Build → Break → Fix → Automate → Repeat 🔁
+</h3>
+
+<br>
+
+<p>
+☁️ &nbsp; 🐧 &nbsp; 🔀 &nbsp; 🐳 &nbsp; ☸️ &nbsp; 🏗️ &nbsp; 🔄 &nbsp; 📊 &nbsp; 🚀
 </p>
+
+<br>
+
+<i>The journey has already started.</i>
+
+<br>
+
+<b>Now I'm documenting every step — one weekend at a time.</b>
+
+</td>
+</tr>
+</table>
+
+<br clear="left">
+
+<br>
 
 ---
 
@@ -213,3 +317,5 @@ And that's exactly the point.
 </p>
 
 ---
+
+
