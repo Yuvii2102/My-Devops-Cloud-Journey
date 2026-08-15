@@ -1,4 +1,4 @@
-# DAY 06 — GITHUB, GIT REMOTE, CLONE, FORK & SSH
+<h1 align="center"> DAY 06 — GITHUB, GIT REMOTE, CLONE, FORK & SSH</h1>
 
 <p align="center">
 
