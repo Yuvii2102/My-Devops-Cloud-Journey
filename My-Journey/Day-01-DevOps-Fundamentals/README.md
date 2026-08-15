@@ -1,6 +1,6 @@
 <div align="center">
 
-# 🚀 DAY 01 — DevOps with Yuva
+# DAY 01 — DevOps with Yuva
 
 ## Understanding DevOps
 
