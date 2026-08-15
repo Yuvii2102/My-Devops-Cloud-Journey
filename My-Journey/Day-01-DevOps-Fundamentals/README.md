@@ -224,37 +224,23 @@ These are the handwritten notes I made while learning the fundamentals.
 
 My biggest takeaway from Day 1:
 
-> ### **DevOps is not just a list of tools.**
+> **DevOps is not just a list of tools.**
 
-Before learning tools, I need to understand **why those tools exist and what problems they solve.**
+Before learning tools, I need to understand why those tools exist and what problems they solve.
 
 Today I understood three important ideas:
-
-<br>
-
-<div align="center">
 
 ### 🤖 Automation
 
 **Reduce repetitive manual work.**
 
-⬇️
-
 ### 🔄 Reliability
 
 **Make systems work correctly and consistently.**
 
-⬇️
-
 ### 🚀 DevOps
 
 **Improve the overall process of building and delivering software.**
-
-</div>
-
----
-
-<div align="center">
 
 ## 🚀 DAY 01 COMPLETE
 
