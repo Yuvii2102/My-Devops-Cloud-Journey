@@ -1,6 +1,6 @@
 <div align="center">
 
-# DAY - 01 with Yuva
+# DAY 01 — DevOps with Yuva
 
 ## Understanding DevOps
 
@@ -217,13 +217,7 @@ These are the handwritten notes I made while learning the fundamentals.
 ### 📝 DevOps Fundamentals
 
 <p align="center">
-  <img src="./images/day-01-devops-fundamentals.jpg" width="750"/>
-</p>
-
-### 📝 Automation, Reliability & Servers
-
-<p align="center">
-  <img src="./images/day-01-automation-reliability.jpg" width="750"/>
+  <img src="./day-01-devops-fundamentals.jpg" width="750"/>
 </p>
 
 ---
