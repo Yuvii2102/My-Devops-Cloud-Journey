@@ -1,6 +1,6 @@
 <div align="center">
 
-# 🚀 DAY 02 — DevOps with Yuva
+#  DAY 02 — DevOps with Yuva
 
 ## 🧩 SDLC • HLD • LLD
 
