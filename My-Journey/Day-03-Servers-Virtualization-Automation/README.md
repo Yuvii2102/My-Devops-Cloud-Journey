@@ -1,6 +1,6 @@
 <div align="center">
 
-# 🚀 DAY 03
+# DAY 03 — DevOps with Yuva
 
 ## 🖥️ Servers • Virtualization • AWS EC2 • Automation • IaC
 
