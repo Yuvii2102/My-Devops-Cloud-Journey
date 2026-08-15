@@ -591,38 +591,6 @@ These are the handwritten notes I made while learning about **Linux fundamentals
 
 ---
 
-## ☁️ AWS CLI & AWS APIs
-
-<p align="center">
-  <img src="./images/day-04-aws-cli-api.jpg" width="750"/>
-</p>
-
----
-
-## 🏗️ CloudFormation & AWS CDK
-
-<p align="center">
-  <img src="./images/day-04-cloudformation-cdk.jpg" width="750"/>
-</p>
-
----
-
-## 🖥️ EC2 & AWS Infrastructure
-
-<p align="center">
-  <img src="./images/day-04-ec2.jpg" width="750"/>
-</p>
-
----
-
-## 🤖 Automation & Shell Scripting
-
-<p align="center">
-  <img src="./images/day-04-automation-scripting.jpg" width="750"/>
-</p>
-
----
-
 <div align="center">
 
 # 🚀 DAY 04 COMPLETE
