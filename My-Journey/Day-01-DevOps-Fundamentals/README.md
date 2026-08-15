@@ -210,6 +210,16 @@ The goal is simple:
 
 ---
 
+## 📸 My Day 01 Notes
+
+These are the handwritten notes I made while learning the fundamentals.
+
+### 📝 DevOps Fundamentals
+
+<p align="center">
+  <img src="./images/day-01-devops-fundamentals.jpg" width="750"/>
+</p>
+
 ## 💡 What I Learned Today
 
 My biggest takeaway from Day 1:
