@@ -1,6 +1,6 @@
 <div align="center">
 
-# DAY 01 — DevOps with Yuva
+# 🚀 DAY 01 — DevOps with Yuva
 
 ## Understanding DevOps
 
@@ -37,31 +37,24 @@ The main goals I understood are:
 
 | Focus | What it means |
 |---|---|
-| 🚀 Software Delivery | Deliver software faster |
-| 🤖 Automation | Reduce repetitive manual work |
-| ✅ Quality | Maintain software quality |
-| 🔄 Testing | Test continuously |
-| 📊 Monitoring | Keep track of applications |
-| 🛡️ Reliability | Make systems work consistently |
+| 🚀 **Software Delivery** | Deliver software faster |
+| 🤖 **Automation** | Reduce repetitive manual work |
+| ✅ **Quality** | Maintain software quality |
+| 🔄 **Testing** | Test continuously |
+| 📊 **Monitoring** | Keep track of applications |
+| 🛡️ **Reliability** | Make systems work consistently |
 
 ---
 
 ## 🔤 Where Does "DevOps" Come From?
 
-```text
-        DEV                         OPS
-   Development                  Operations
-        │                            │
-        │                            │
-   Build software          Deploy & maintain
-        │                            │
-        └──────────────┬─────────────┘
-                       ↓
-                    DEVOPS
-                       ↓
-             Better collaboration
-                       ↓
-              Reliable delivery
+```mermaid
+flowchart LR
+    A["👨‍💻 DEV<br/><br/>Development<br/><br/>Build Software"]
+    --> C["🚀 DEVOPS<br/><br/>Better Collaboration<br/><br/>Reliable Delivery"]
+
+    B["⚙️ OPS<br/><br/>Operations<br/><br/>Deploy & Maintain"]
+    --> C
 ```
 
 ### 👨‍💻 Dev → Development
@@ -82,19 +75,15 @@ One thing that became clear to me today is that **building an application is onl
 
 The application also needs to be:
 
-```text
-BUILD
-  ↓
-TEST
-  ↓
-DEPLOY
-  ↓
-MAINTAIN
-  ↓
-MONITOR
-  ↓
-IMPROVE
-  ↺
+```mermaid
+flowchart TD
+    A["🔨 BUILD"]
+    --> B["🧪 TEST"]
+    --> C["🚀 DEPLOY"]
+    --> D["🛠️ MAINTAIN"]
+    --> E["📊 MONITOR"]
+    --> F["💡 IMPROVE"]
+    --> A
 ```
 
 If these steps are done manually every time, the process can become slow and mistakes can happen.
@@ -113,18 +102,14 @@ The machine performs the process automatically instead of requiring you to do ev
 
 In the same way, in DevOps we try to automate repetitive tasks wherever possible.
 
-```text
-Manual Work
-     ↓
-Repetitive Tasks
-     ↓
-  🤖 Automation
-     ↓
-Less Manual Work
-     ↓
-Faster Process
-     ↓
-Fewer Mistakes
+```mermaid
+flowchart TD
+    A["👨‍💻 MANUAL WORK"]
+    --> B["🔁 REPETITIVE TASKS"]
+    --> C["🤖 AUTOMATION"]
+    --> D["📉 LESS MANUAL WORK"]
+    --> E["⚡ FASTER PROCESS"]
+    --> F["✅ FEWER MISTAKES"]
 ```
 
 ---
@@ -139,6 +124,14 @@ Similarly, an application should work correctly and consistently when users depe
 
 > **Reliability = A system working correctly and consistently.**
 
+```mermaid
+flowchart LR
+    A["⚙️ SYSTEM"]
+    --> B["✅ WORKS CORRECTLY"]
+    --> C["🔄 WORKS CONSISTENTLY"]
+    --> D["🛡️ RELIABLE SYSTEM"]
+```
+
 ---
 
 ## 🏦 A Simple Example
@@ -151,16 +144,13 @@ The update should not simply be given to users immediately.
 
 It needs to go through processes such as:
 
-```text
-New Update
-    ↓
-  Testing
-    ↓
-Quality Checks
-    ↓
- Deployment
-    ↓
- Monitoring
+```mermaid
+flowchart TD
+    A["🆕 NEW UPDATE"]
+    --> B["🧪 TESTING"]
+    --> C["✅ QUALITY CHECKS"]
+    --> D["🚀 DEPLOYMENT"]
+    --> E["📊 MONITORING"]
 ```
 
 If these processes are reliable and automated, the chances of problems reaching users can be reduced.
@@ -173,23 +163,14 @@ I also started thinking about how applications were managed before cloud platfor
 
 A simplified flow I understood was:
 
-```text
-        👨‍💻 Developer
-              │
-              ↓
-      Builds Application
-              │
-              ↓
-          🖥️ Server
-              │
-              ↓
-    Application is Deployed
-              │
-              ↓
-    ⚙️ Server Administrator
-              │
-              ↓
-       Manages Server
+```mermaid
+flowchart TD
+    A["👨‍💻 DEVELOPER"]
+    --> B["🔨 BUILDS APPLICATION"]
+    --> C["🖥️ SERVER"]
+    --> D["🚀 APPLICATION DEPLOYED"]
+    --> E["⚙️ SERVER ADMINISTRATOR"]
+    --> F["🛠️ MANAGES SERVER"]
 ```
 
 The server was needed because applications had to run somewhere outside the developer's personal machine, especially when testing or deploying them for others.
@@ -208,6 +189,15 @@ The goal is simple:
 
 > **Improve the process of delivering software.**
 
+```mermaid
+flowchart LR
+    A["👨‍💻 DEVELOPMENT"]
+    --> C["🤝 COLLABORATION"]
+    B["⚙️ OPERATIONS"]
+    --> C
+    C --> D["🚀 BETTER SOFTWARE DELIVERY"]
+```
+
 ---
 
 ## 📸 My Day 01 Notes
@@ -219,6 +209,8 @@ These are the handwritten notes I made while learning the fundamentals.
 <p align="center">
   <img src="./images/day-01-devops-fundamentals.jpg" width="750"/>
 </p>
+
+---
 
 ## 💡 What I Learned Today
 
@@ -234,26 +226,79 @@ Today I understood three important ideas:
 
 **Reduce repetitive manual work.**
 
+```mermaid
+flowchart LR
+    A["🔁 Repetitive Work"]
+    --> B["🤖 Automation"]
+    --> C["⚡ Faster & Easier"]
+```
+
 ### 🔄 Reliability
 
 **Make systems work correctly and consistently.**
+
+```mermaid
+flowchart LR
+    A["⚙️ System"]
+    --> B["✅ Correct"]
+    --> C["🔄 Consistent"]
+    --> D["🛡️ Reliable"]
+```
 
 ### 🚀 DevOps
 
 **Improve the overall process of building and delivering software.**
 
-## 🚀 DAY 01 COMPLETE
+```mermaid
+flowchart LR
+    A["💡 Build"]
+    --> B["🧪 Test"]
+    --> C["🚀 Deploy"]
+    --> D["📊 Monitor"]
+    --> E["💡 Improve"]
+    --> A
+```
 
-### `Build • Break • Fix • Repeat`
+---
 
-**Learning → Practicing → Documenting**
+## 🧠 My Simple Mental Model
 
-</div>
+The easiest way I remember Day 1:
+
+```mermaid
+flowchart TD
+    A["💡 SOFTWARE IDEA"]
+    --> B["👨‍💻 DEVELOPMENT"]
+    --> C["🤝 DEV + OPS"]
+    --> D["🤖 AUTOMATION"]
+    --> E["🧪 TESTING"]
+    --> F["🚀 DEPLOYMENT"]
+    --> G["📊 MONITORING"]
+    --> H["🛡️ RELIABILITY"]
+    --> I["💡 CONTINUOUS IMPROVEMENT"]
+    --> B
+```
+
+> **DevOps = Collaboration + Automation + Reliability + Continuous Improvement**
 
 ---
 
 <div align="center">
 
-### 📌 More coming tomorrow...
+# 🚀 DAY 01 COMPLETE
+
+### `Build • Break • Fix • Repeat`
+
+**Learning → Practicing → Documenting**
+
+<br>
+
+`Development → Operations → Automation → Deployment → Monitoring → Improvement`
+
+<br>
+
+📌 **More coming tomorrow...**
+
+**DAY 02 → SDLC • HLD • LLD**
 
 </div>
