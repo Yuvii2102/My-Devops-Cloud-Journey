@@ -1,8 +1,8 @@
 <div align="center">
 
-# DAY 02 — DevOps with Yuva
+# 🚀 DAY 02 — DevOps with Yuva
 
-## SDLC • HLD • LLD
+## 🧩 SDLC • HLD • LLD
 
 ### `Understand the Process • Design the System • Build the Solution`
 
@@ -48,41 +48,17 @@ Instead of randomly building an application, SDLC provides a structured approach
 
 ### 🔄 The SDLC Flow
 
-<pre>
-        ┌──────────┐
-        │   PLAN   │
-        └────┬─────┘
-             ↓
-        ┌──────────┐
-        │  DEFINE  │
-        └────┬─────┘
-             ↓
-        ┌──────────┐
-        │  DESIGN  │
-        └────┬─────┘
-             ↓
-        ┌──────────┐
-        │  BUILD   │
-        └────┬─────┘
-             ↓
-        ┌──────────┐
-        │   TEST   │
-        └────┬─────┘
-             ↓
-        ┌──────────┐
-        │  DEPLOY  │
-        └────┬─────┘
-             ↓
-        ┌──────────┐
-        │ MONITOR  │
-        └────┬─────┘
-             ↓
-        ┌──────────┐
-        │ IMPROVE  │
-        └────┬─────┘
-             │
-             └──────────────↺
-</pre>
+```mermaid
+flowchart TD
+    A["📋 PLAN"] --> B["📝 DEFINE"]
+    B --> C["🎨 DESIGN"]
+    C --> D["🔨 BUILD"]
+    D --> E["🧪 TEST"]
+    E --> F["🚀 DEPLOY"]
+    F --> G["📊 MONITOR"]
+    G --> H["💡 IMPROVE"]
+    H --> A
+```
 
 The process is not necessarily a straight line.
 
@@ -119,15 +95,13 @@ For example, imagine building a banking application.
 
 Before writing code, the team needs to understand what the application should actually do.
 
-<pre>
-Business Requirement
-        ↓
-Understanding the Problem
-        ↓
-      Planning
-        ↓
-    Development
-</pre>
+```mermaid
+flowchart TD
+    A["💼 BUSINESS REQUIREMENT"]
+    --> B["🔎 UNDERSTAND THE PROBLEM"]
+    --> C["📋 PLANNING"]
+    --> D["🔨 DEVELOPMENT"]
+```
 
 ---
 
@@ -185,18 +159,18 @@ It answers questions such as:
 
 A simplified HLD could look like:
 
-<pre>
-                  BANKING APPLICATION
-                          │
-          ┌───────────────┼───────────────┐
-          ↓               ↓               ↓
-       LOGIN           PAYMENTS         ORDERS
-       MODULE           MODULE          MODULE
-          │               │               │
-          └───────────────┼───────────────┘
-                          ↓
-                       DATABASE
-</pre>
+```mermaid
+flowchart TD
+    A["🏦 BANKING APPLICATION"]
+
+    A --> B["🔐 LOGIN MODULE"]
+    A --> C["💳 PAYMENTS MODULE"]
+    A --> D["📦 ORDERS MODULE"]
+
+    B --> E["🗄️ DATABASE"]
+    C --> E
+    D --> E
+```
 
 HLD focuses on the **major building blocks**.
 
@@ -221,17 +195,15 @@ It focuses on things such as:
 
 For example:
 
-<pre>
-LOGIN MODULE
-     │
-     ├── Login Class
-     │
-     ├── User Class
-     │
-     ├── Password Validation
-     │
-     └── Authentication Logic
-</pre>
+```mermaid
+flowchart TD
+    A["🔐 LOGIN MODULE"]
+
+    A --> B["Login Class"]
+    A --> C["User Class"]
+    A --> D["Password Validation"]
+    A --> E["Authentication Logic"]
+```
 
 So:
 
@@ -256,26 +228,18 @@ So:
 
 ## 🧠 Simple Way I Remember It
 
-<pre>
-                    SYSTEM
-                       │
-                       ↓
-              ┌─────────────────┐
-              │       HLD       │
-              │   BIG PICTURE   │
-              └────────┬────────┘
-                       ↓
-                Major Components
-                       │
-                       ↓
-              ┌─────────────────┐
-              │       LLD       │
-              │     DETAILS     │
-              └────────┬────────┘
-                       ↓
-              Classes • Methods
-              Logic • Implementation
-</pre>
+```mermaid
+flowchart TD
+    A["🖥️ SYSTEM"]
+    --> B["🏗️ HLD<br/>BIG PICTURE"]
+
+    B --> C["Major Components"]
+
+    C --> D["🔍 LLD<br/>DETAILS"]
+
+    D --> E["Classes • Methods"]
+    E --> F["Logic • Implementation"]
+```
 
 ---
 
@@ -298,19 +262,15 @@ It focuses on the **overall structure**.
 
 LLD goes deeper:
 
-<pre>
-Kitchen
-   ↓
-Cabinets
-   ↓
-Doors
-   ↓
-Handles
-   ↓
-Materials
-   ↓
-Detailed Measurements
-</pre>
+```mermaid
+flowchart TD
+    A["🏠 KITCHEN"]
+    --> B["CABINETS"]
+    --> C["DOORS"]
+    --> D["HANDLES"]
+    --> E["MATERIALS"]
+    --> F["DETAILED MEASUREMENTS"]
+```
 
 So the easiest way I remember it is:
 
@@ -328,26 +288,19 @@ Software development doesn't stop after writing code.
 
 A simplified flow is:
 
-<pre>
-PLAN
-  ↓
-DEFINE
-  ↓
-DESIGN
-  ↓
-BUILD
-  ↓
-TEST
-  ↓
-DEPLOY
-  ↓
-MONITOR
-  ↓
-FEEDBACK
-  ↓
-IMPROVE
-  ↺
-</pre>
+```mermaid
+flowchart TD
+    A["📋 PLAN"]
+    --> B["📝 DEFINE"]
+    --> C["🎨 DESIGN"]
+    --> D["🔨 BUILD"]
+    --> E["🧪 TEST"]
+    --> F["🚀 DEPLOY"]
+    --> G["📊 MONITOR"]
+    --> H["📨 FEEDBACK"]
+    --> I["💡 IMPROVE"]
+    --> A
+```
 
 This connects directly with DevOps.
 
@@ -373,20 +326,16 @@ Monitoring can provide information such as:
 
 That feedback can then be used to improve the application.
 
-<pre>
-        DEPLOY
-           ↓
-       MONITOR
-           ↓
-        FEEDBACK
-           ↓
-        IMPROVE
-           ↓
-         UPDATE
-           ↓
-      DEPLOY AGAIN
-           ↺
-</pre>
+```mermaid
+flowchart TD
+    A["🚀 DEPLOY"]
+    --> B["📊 MONITOR"]
+    --> C["📨 FEEDBACK"]
+    --> D["💡 IMPROVE"]
+    --> E["🔄 UPDATE"]
+    --> F["🚀 DEPLOY AGAIN"]
+    --> B
+```
 
 This creates a continuous cycle.
 
@@ -400,45 +349,32 @@ My biggest takeaway from Day 2:
 
 Before an application reaches users, many things happen:
 
-<pre>
-Requirements
-     ↓
-Planning
-     ↓
-Design
-     ↓
-Development
-     ↓
-Testing
-     ↓
-Deployment
-     ↓
-Monitoring
-     ↓
-Improvement
-</pre>
+```mermaid
+flowchart TD
+    A["📋 REQUIREMENTS"]
+    --> B["📋 PLANNING"]
+    --> C["🎨 DESIGN"]
+    --> D["🔨 DEVELOPMENT"]
+    --> E["🧪 TESTING"]
+    --> F["🚀 DEPLOYMENT"]
+    --> G["📊 MONITORING"]
+    --> H["💡 IMPROVEMENT"]
+```
 
 I also understood the difference between HLD and LLD:
 
-<pre>
-HLD
- ↓
-Overall Architecture
- ↓
-Major Components
- ↓
-System Design
-</pre>
+```mermaid
+flowchart TD
+    A["🏗️ HLD"]
+    --> B["Overall Architecture"]
+    --> C["Major Components"]
+    --> D["System Design"]
 
-<pre>
-LLD
- ↓
-Detailed Design
- ↓
-Classes & Methods
- ↓
-Implementation Logic
-</pre>
+    E["🔍 LLD"]
+    --> F["Detailed Design"]
+    --> G["Classes & Methods"]
+    --> H["Implementation Logic"]
+```
 
 ---
 
@@ -448,42 +384,48 @@ These are the handwritten notes I made while learning **SDLC, HLD, LLD, Monitori
 
 ### 📝 SDLC Notes
 
-<p align="left">
+<p align="center">
   <img src="./images/day-02-sdlc.jpg" width="750"/>
 </p>
-
 
 ---
 
 ## 🎓 Day 02 Takeaways
 
-### 📋 SDLC
+```mermaid
+flowchart TD
+    A["📋 SDLC<br/><br/>Understand the complete<br/>software development process"]
+    --> B["🏗️ HLD<br/><br/>Understand the overall<br/>system architecture"]
 
-**Understand the complete software development process**
+    B --> C["🔍 LLD<br/><br/>Understand detailed<br/>implementation"]
 
-↓
+    C --> D["📊 MONITORING<br/><br/>Get feedback from<br/>the running system"]
 
-### 🏗️ HLD
+    D --> E["🚀 DEVOPS<br/><br/>Improve and automate<br/>the overall process"]
+```
 
-**Understand the overall system architecture**
+---
 
-↓
+## 🧠 Final Mental Model
 
-### 🔍 LLD
+```mermaid
+flowchart LR
+    A["💡 IDEA"]
+    --> B["📋 SDLC"]
+    --> C["🏗️ HLD"]
+    --> D["🔍 LLD"]
+    --> E["🔨 DEVELOPMENT"]
+    --> F["🧪 TESTING"]
+    --> G["🚀 DEPLOYMENT"]
+    --> H["📊 MONITORING"]
+    --> I["💡 IMPROVEMENT"]
+    --> B
+```
 
-**Understand detailed implementation**
-
-↓
-
-### 📊 Monitoring
-
-**Get feedback from the running system**
-
-↓
-
-### 🚀 DevOps
-
-**Improve and automate the overall process**
+> **SDLC tells me the complete process.**  
+> **HLD tells me the big picture.**  
+> **LLD tells me the detailed implementation.**  
+> **DevOps helps automate and improve the overall process.**
 
 ---
 
@@ -495,10 +437,14 @@ These are the handwritten notes I made while learning **SDLC, HLD, LLD, Monitori
 
 **Learning → Understanding → Practicing → Documenting**
 
----
+<br>
 
-### 📌 More coming tomorrow...
+`SDLC → HLD → LLD → Development → Deployment → Monitoring`
 
-**DAY 03 → Next step in the DevOps journey**
+<br>
+
+📌 **More coming tomorrow...**
+
+**DAY 03 → Servers • Virtualization • AWS EC2 • Automation**
 
 </div>
