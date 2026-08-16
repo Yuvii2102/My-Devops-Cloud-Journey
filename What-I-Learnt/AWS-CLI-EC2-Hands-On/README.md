@@ -11,6 +11,8 @@
 
 ---
 
+use AWS CLI Command Reference if you need any help
+
 # 📚 TODAY'S LEARNING
 
 Today you learned how to:
