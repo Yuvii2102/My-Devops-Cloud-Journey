@@ -33,7 +33,7 @@ Host Operating System
         └── 🐳 Container 3 → Application C
 ```
 
-### 🔷 Mermaid — Container Architecture
+### 🔷 Container Architecture
 
 ```mermaid
 flowchart TD
@@ -73,7 +73,7 @@ If proper isolation is not present:
 ❌ Unnecessary file sharing
 ```
 
-### 🔷 Mermaid — Container Isolation
+### 🔷 Container Isolation
 
 ```mermaid
 flowchart LR
@@ -114,7 +114,7 @@ Some important Linux directories are:
 └── root  → Root user's home directory
 ```
 
-### 🔷 Mermaid — Linux Directory Structure
+### 🔷 Linux Directory Structure
 
 ```mermaid
 flowchart TD
@@ -151,7 +151,7 @@ Guest Operating System
 
 A Virtual Machine generally requires its own guest operating system.
 
-### 🔷 Mermaid — Virtual Machine Architecture
+### 🔷 Virtual Machine Architecture
 
 ```mermaid
 flowchart TD
@@ -176,7 +176,7 @@ Host Operating System + Kernel
 Application + Dependencies
 ```
 
-### 🔷 Mermaid — Container Architecture
+### 🔷 Container Architecture
 
 ```mermaid
 flowchart TD
@@ -212,7 +212,7 @@ flowchart TD
 
 > A VM generally contains a complete guest OS, while a container shares the host OS kernel and packages the application with its required dependencies.
 
-### 🔷 Mermaid — VM vs Container
+### 🔷 VM vs Container
 
 ```mermaid
 flowchart LR
@@ -243,7 +243,7 @@ Docker
 Tool / Platform that implements the concept
 ```
 
-### 🔷 Mermaid — Container & Docker
+### 🔷 Container & Docker
 
 ```mermaid
 flowchart TD
@@ -290,7 +290,7 @@ Docker Image
    Container
 ```
 
-### 🔷 Mermaid — Image to Container
+### 🔷 Image to Container
 
 ```mermaid
 flowchart LR
@@ -320,7 +320,7 @@ One Docker image can be used to create multiple containers.
   C1  C2  C3
 ```
 
-### 🔷 Mermaid — One Image, Multiple Containers
+### 🔷 One Image, Multiple Containers
 
 ```mermaid
 flowchart TD
@@ -360,7 +360,7 @@ CMD
 Specifies the default command when the container runs
 ```
 
-### 🔷 Mermaid — Dockerfile Instructions
+### 🔷 Dockerfile Instructions
 
 ```mermaid
 flowchart TD
@@ -386,7 +386,7 @@ Docker Run
 Container
 ```
 
-### 🔷 Mermaid — Dockerfile to Container
+### 🔷 Dockerfile to Container
 
 ```mermaid
 flowchart TD
@@ -438,7 +438,7 @@ Docker Resources
 └── 💾 Volumes
 ```
 
-### 🔷 Mermaid — Docker Engine Architecture
+### 🔷 Docker Engine Architecture
 
 ```mermaid
 flowchart TD
@@ -487,7 +487,7 @@ Docker Resource
 Container / Image / Network / Volume
 ```
 
-### 🔷 Mermaid — Docker CLI Flow
+### 🔷 Docker CLI Flow
 
 ```mermaid
 flowchart TD
@@ -524,7 +524,7 @@ Stores & Distributes
   Docker Images
 ```
 
-### 🔷 Mermaid — Docker Registry
+### 🔷 Docker Registry
 
 ```mermaid
 flowchart TD
@@ -568,7 +568,7 @@ Build Docker Image
   🐳 Container
 ```
 
-### 🔷 Mermaid — Docker Hub Workflow
+### 🔷 Docker Hub Workflow
 
 ```mermaid
 flowchart LR
@@ -618,7 +618,7 @@ Docker Hub / Registry
     Docker Image
 ```
 
-### 🔷 Mermaid — Docker Pull
+### 🔷 Docker Pull
 
 ```mermaid
 flowchart LR
@@ -648,7 +648,7 @@ Local Docker Image
 Docker Registry
 ```
 
-### 🔷 Mermaid — Docker Push
+### 🔷 Docker Push
 
 ```mermaid
 flowchart LR
@@ -680,7 +680,7 @@ flowchart LR
 🚀 Application
 ```
 
-### 🔷 Mermaid — Complete Docker Workflow
+### 🔷 Complete Docker Workflow
 
 ```mermaid
 flowchart TD
@@ -746,7 +746,7 @@ Docker Image
 Container
 ```
 
-### 🔷 Mermaid — Application Packaging
+### 🔷 Application Packaging
 
 ```mermaid
 flowchart TD
@@ -799,7 +799,7 @@ Application A          Application B
    Isolated             Isolated
 ```
 
-### 🔷 Mermaid — Container Isolation
+### 🔷 Container Isolation
 
 ```mermaid
 flowchart LR
@@ -875,7 +875,7 @@ Docker helps us:
 * 📥 Pull images from registries
 * 🐳 Run multiple isolated applications on the same host
 
-### 🔷 Mermaid — Why Docker?
+### 🔷 Why Docker?
 
 ```mermaid
 mindmap
@@ -935,7 +935,7 @@ Configuration
     Container
 ```
 
-### 🔷 Mermaid — Python Application with Docker
+### 🔷 Python Application with Docker
 
 ```mermaid
 flowchart TD
@@ -991,7 +991,7 @@ Containerization   Docker Engine
       🚀 Application
 ```
 
-### 🔷 Mermaid — Complete Docker Concept Map
+### 🔷 Complete Docker Concept Map
 
 ```mermaid
 flowchart TD
