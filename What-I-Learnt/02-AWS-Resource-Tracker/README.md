@@ -16,9 +16,6 @@
 
 <br><br>
 
-### 📅 DATE
-**16 AUGUST 2026**
-
 ### 🎯 PROJECT
 **AWS Resource Tracker using Shell Scripting**
 
