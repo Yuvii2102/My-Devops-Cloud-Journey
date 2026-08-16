@@ -1,4 +1,4 @@
-# 🚀 DAY 05 — SHELL SCRIPTING, LINUX MONITORING & GIT BRANCHING
+# DAY 05-SHELL SCRIPTING, LINUX MONITORING & GIT BRANCHING
 
 <p align="center">
   <img src="https://img.shields.io/badge/DevOps-Day%2004-2496ED?style=for-the-badge&logo=linux&logoColor=white"/>
