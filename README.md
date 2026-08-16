@@ -42,7 +42,7 @@ At the beginning, I didn't really understand how valuable documentation would be
 
 Now, I'm changing that.
 
-From this point forward, this repository will document my journey — including the things I learn, the commands I practice, the problems I face, the mistakes I make, and the projects I build.
+From now onwards, this repository will document my journey — including the things I learn, the commands I practice, the problems I face, the mistakes I make, and the projects I build.
 
 <p align="center">
   🚀 <b>Learning Started:</b> July 2026
@@ -119,12 +119,8 @@ Because sometimes the learning process looks like this:
 
 ---
 
-## 📊 Current Progress
-
 > **This isn't about completing a checklist.**
 > **It's about becoming better than I was yesterday.**
-
----
 
 ---
 
