@@ -50,7 +50,7 @@ docker volume ls
    └── 💾 Volumes
 ```
 
-### 🔷 Mermaid — Docker CLI Architecture
+### 🔷 Docker CLI Architecture
 
 ```mermaid
 flowchart TD
@@ -106,7 +106,7 @@ dockerd
       └── 💾 Volumes
 ```
 
-### 🔷 Mermaid — Docker Daemon
+### 🔷 Docker Daemon
 
 ```mermaid
 flowchart TD
@@ -135,7 +135,7 @@ The Docker CLI communicates with the **Docker Daemon**.
 
 The Docker Daemon then checks the required image and creates/runs the container.
 
-### 🔷 Mermaid — `docker run ubuntu`
+### 🔷 `docker run ubuntu`
 
 ```mermaid
 flowchart LR
@@ -163,7 +163,7 @@ Docker Resources
        └── 💾 Volumes
 ```
 
-### 🔷 Mermaid — Docker Resources
+### 🔷 Docker Resources
 
 ```mermaid
 flowchart TD
@@ -214,7 +214,7 @@ A **container** is a running or stopped instance of a Docker image.
 📦 Docker Container
 ```
 
-### 🔷 Mermaid — Image to Container
+### 🔷 Image to Container
 
 ```mermaid
 flowchart LR
@@ -250,7 +250,7 @@ Docker networks allow containers to communicate with:
 docker network ls
 ```
 
-### 🔷 Mermaid — Docker Network
+### 🔷 Docker Network
 
 ```mermaid
 flowchart LR
@@ -276,7 +276,7 @@ They allow data to exist independently from the container lifecycle.
 docker volume ls
 ```
 
-### 🔷 Mermaid — Docker Volume
+### 🔷 Docker Volume
 
 ```mermaid
 flowchart LR
@@ -314,7 +314,7 @@ Docker Daemon
 ❌ Permission Denied
 ```
 
-### 🔷 Mermaid — Permission Denied
+### 🔷 Permission Denied
 
 ```mermaid
 flowchart TD
@@ -344,7 +344,7 @@ sudo docker run ubuntu
 sudo docker pull ubuntu
 ```
 
-### 🔷 Mermaid — Using sudo
+### 🔷 Using sudo
 
 ```mermaid
 flowchart TD
@@ -403,7 +403,7 @@ If the user has the required permissions, Docker commands can now be executed wi
 ✅ Docker Operation
 ```
 
-### 🔷 Mermaid — Docker Group Permission
+### 🔷 Docker Group Permission
 
 ```mermaid
 flowchart TD
@@ -467,7 +467,7 @@ docker pull ubuntu
 🖼️ Ubuntu Image
 ```
 
-### 🔷 Mermaid — Docker Pull
+### 🔷 Docker Pull
 
 ```mermaid
 flowchart TD
@@ -543,7 +543,7 @@ docker run ubuntu
  Start Container
 ```
 
-### 🔷 Mermaid — `docker run`
+### 🔷 `docker run`
 
 ```mermaid
 flowchart TD
@@ -595,7 +595,7 @@ docker ps -a
 | `docker ps`    | Shows running containers |
 | `docker ps -a` | Shows all containers     |
 
-### 🔷 Mermaid — Container Listing
+### 🔷 Container Listing
 
 ```mermaid
 flowchart TD
@@ -629,7 +629,7 @@ docker stop <container_id>
 docker stop mycontainer
 ```
 
-### 🔷 Mermaid — Stop Container
+### 🔷 Stop Container
 
 ```mermaid
 flowchart LR
@@ -655,7 +655,7 @@ docker start <container_id>
 docker start mycontainer
 ```
 
-### 🔷 Mermaid — Start Container
+### 🔷 Start Container
 
 ```mermaid
 flowchart LR
@@ -683,7 +683,7 @@ docker rm mycontainer
 
 A running container normally needs to be stopped before removing it.
 
-### 🔷 Mermaid — Remove Container
+### 🔷 Remove Container
 
 ```mermaid
 flowchart LR
@@ -709,7 +709,7 @@ docker rmi <image_id>
 docker rmi ubuntu
 ```
 
-### 🔷 Mermaid — Remove Image
+### 🔷 Remove Image
 
 ```mermaid
 flowchart LR
@@ -744,7 +744,7 @@ docker images
 📦 Docker Container
 ```
 
-### 🔷 Mermaid — Image Lifecycle
+### 🔷 Image Lifecycle
 
 ```mermaid
 flowchart TD
@@ -770,7 +770,7 @@ docker network ls
 
 Docker networks provide communication between containers and other network endpoints.
 
-### 🔷 Mermaid — Docker Network
+### 🔷 Docker Network
 
 ```mermaid
 flowchart LR
@@ -794,7 +794,7 @@ docker volume ls
 
 Volumes are useful when application data needs to persist even when containers are removed.
 
-### 🔷 Mermaid — Persistent Storage
+### 🔷 Persistent Storage
 
 ```mermaid
 flowchart LR
@@ -831,7 +831,7 @@ docker build -t my-first-image .
 🖼️ Docker Image
 ```
 
-### 🔷 Mermaid — Docker Build
+### 🔷 Docker Build
 
 ```mermaid
 flowchart TD
@@ -861,7 +861,7 @@ flowchart TD
 📦 Docker Container
 ```
 
-### 🔷 Mermaid — Image → Container
+### 🔷 Image → Container
 
 ```mermaid
 flowchart LR
@@ -894,7 +894,7 @@ It stores Docker images and allows users or systems to push and pull images.
 🖼️ Docker Image
 ```
 
-### 🔷 Mermaid — Registry Workflow
+### 🔷 Registry Workflow
 
 ```mermaid
 flowchart LR
@@ -920,7 +920,7 @@ docker pull ubuntu
 
 The Ubuntu image can be obtained from a Docker registry such as Docker Hub.
 
-### 🔷 Mermaid — Docker Hub
+### 🔷 Docker Hub
 
 ```mermaid
 flowchart LR
@@ -960,7 +960,7 @@ flowchart LR
                                          💾 VOLUMES
 ```
 
-### 🔷 Mermaid — Complete Docker Architecture
+### 🔷 Complete Docker Architecture
 
 ```mermaid
 flowchart TD
@@ -1010,7 +1010,7 @@ Docker Resources
 | Docker Network   | Communication between kitchens |
 | Docker Volume    | Storage for persistent data    |
 
-### 🔷 Mermaid — Docker Restaurant Analogy
+### 🔷 Docker Restaurant Analogy
 
 ```mermaid
 flowchart LR
@@ -1065,7 +1065,7 @@ flowchart LR
            Network   Volume   Application
 ```
 
-### 🔷 Mermaid — Docker Build & Run Workflow
+### 🔷 Docker Build & Run Workflow
 
 ```mermaid
 flowchart TD
@@ -1104,7 +1104,7 @@ flowchart TD
 📦 Container
 ```
 
-### 🔷 Mermaid — Registry to Container
+### 🔷 Registry to Container
 
 ```mermaid
 flowchart TD
@@ -1167,7 +1167,7 @@ Container      ↓
 Container
 ```
 
-### 🔷 Mermaid — `docker run ubuntu`
+### 🔷 `docker run ubuntu`
 
 ```mermaid
 flowchart TD
@@ -1291,7 +1291,7 @@ Containerization Platform
 🖼️ Images     📦 Containers   🌐 Networks    💾 Volumes
 ```
 
-### 🔷 Mermaid — Docker Core Architecture
+### 🔷 Docker Core Architecture
 
 ```mermaid
 flowchart TD
@@ -1316,7 +1316,7 @@ flowchart TD
 📦 Docker Container
 ```
 
-### 🔷 Mermaid — Image Lifecycle
+### 🔷 Image Lifecycle
 
 ```mermaid
 flowchart LR
@@ -1340,7 +1340,7 @@ flowchart LR
 🐳 Docker Resources
 ```
 
-### 🔷 Mermaid — Communication Flow
+### 🔷 Communication Flow
 
 ```mermaid
 flowchart TD
@@ -1368,7 +1368,7 @@ flowchart TD
 💻 Local Machine
 ```
 
-### 🔷 Mermaid — Registry Flow
+### 🔷 Registry Flow
 
 ```mermaid
 flowchart TD
