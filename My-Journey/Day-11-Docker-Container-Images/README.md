@@ -1,7 +1,5 @@
 <div align="center">
 
-# 🐳 DEVOPS CLOUD JOURNEY
-
 ## DAY 11 — DOCKER CONTAINERS & IMAGES
 
 ### 🚀 From Containers → Images → Dockerfile → Docker Engine → Docker Hub
