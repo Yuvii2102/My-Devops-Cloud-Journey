@@ -11,7 +11,9 @@
 
 ---
 
-use AWS CLI Command Reference if you need any help
+How to connect to EC2 Instance from UI & Terminal
+
+Use AWS CLI Command Reference if you need any help
 
 # 📚 TODAY'S LEARNING
 
