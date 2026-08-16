@@ -1,7 +1,5 @@
 <div align="center">
 
-# 🤖 DEVOPS CLOUD JOURNEY
-
 ## DAY 09 — ANSIBLE ROLES, PLAYBOOKS & DEVOPS OPERATIONS
 
 ### ⚙️ Reusable Automation • Configuration • Operations • Infrastructure
