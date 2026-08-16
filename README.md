@@ -312,7 +312,7 @@ Learn → Build → Break → Fix → Automate → Repeat 🔁
 
 ---
 
-<p align="center">
+<p align="left">
   ⭐ <b>Follow the journey. Watch the progress. Learn from the mistakes.</b> ⭐
 </p>
 
