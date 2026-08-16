@@ -14,7 +14,7 @@
 <img src="https://img.shields.io/badge/EC2-Cloud%20Server-FF9900?style=for-the-badge&logo=amazonec2&logoColor=white"/>
 <img src="https://img.shields.io/badge/AWS%20IAM-Security-232F3E?style=for-the-badge&logo=amazonaws&logoColor=white"/>
 
-<br><br>
+<br>
 
 ### 🎯 PROJECT
 **AWS Resource Tracker using Shell Scripting**
