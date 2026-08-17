@@ -1,4 +1,4 @@
-# 🚀 Ansible Hands-On Journey — From Installation to GitHub
+# Ansible Hands-On Journey - From Installation to GitHub
 
 <p align="center">
 
