@@ -74,7 +74,7 @@ Terraform Configuration
 # 🏗️ Project Architecture
 
 ```text
-                         AWS CLOUD
+                          AWS CLOUD
                             │
                             │
                      ┌──────▼──────┐
@@ -89,16 +89,16 @@ Terraform Configuration
                      │   on Ubuntu │
                      └──────▲──────┘
                             │
-                       main.tf
+                          main.tf
                             │
-                 ┌──────────┴──────────┐
-                 │                     │
-        terraform plan        terraform apply
-                 │                     │
-                 └──────────┬──────────┘
+                  ┌─────────┴─────────┐
+                  │                   │
+         terraform plan      terraform apply
+                  │                   │
+                  └─────────┬─────────┘
                             │
                             ▼
-                       AWS EC2 Created
+                      AWS EC2 Created
 ```
 
 ---
@@ -1010,15 +1010,15 @@ After learning Terraform:
 ```text
 Write Infrastructure Code
           ↓
-      main.tf
+       main.tf
           ↓
-  terraform init
+   terraform init
           ↓
-  terraform plan
+   terraform plan
           ↓
-  terraform apply
+   terraform apply
           ↓
-       AWS EC2
+        AWS EC2
 ```
 
 This is the fundamental idea behind **Infrastructure as Code**.
@@ -1052,3 +1052,254 @@ This is the fundamental idea behind **Infrastructure as Code**.
 
 </div>
 
+---
+
+# 2️⃣0️⃣ ACCIDENTALLY DELETED 06-TERRAFORM 😣😭
+
+While working on the project, I accidentally deleted the:
+
+```text
+06-Terraform
+```
+
+folder from GitHub.
+
+Instead of recreating the entire project from scratch, I restored the folder and then synchronized my local repository with GitHub.
+
+The restored GitHub folder appeared as:
+
+```text
+06-Terraform
+```
+
+with the Terraform project files.
+
+---
+
+# 2️⃣1️⃣ GIT PUSH ERROR
+
+When I first attempted to push my local changes:
+
+```bash
+git push origin main
+```
+
+Git rejected the push.
+
+The error was:
+
+```text
+! [rejected] main -> main (fetch first)
+
+error: failed to push some refs
+```
+
+Git explained that:
+
+```text
+Updates were rejected because the remote contains work
+that you do not have locally.
+```
+
+## Why?
+
+The GitHub repository had commits that my local repository did not have.
+
+Therefore:
+
+```text
+GitHub
+   │
+   │ newer commit
+   ▼
+Remote main
+
+
+Local main
+   │
+   │ older history
+   ▼
+EC2
+```
+
+Git prevented the push because pushing directly could overwrite remote history.
+
+---
+
+# 2️⃣2️⃣ CHECK LOCAL GIT STATUS
+
+I checked my repository:
+
+```bash
+git status
+```
+
+Git showed:
+
+```text
+On branch main
+Your branch is ahead of 'origin/main' by 1 commit.
+```
+
+However, the remote also contained a newer commit, so I needed to synchronize the histories before pushing.
+
+---
+
+# 2️⃣3️⃣ PULL REMOTE CHANGES USING REBASE
+
+I used:
+
+```bash
+git pull --rebase origin main
+```
+
+Git downloaded the remote changes:
+
+```text
+remote: Enumerating objects...
+remote: Counting objects...
+remote: Compressing objects...
+remote: Receiving objects...
+```
+
+Then Git successfully rebased my local commit on top of the remote commit.
+
+The important message was:
+
+```text
+Successfully rebased and updated refs/heads/main.
+```
+
+## 🧠 WHY `git pull --rebase`?
+
+Instead of creating an unnecessary merge commit, rebase places my local commit after the latest remote commit.
+
+### BEFORE
+
+```text
+Remote:
+A ── B
+
+
+Local:
+A ── C
+```
+
+### AFTER `git pull --rebase`
+
+```text
+A ── B ── C
+```
+
+This creates a cleaner linear history.
+
+---
+
+# 2️⃣4️⃣ PUSH AGAIN
+
+After successfully rebasing, I ran:
+
+```bash
+git push origin main
+```
+
+This time the push succeeded.
+
+Git displayed:
+
+```text
+Enumerating objects: 10, done.
+Counting objects: 100%...
+Writing objects: 100%...
+To https://github.com/Yuvii2102/My-Devops-Cloud-Journey.git
+   main -> main
+```
+
+The Terraform project was successfully pushed to GitHub.
+
+---
+
+# 2️⃣5️⃣ FINAL GITHUB STRUCTURE
+
+My GitHub repository now contains:
+
+```text
+My-Devops-Cloud-Journey/
+│
+└── DevOps-Labs-and-Projects/
+    │
+    ├── Day-01 to Day-06/
+    ├── Day-06 to Day-12/
+    ├── 01-AWS-CLI-EC2-Hands-On/
+    ├── 02-AWS-Resource-Tracker/
+    ├── 03-AWS-EC2-Node-Js-Deployment/
+    ├── 04-GitHub-PAT-Authentication/
+    ├── 05-Ansible/
+    │
+    ├── 06-Terraform/
+    │   ├── .gitignore
+    │   ├── .terraform.lock.hcl
+    │   ├── README.md
+    │   └── main.tf
+    │
+    └── Ansible/
+```
+
+---
+
+# 🧪 COMMANDS PRACTICED
+
+The major commands I used during this lab were:
+
+```bash
+# Ubuntu package management
+sudo apt update
+sudo apt install -y gnupg software-properties-common curl
+
+# HashiCorp repository
+curl -fsSL https://apt.releases.hashicorp.com/gpg | sudo gpg --dearmor -o /usr/share/keyrings/hashicorp-archive-keyring.gpg
+
+echo "deb [signed-by=/usr/share/keyrings/hashicorp-archive-keyring.gpg] \
+https://apt.releases.hashicorp.com $(lsb_release -cs) main" | \
+sudo tee /etc/apt/sources.list.d/hashicorp.list
+
+sudo apt update
+
+# Terraform installation
+sudo apt install -y terraform
+terraform version
+
+# Project creation
+mkdir terraform-demo
+cd terraform-demo
+pwd
+touch main.tf
+vim main.tf
+
+# Terraform
+terraform init
+terraform plan
+terraform apply
+
+# AWS CLI
+aws --version
+sudo apt install awscli
+aws configure
+
+# Git
+git status
+git pull --rebase origin main
+git push origin main
+```
+
+---
+
+<div align="center">
+
+# 🎉 TERRAFORM AWS EC2 PROJECT COMPLETE
+
+### Infrastructure as Code • AWS • Terraform • Linux • Git • GitHub
+
+**Successfully created AWS infrastructure using Terraform 🚀**
+
+</div>
