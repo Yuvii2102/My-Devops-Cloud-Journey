@@ -1,9 +1,4 @@
-# 📘 DAY 15 — COMPLETE NOTES
-
-> **All Day 15 notes are kept inside this ONE Markdown page.**
-> No separate Markdown pages or separate code blocks.
-
-# 🐧 LINUX COMMANDS & BASIC SYSTEM CONCEPTS
+# 📘 DAY 15 — LINUX COMMANDS & BASIC SYSTEM CONCEPTS 🐧
 
 ## 1. Linux Directory Structure
 
