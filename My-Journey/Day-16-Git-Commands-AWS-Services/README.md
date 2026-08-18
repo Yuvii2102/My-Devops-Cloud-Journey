@@ -56,7 +56,6 @@ mv → rename / move files
 rm → delete files
 cat → display file content
 wc → count lines, words and characters
-sort → sort content
 man → display manual
 history → show command history
 whoami → show current user
@@ -79,8 +78,6 @@ touch file.txt
 cat file.txt
 wc file.txt
 wc -l file.txt
-sort file.txt
-sort -n numbers.txt
 man ls
 man grep
 history
@@ -584,7 +581,6 @@ mv → move / rename
 rm → remove
 cat → display file
 wc → count
-sort → sort content
 man → manual
 history → command history
 whoami → current user
@@ -629,56 +625,3 @@ CodeBuild → Build / Test
 CodeDeploy → Deployment
 Billing → Cost Management
 
-FINAL MEMORY FLOW:
-
-Linux
-↓
-Manage files, permissions & system
-↓
-Git
-↓
-Track code changes
-↓
-GitHub
-↓
-Store/share code
-↓
-CodePipeline
-↓
-Automate pipeline
-↓
-CodeBuild
-↓
-Build + Test
-↓
-CodeDeploy
-↓
-Deploy
-↓
-AWS
-↓
-Run application
-↓
-CloudWatch
-↓
-Monitor
-↓
-CloudTrail
-↓
-Track AWS activity
-↓
-IAM
-↓
-Control access
-↓
-KMS
-↓
-Protect data
-↓
-ECR / EKS / Fargate
-↓
-Containers
-↓
-Billing
-↓
-Track cloud cost
