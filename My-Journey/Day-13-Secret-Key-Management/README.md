@@ -1,12 +1,10 @@
-# 🔐 Secrets Management in DevOps
+<div align="center">
 
-<p align="center">
-
-# 🔐 Secrets Management — Simple Explanation
+# 🔐 Secrets Management In DevOps
 
 ### AWS EC2 • Git • GitHub • Docker • CI/CD
 
-</p>
+</div>
 
 ---
 
