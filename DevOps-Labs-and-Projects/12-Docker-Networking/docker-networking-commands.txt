@@ -1,0 +1,22 @@
+docker network ls
+docker network create secure-network
+docker run -d --name login nginx:latest
+docker run -d --name logout nginx:latest
+docker run -d --name finance --network=secure-network nginx:latest
+
+docker inspect login
+docker inspect finance
+docker network inspect secure-network
+
+docker exec -it login /bin/bash
+
+apt-get update
+apt-get install -y iputils-ping
+
+ping 172.18.0.2
+ping finance
+
+docker network connect secure-network login
+
+docker exec -it login /bin/bash
+ping finance
