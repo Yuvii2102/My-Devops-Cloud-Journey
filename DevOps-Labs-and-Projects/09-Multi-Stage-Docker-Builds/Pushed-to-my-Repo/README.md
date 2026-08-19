@@ -1,4 +1,4 @@
-# 🚀 Push Multi-Stage Docker Project to GitHub
+# Push Multi-Stage Docker Project to GitHub
 
 ## 📌 Objective
 
