@@ -21,7 +21,7 @@
 
 # 📚 TABLE OF CONTENTS
 
-- [🖥️ System & Docker Commands](#️-system--docker-commands)
+- [System & Docker Commands](#️-system--docker-commands)
 - [🚀 Minikube Commands](#-minikube-commands)
 - [☸️ kubectl Installation & Version](#️-kubectl-installation--version)
 - [🖥️ Kubernetes Cluster Commands](#️-kubernetes-cluster-commands)
