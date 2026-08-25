@@ -19,32 +19,6 @@
 
 ---
 
-## 📚 TABLE OF CONTENTS
-
-- 🎯 Objective
-- 🧠 What I Learned
-- ☸️ What is a Deployment?
-- 🔁 What is a ReplicaSet?
-- 🏗️ Deployment Architecture
-- 📝 Deployment YAML
-- 🔍 Understanding the YAML
-- 🚀 Create the Deployment
-- 🔎 Check the Deployment
-- 📦 Check the Pods
-- 🔁 Check the ReplicaSet
-- 🗑️ Delete a Pod
-- 👀 Watch Pod Changes
-- ❤️ Kubernetes Self-Healing
-- 🆚 Direct Pod vs Deployment
-- 🧪 Complete Hands-On Test
-- ⚠️ Errors Encountered
-- 📊 Lab Results
-- 🧠 Key Takeaways
-- 🔄 Complete Flow
-- 🚀 Next Step
-
----
-
 # 🎯 OBJECTIVE
 
 In **Day 33**, I created a single NGINX Pod directly using a Kubernetes Pod YAML file.
