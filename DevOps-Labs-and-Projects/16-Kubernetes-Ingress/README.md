@@ -1,4 +1,4 @@
-<h1 align="center"> #  DAY 38 — KUBERNETES INGRESS </h1>
+<h1 align="center"> DAY 38 — KUBERNETES INGRESS </h1>
 
 
 
