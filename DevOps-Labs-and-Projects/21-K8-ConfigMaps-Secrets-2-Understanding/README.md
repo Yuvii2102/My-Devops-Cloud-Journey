@@ -1,4 +1,8 @@
-# 📂 DAY 41 — KUBERNETES CONFIGMAPS & SECRETS
+<div align="center">
+
+# DAY 41 — KUBERNETES CONFIGMAPS & SECRETS
+
+</div>
 
 ## 🧪 Complete Practical Session — From First Command to Secret Homework
 
