@@ -1,6 +1,6 @@
 <div align="center">
 
-# DAY 41 — KUBERNETES CONFIGMAPS & SECRETS
+# DAY 21 — KUBERNETES CONFIGMAPS & SECRETS
 
 </div>
 
