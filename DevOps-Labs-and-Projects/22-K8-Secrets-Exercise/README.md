@@ -1,4 +1,8 @@
-# 🔐 DAY 41 — KUBERNETES SECRETS HOMEWORK
+<div align="center">
+
+# DAY 22 — KUBERNETES SECRETS HOMEWORK
+
+</div>
 
 ## 🧪 Complete Practical — Repeat the ConfigMap Exercise Using Secrets
 
