@@ -111,7 +111,7 @@ Now we have three important questions.
 ### WHO?
 
 ```text
-Rahul
+Yuvraj
 ```
 
 ### WHAT?
