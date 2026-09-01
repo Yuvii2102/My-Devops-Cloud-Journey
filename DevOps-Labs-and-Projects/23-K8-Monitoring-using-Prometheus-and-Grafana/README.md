@@ -1,6 +1,6 @@
 <div align="center">
 
-# 📊 DAY 42 — KUBERNETES MONITORING USING PROMETHEUS & GRAFANA
+# 📊 DAY 23 — KUBERNETES MONITORING USING PROMETHEUS & GRAFANA
 
 ### ☸️ Kubernetes → 🔥 Prometheus → 📈 PromQL → 📊 Grafana
 
