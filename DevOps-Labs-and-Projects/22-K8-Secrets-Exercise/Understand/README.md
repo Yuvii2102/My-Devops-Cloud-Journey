@@ -1,4 +1,8 @@
+<div align="center">
+  
 # 🟦 ConfigMap vs 🔐 Secret — Practical Understanding
+
+</div>
 
 The **basic mechanism is almost the same**:
 
