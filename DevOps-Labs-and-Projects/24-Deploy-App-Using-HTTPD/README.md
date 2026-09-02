@@ -1,0 +1,1887 @@
+<div align="center">
+  
+# AWS LIVE PROJECT | DEPLOY APP USING HTTPD
+
+</div>
+
+<p align="center">
+
+# 🌐 Deploy a Static Website on AWS EC2 Using Apache HTTPD
+
+**AWS EC2 + Ubuntu + Apache2 + HTTP Port 80**
+
+</p>
+
+---
+
+## 📌 Practical Overview
+
+In this practical, we deployed a **static website** on an **AWS EC2 Ubuntu server** using the **Apache2 web server**.
+
+The website used in this practical was the **Dimension** static website.
+
+The complete flow was:
+
+```text
+User Browser
+     │
+     │ HTTP :80
+     ▼
+AWS EC2 Public IP
+     │
+     ▼
+Apache2 Web Server
+     │
+     ▼
+/var/www/html
+     │
+     ▼
+Dimension Website
+```
+
+The important thing to understand is that:
+
+> **EC2 provides the server. Apache2 acts as the web server. Port 80 receives HTTP traffic. `/var/www/html` contains the website files.**
+
+---
+
+# 🧠 1. What is HTTPD?
+
+**HTTPD** means **HTTP Daemon**.
+
+It is a web server responsible for receiving HTTP requests from clients and returning web content.
+
+Apache HTTP Server is one of the most commonly used HTTP servers.
+
+On different Linux distributions, Apache may have different package/service names.
+
+### In this practical:
+
+| Concept | Our Environment |
+|---|---|
+| Cloud | AWS |
+| Compute | EC2 |
+| Operating System | Ubuntu |
+| Web Server | Apache2 |
+| HTTPD concept | Apache HTTP Server |
+| Apache package | `apache2` |
+| Service name | `apache2` |
+| Protocol | HTTP |
+| Port | `80` |
+| Website type | Static |
+| Website | Dimension |
+| Document Root | `/var/www/html` |
+
+### Important
+
+If a tutorial uses:
+
+```bash
+sudo yum install httpd
+```
+
+that is commonly associated with distributions such as Amazon Linux/RHEL/CentOS.
+
+Our EC2 instance was **Ubuntu**, so we used:
+
+```bash
+sudo apt install apache2 -y
+```
+
+Therefore:
+
+```text
+Ubuntu
+  │
+  └── Apache package/service = apache2
+
+Amazon Linux / RHEL-style systems
+  │
+  └── Apache package/service = httpd
+```
+
+---
+
+# 🌐 2. What is HTTP?
+
+HTTP stands for:
+
+**HyperText Transfer Protocol**
+
+It is the protocol used by a browser to communicate with a web server.
+
+For example:
+
+```text
+http://3.95.27.208
+```
+
+Breakdown:
+
+```text
+http://       → Protocol
+3.95.27.208   → EC2 Public IP
+```
+
+The default HTTP port is:
+
+```text
+80
+```
+
+So the request becomes:
+
+```text
+Browser
+   │
+   │ HTTP Request
+   │ Port 80
+   ▼
+EC2 Public IP
+   │
+   ▼
+Apache2
+   │
+   ▼
+index.html
+   │
+   ▼
+Browser
+```
+
+---
+
+# ☁️ 3. AWS Environment Used
+
+## EC2 Server
+
+The practical was performed on an AWS EC2 Ubuntu instance.
+
+### Server Details
+
+| Property | Value |
+|---|---|
+| Cloud Provider | AWS |
+| Service | EC2 |
+| OS | Ubuntu |
+| Private IP | `172.31.69.255` |
+| Public IP | `3.95.27.208` |
+| HTTP Port | `80` |
+| Web Server | Apache2 |
+| Document Root | `/var/www/html` |
+
+### Public Website URL
+
+```text
+http://3.95.27.208
+```
+
+During troubleshooting, the website was successfully opened using:
+
+```text
+http://3.95.27.208/?test=123
+```
+
+---
+
+# 🏗️ 4. Overall Architecture
+
+```text
+                         INTERNET
+                            │
+                            │ HTTP :80
+                            ▼
+                  ┌───────────────────┐
+                  │    User Browser   │
+                  └─────────┬─────────┘
+                            │
+                            ▼
+                  ┌───────────────────┐
+                  │     AWS EC2       │
+                  │     Ubuntu        │
+                  │ Public IP         │
+                  │ 3.95.27.208       │
+                  └─────────┬─────────┘
+                            │
+                            │ Port 80
+                            ▼
+                  ┌───────────────────┐
+                  │     Apache2       │
+                  │   Web Server      │
+                  └─────────┬─────────┘
+                            │
+                            ▼
+                  ┌───────────────────┐
+                  │ /var/www/html     │
+                  │                   │
+                  │ index.html        │
+                  │ assets/           │
+                  │ images/           │
+                  │ error/            │
+                  └─────────┬─────────┘
+                            │
+                            ▼
+                  ┌───────────────────┐
+                  │ Dimension Website │
+                  └───────────────────┘
+```
+
+---
+
+# 🔄 5. Request Flow
+
+```mermaid
+flowchart LR
+    A["User Browser"] -->|"HTTP :80"| B["AWS EC2"]
+    B --> C["Ubuntu"]
+    C --> D["Apache2"]
+    D --> E["/var/www/html"]
+    E --> F["index.html"]
+    F --> G["Dimension Website"]
+```
+
+### Request process
+
+1. User enters the website URL.
+2. Browser sends an HTTP request.
+3. Request reaches the EC2 public IP.
+4. AWS Security Group allows TCP port `80`.
+5. Apache2 receives the request.
+6. Apache2 looks inside `/var/www/html`.
+7. Apache2 serves `index.html`.
+8. Browser renders the Dimension website.
+
+---
+
+# 📁 6. Website Files
+
+The website used in this practical was the **Dimension** static website.
+
+The website directory contained:
+
+```text
+static-website-example-master/
+│
+├── LICENSE.MD
+├── README.MD
+├── index.html
+│
+├── assets/
+│   ├── css/
+│   ├── js/
+│   └── ...
+│
+├── images/
+│
+└── error/
+```
+
+The most important file is:
+
+```text
+index.html
+```
+
+This is the main HTML page Apache serves when the browser requests `/`.
+
+The website also depends on:
+
+```text
+assets/
+images/
+error/
+```
+
+Therefore, we copied the website files rather than copying only `index.html`.
+
+---
+
+# 🖥️ 7. Apache Document Root
+
+Apache's default document root on Ubuntu is:
+
+```text
+/var/www/html
+```
+
+This means Apache looks here for website content.
+
+Conceptually:
+
+```text
+Browser requests:
+
+http://3.95.27.208/
+
+              │
+              ▼
+
+Apache receives:
+
+GET /
+
+              │
+              ▼
+
+Apache looks at:
+
+/var/www/html/
+
+              │
+              ▼
+
+Finds:
+
+index.html
+
+              │
+              ▼
+
+Returns HTML to browser
+```
+
+---
+
+# 🚀 8. Install Apache2
+
+First, update the Ubuntu package information.
+
+```bash
+sudo apt update
+```
+
+### What this does
+
+This refreshes the local package index so Ubuntu knows about the latest available packages.
+
+---
+
+Install Apache2:
+
+```bash
+sudo apt install apache2 -y
+```
+
+### What this does
+
+This installs the Apache2 web server.
+
+The `-y` automatically answers yes to the installation confirmation.
+
+---
+
+# ▶️ 9. Start Apache2
+
+Start the Apache2 service:
+
+```bash
+sudo systemctl start apache2
+```
+
+### What this does
+
+It starts the Apache2 web server immediately.
+
+---
+
+# 🔁 10. Enable Apache2 at Boot
+
+```bash
+sudo systemctl enable apache2
+```
+
+### What this does
+
+It configures Apache2 to automatically start when the server boots.
+
+Therefore:
+
+```text
+EC2 starts
+   │
+   ▼
+Ubuntu boots
+   │
+   ▼
+Apache2 automatically starts
+   │
+   ▼
+Port 80 becomes available
+```
+
+---
+
+# 🔍 11. Check Apache2 Status
+
+```bash
+sudo systemctl status apache2
+```
+
+This verifies whether Apache2 is running.
+
+The important thing to look for is:
+
+```text
+active (running)
+```
+
+That means Apache2 is currently running.
+
+---
+
+# 🔌 12. Verify Apache is Listening on Port 80
+
+Run:
+
+```bash
+sudo ss -tulpn | grep :80
+```
+
+### What this command does
+
+`ss` displays socket/network information.
+
+The important part is:
+
+```text
+:80
+```
+
+which means port `80`.
+
+We verified that Apache2 was listening on port 80.
+
+Conceptually:
+
+```text
+Apache2
+   │
+   └── Listening
+          │
+          ▼
+       TCP :80
+```
+
+This is important because installing Apache does not mean we have verified that it is actually accepting connections on the expected port.
+
+---
+
+# 📂 13. Deploy the Website
+
+The website files were located inside the:
+
+```text
+static-website-example-master
+```
+
+directory.
+
+The website needed to be placed into Apache's document root:
+
+```text
+/var/www/html
+```
+
+The deployment command used was:
+
+```bash
+sudo cp -r ./* /var/www/html/
+```
+
+### What this command means
+
+```text
+sudo
+```
+
+Run with administrator privileges.
+
+```text
+cp
+```
+
+Copy files.
+
+```text
+-r
+```
+
+Copy directories recursively.
+
+```text
+./*
+```
+
+Copy the files and directories from the current directory.
+
+```text
+/var/www/html/
+```
+
+Apache's website document root.
+
+Therefore:
+
+```text
+Website Source
+     │
+     │ cp -r
+     ▼
+/var/www/html/
+     │
+     ▼
+Apache2
+```
+
+---
+
+# 📋 14. Verify Website Files
+
+After copying the website, verify the contents:
+
+```bash
+sudo ls -la /var/www/html
+```
+
+This lists the files and directories inside Apache's document root.
+
+We verified that the directory contained the Dimension website files, including:
+
+```text
+index.html
+assets/
+images/
+error/
+LICENSE.MD
+README.MD
+```
+
+---
+
+# 📄 15. Verify index.html
+
+Run:
+
+```bash
+sudo head -20 /var/www/html/index.html
+```
+
+### What this does
+
+It displays the first 20 lines of `index.html`.
+
+This confirms that the expected website HTML is actually present in Apache's document root.
+
+The page contained:
+
+```html
+<h1>Dimension</h1>
+```
+
+which confirmed that the Dimension website had been deployed.
+
+---
+
+# 🔒 16. AWS Security Group — Allow HTTP
+
+For an EC2 server to be accessible from the internet, AWS networking must allow incoming HTTP traffic.
+
+The EC2 Security Group was configured with:
+
+```text
+Type:       HTTP
+Protocol:   TCP
+Port:       80
+Source:     0.0.0.0/0
+```
+
+Meaning:
+
+```text
+Internet
+   │
+   │ TCP :80
+   ▼
+AWS Security Group
+   │
+   │ Allowed
+   ▼
+EC2
+   │
+   ▼
+Apache2
+```
+
+### Important
+
+Opening port `80` in the AWS Security Group is separate from Apache listening on port `80`.
+
+Both are required:
+
+```text
+AWS Security Group
+        │
+        │ allows traffic
+        ▼
+      EC2
+        │
+        │ port 80
+        ▼
+     Apache2
+        │
+        ▼
+ Website
+```
+
+---
+
+# 🔥 17. Check Ubuntu UFW Firewall
+
+We checked the Ubuntu firewall with:
+
+```bash
+sudo ufw status
+```
+
+The result was:
+
+```text
+Status: inactive
+```
+
+Therefore, UFW was not blocking the HTTP connection.
+
+The networking path was therefore primarily:
+
+```text
+Internet
+   │
+   ▼
+AWS Security Group
+   │
+   ▼
+EC2
+   │
+   ▼
+Apache2 :80
+```
+
+---
+
+# 🧪 18. Test Website Locally
+
+Before testing the public IP, we tested Apache from inside the EC2 instance:
+
+```bash
+curl http://localhost
+```
+
+### Why use localhost?
+
+`localhost` refers to the same EC2 machine.
+
+So:
+
+```text
+EC2
+ │
+ └── curl localhost
+          │
+          ▼
+       Apache2
+          │
+          ▼
+     /var/www/html
+          │
+          ▼
+      index.html
+```
+
+The response contained the Dimension HTML.
+
+This proved:
+
+```text
+Apache is running
+        +
+Apache can serve the website
+        +
+index.html exists
+        =
+Local deployment works
+```
+
+---
+
+# 🌍 19. Get EC2 Public IP
+
+We used:
+
+```bash
+curl http://checkip.amazonaws.com
+```
+
+The result was:
+
+```text
+3.95.27.208
+```
+
+This was the public IP used for external testing.
+
+Therefore:
+
+```text
+EC2 Public IP = 3.95.27.208
+```
+
+---
+
+# 🌐 20. Public Website URL
+
+The normal public URL was:
+
+```text
+http://3.95.27.208
+```
+
+The browser initially showed:
+
+```text
+ERR_TIMED_OUT
+```
+
+This required troubleshooting.
+
+---
+
+# 🛠️ 21. Troubleshooting Public HTTP Access
+
+At this stage, we already knew:
+
+```text
+Apache2        → Running
+Port 80        → Listening
+Website files  → Present
+localhost      → Working
+UFW            → Inactive
+Security Group → HTTP :80 allowed
+```
+
+So we tested the connection from the Windows machine.
+
+---
+
+# 🪟 22. Test Port 80 from Windows
+
+In Windows PowerShell:
+
+```powershell
+Test-NetConnection 3.95.27.208 -Port 80
+```
+
+The important result was:
+
+```text
+TcpTestSucceeded : True
+```
+
+### What does this prove?
+
+It proves that the Windows machine could establish a TCP connection to:
+
+```text
+3.95.27.208:80
+```
+
+So the basic network path was working.
+
+```text
+Windows
+   │
+   │ TCP :80
+   ▼
+3.95.27.208
+   │
+   ▼
+EC2
+   │
+   ▼
+Apache2
+```
+
+---
+
+# 🌐 23. Test HTTP Response Directly
+
+We then tested the public HTTP endpoint from the server:
+
+```bash
+curl -I http://3.95.27.208
+```
+
+The response included:
+
+```text
+HTTP/1.1 200 OK
+Server: Apache/2.4.66 (Ubuntu)
+Content-Type: text/html
+```
+
+The important response was:
+
+```text
+HTTP/1.1 200 OK
+```
+
+This means Apache successfully returned an HTTP response.
+
+Other information observed included:
+
+```text
+Content-Length: 14522
+```
+
+and:
+
+```text
+Server: Apache/2.4.66 (Ubuntu)
+```
+
+---
+
+# 📊 24. Understanding HTTP 200 OK
+
+HTTP status codes tell us what happened with a request.
+
+The important result here was:
+
+```text
+200 OK
+```
+
+Meaning:
+
+```text
+Request
+   │
+   ▼
+Apache
+   │
+   ▼
+Successfully found/served resource
+   │
+   ▼
+HTTP 200 OK
+```
+
+So Apache was successfully serving the website.
+
+---
+
+# 📝 25. Monitor Apache Access Logs
+
+To observe incoming HTTP requests, we used:
+
+```bash
+sudo tail -f /var/log/apache2/access.log
+```
+
+### What does this do?
+
+Apache records HTTP requests in its access log.
+
+The command:
+
+```text
+tail
+```
+
+shows the end of the file.
+
+The:
+
+```text
+-f
+```
+
+means follow the file continuously as new entries are added.
+
+So when a browser or curl request reaches Apache, we can see it appear in real time.
+
+Conceptually:
+
+```text
+Browser
+   │
+   │ GET /
+   ▼
+Apache2
+   │
+   ├── Serve website
+   │
+   └── Write request to access.log
+                    │
+                    ▼
+             tail -f access.log
+```
+
+We observed successful requests such as:
+
+```text
+GET / HTTP/1.1
+```
+
+with:
+
+```text
+200
+```
+
+This confirmed that external requests were reaching Apache.
+
+---
+
+# 🔎 26. Browser Troubleshooting — Query String
+
+Initially, opening:
+
+```text
+http://3.95.27.208
+```
+
+in the browser showed:
+
+```text
+ERR_TIMED_OUT
+```
+
+After troubleshooting, the website successfully displayed when using:
+
+```text
+http://3.95.27.208/?test=123
+```
+
+### What is `?test=123`?
+
+This is a URL query string.
+
+The URL consists of:
+
+```text
+http://3.95.27.208/?test=123
+│       │          │
+│       │          └── Query string
+│       └───────────── Public IP
+└──────────────────── Protocol
+```
+
+The query string is:
+
+```text
+?test=123
+```
+
+It does not represent an Apache installation or configuration change.
+
+It also does not mean Apache was repaired by adding `?test=123`.
+
+The important point is:
+
+```text
+http://3.95.27.208
+```
+
+and:
+
+```text
+http://3.95.27.208/?test=123
+```
+
+both point to the same EC2 server and Apache service.
+
+The second URL simply includes an additional query parameter.
+
+---
+
+# 🧠 27. Why Did `?test=123` Work?
+
+The key lesson is **not** that adding `?test=123` fixes Apache.
+
+It does not.
+
+At that point, our tests already showed:
+
+```text
+Apache running
+        +
+Port 80 listening
+        +
+Security Group allowing :80
+        +
+localhost working
+        +
+TCP :80 reachable
+        +
+HTTP 200 OK
+        +
+Apache access logs showing requests
+```
+
+Therefore, the infrastructure and Apache configuration were already working.
+
+Adding:
+
+```text
+?test=123
+```
+
+caused the browser to make a different HTTP request URL.
+
+It helped the browser successfully display the page in our testing situation, but it should **not** be treated as a required deployment configuration.
+
+The normal intended website URL remains:
+
+```text
+http://3.95.27.208
+```
+
+---
+
+# 🔬 28. Complete Verification Chain
+
+The practical was verified at multiple levels.
+
+## Level 1 — Apache Service
+
+```bash
+sudo systemctl status apache2
+```
+
+Expected:
+
+```text
+active (running)
+```
+
+---
+
+## Level 2 — Port
+
+```bash
+sudo ss -tulpn | grep :80
+```
+
+Expected:
+
+```text
+Apache2 listening on :80
+```
+
+---
+
+## Level 3 — Website Files
+
+```bash
+sudo ls -la /var/www/html
+```
+
+Expected:
+
+```text
+index.html
+assets/
+images/
+error/
+...
+```
+
+---
+
+## Level 4 — HTML
+
+```bash
+sudo head -20 /var/www/html/index.html
+```
+
+Expected to show the Dimension HTML.
+
+---
+
+## Level 5 — Local HTTP
+
+```bash
+curl http://localhost
+```
+
+Expected:
+
+```text
+Dimension HTML
+```
+
+---
+
+## Level 6 — Firewall
+
+```bash
+sudo ufw status
+```
+
+Result:
+
+```text
+Status: inactive
+```
+
+---
+
+## Level 7 — Public IP
+
+```bash
+curl http://checkip.amazonaws.com
+```
+
+Result:
+
+```text
+3.95.27.208
+```
+
+---
+
+## Level 8 — External TCP Connectivity
+
+Windows:
+
+```powershell
+Test-NetConnection 3.95.27.208 -Port 80
+```
+
+Expected:
+
+```text
+TcpTestSucceeded : True
+```
+
+---
+
+## Level 9 — Public HTTP
+
+```bash
+curl -I http://3.95.27.208
+```
+
+Expected:
+
+```text
+HTTP/1.1 200 OK
+```
+
+---
+
+## Level 10 — Apache Access Logs
+
+```bash
+sudo tail -f /var/log/apache2/access.log
+```
+
+Expected to see incoming requests with:
+
+```text
+200
+```
+
+---
+
+# 🧩 29. Important Concepts Learned
+
+## 1. EC2
+
+AWS EC2 provides the virtual server.
+
+```text
+AWS
+ │
+ └── EC2
+      │
+      └── Ubuntu
+```
+
+---
+
+## 2. Ubuntu
+
+Ubuntu is the operating system running inside the EC2 instance.
+
+---
+
+## 3. Apache2
+
+Apache2 is the web server.
+
+It receives HTTP requests and serves website files.
+
+---
+
+## 4. HTTP
+
+HTTP is the protocol used to transfer web content.
+
+Default HTTP port:
+
+```text
+80
+```
+
+---
+
+## 5. Document Root
+
+Apache's document root in this practical:
+
+```text
+/var/www/html
+```
+
+Website files placed here can be served by Apache.
+
+---
+
+## 6. index.html
+
+`index.html` is the main HTML page of the website.
+
+When the browser requests:
+
+```text
+http://3.95.27.208/
+```
+
+Apache can serve:
+
+```text
+/var/www/html/index.html
+```
+
+---
+
+## 7. AWS Security Group
+
+The Security Group controls traffic reaching the EC2 instance.
+
+For this practical:
+
+```text
+TCP :80
+Source: 0.0.0.0/0
+```
+
+was allowed.
+
+---
+
+## 8. UFW
+
+UFW is the Ubuntu firewall.
+
+In our environment:
+
+```text
+Status: inactive
+```
+
+---
+
+## 9. Public IP
+
+The public IP allows users outside the EC2 network to reach the server.
+
+Our practical IP:
+
+```text
+3.95.27.208
+```
+
+---
+
+## 10. Private IP
+
+The EC2 private IP was:
+
+```text
+172.31.69.255
+```
+
+This is the internal address of the EC2 instance inside the AWS VPC.
+
+---
+
+# 🆚 30. Public IP vs Private IP
+
+```text
+                    AWS VPC
+        ┌───────────────────────────┐
+        │                           │
+Internet│                           │
+   │    │       EC2                 │
+   │    │                           │
+   └────┼──► Public IP              │
+        │    3.95.27.208            │
+        │          │                │
+        │          ▼                │
+        │    Private IP             │
+        │    172.31.69.255          │
+        │          │                │
+        │          ▼                │
+        │       Apache2             │
+        │        :80                │
+        └───────────────────────────┘
+```
+
+### Public IP
+
+Used for internet access:
+
+```text
+3.95.27.208
+```
+
+### Private IP
+
+Used inside the AWS private network:
+
+```text
+172.31.69.255
+```
+
+---
+
+# 🚫 31. Why NodePort Was NOT Used
+
+NodePort is a **Kubernetes Service concept**.
+
+This practical is:
+
+```text
+AWS EC2
++
+Ubuntu
++
+Apache2
++
+HTTP :80
+```
+
+It is not a Kubernetes deployment.
+
+Therefore, we do **not** use:
+
+```text
+NodePort
+kubectl
+Kubernetes Service
+Ingress
+```
+
+for this Apache EC2 practical.
+
+The correct architecture is:
+
+```text
+Internet
+   │
+   │ HTTP :80
+   ▼
+AWS EC2
+   │
+   ▼
+Apache2
+   │
+   ▼
+/var/www/html
+```
+
+---
+
+# 🔐 32. Security Group vs Apache Port
+
+This is an important DevOps concept.
+
+There are two different layers:
+
+```text
+                Internet
+                   │
+                   ▼
+        ┌─────────────────────┐
+        │ AWS Security Group  │
+        │                     │
+        │ TCP :80 ALLOWED     │
+        └──────────┬──────────┘
+                   │
+                   ▼
+              EC2 Ubuntu
+                   │
+                   ▼
+              Apache2
+                   │
+                   │ Listening :80
+                   ▼
+             Website Files
+```
+
+If Security Group blocks port `80`:
+
+```text
+Internet
+   │
+   X
+   │
+EC2
+```
+
+If Apache is not listening on port `80`:
+
+```text
+Internet
+   │
+   ▼
+Security Group
+   │
+   ▼
+EC2
+   │
+   X
+Apache not listening
+```
+
+Both layers must work.
+
+---
+
+# 🧪 33. Troubleshooting Method Used
+
+When a website does not open, do not randomly change configurations.
+
+Check from the inside outward.
+
+```text
+1. Is Apache running?
+          │
+          ▼
+2. Is Apache listening on :80?
+          │
+          ▼
+3. Are website files present?
+          │
+          ▼
+4. Does localhost work?
+          │
+          ▼
+5. Is UFW blocking?
+          │
+          ▼
+6. Is AWS Security Group allowing :80?
+          │
+          ▼
+7. Is the public IP correct?
+          │
+          ▼
+8. Can external machine reach :80?
+          │
+          ▼
+9. Does public HTTP return 200?
+          │
+          ▼
+10. Check Apache access logs
+```
+
+This is a very useful real-world troubleshooting approach.
+
+---
+
+# 🏆 34. Final Architecture
+
+```mermaid
+flowchart TD
+    A["Internet / User"] -->|"HTTP Request :80"| B["AWS Security Group"]
+    B -->|"TCP :80 Allowed"| C["EC2 Ubuntu"]
+    C --> D["Apache2"]
+    D --> E["/var/www/html"]
+    E --> F["index.html"]
+    F --> G["Dimension Static Website"]
+    G --> H["HTTP 200 OK"]
+    H --> A
+```
+
+---
+
+# 📊 35. Practical Verification Summary
+
+| Check | Command / Test | Result |
+|---|---|---|
+| Apache installed | `sudo apt install apache2 -y` | Successful |
+| Apache started | `sudo systemctl start apache2` | Successful |
+| Apache enabled | `sudo systemctl enable apache2` | Successful |
+| Apache status | `sudo systemctl status apache2` | Running |
+| Port check | `sudo ss -tulpn \| grep :80` | Listening |
+| Website files | `sudo ls -la /var/www/html` | Present |
+| HTML check | `sudo head -20 /var/www/html/index.html` | Dimension HTML |
+| Local test | `curl http://localhost` | Successful |
+| UFW | `sudo ufw status` | Inactive |
+| Public IP | `curl http://checkip.amazonaws.com` | `3.95.27.208` |
+| External TCP | `Test-NetConnection 3.95.27.208 -Port 80` | `True` |
+| Public HTTP | `curl -I http://3.95.27.208` | `200 OK` |
+| Access logs | `sudo tail -f /var/log/apache2/access.log` | Requests observed |
+| Browser | `http://3.95.27.208/?test=123` | Website displayed |
+
+---
+
+# 🧠 36. One-Month-Later Revision
+
+If you forget everything after one month, remember this:
+
+```text
+AWS EC2
+   │
+   ▼
+Ubuntu
+   │
+   ▼
+Install Apache2
+   │
+   ▼
+Start Apache2
+   │
+   ▼
+Apache listens on :80
+   │
+   ▼
+Copy website to /var/www/html
+   │
+   ▼
+Allow HTTP :80 in AWS Security Group
+   │
+   ▼
+Test localhost
+   │
+   ▼
+Find public IP
+   │
+   ▼
+Test public :80
+   │
+   ▼
+Open browser
+   │
+   ▼
+Website LIVE
+```
+
+The most important values from this practical were:
+
+```text
+EC2 Private IP:
+172.31.69.255
+
+EC2 Public IP:
+3.95.27.208
+
+HTTP:
+80
+
+Apache Document Root:
+/var/www/html
+
+Website:
+Dimension
+
+Public URL:
+http://3.95.27.208
+```
+
+---
+
+# 🎯 37. What I Learned
+
+### Before this practical
+
+I knew:
+
+```text
+EC2 = Virtual Machine
+```
+
+### After this practical
+
+I understand:
+
+```text
+EC2
+ │
+ ├── Ubuntu OS
+ │
+ ├── Apache2 Web Server
+ │
+ ├── Port 80
+ │
+ ├── AWS Security Group
+ │
+ └── /var/www/html
+       │
+       └── Website
+```
+
+I also learned that deploying a website is not only about copying files.
+
+The complete deployment involves:
+
+```text
+Server
++
+Operating System
++
+Web Server
++
+Website Files
++
+Port
++
+Cloud Firewall
++
+Network Connectivity
++
+Testing
++
+Logs
+```
+
+---
+
+# 💡 38. Key Takeaways
+
+> 🔹 **EC2** provides the virtual server.
+
+> 🔹 **Ubuntu** is the operating system.
+
+> 🔹 **Apache2** is the web server.
+
+> 🔹 **HTTP** normally uses port `80`.
+
+> 🔹 Apache's document root is `/var/www/html`.
+
+> 🔹 `index.html` is the main webpage.
+
+> 🔹 AWS Security Groups control inbound network traffic.
+
+> 🔹 UFW is the Ubuntu firewall.
+
+> 🔹 `curl http://localhost` tests the web server locally.
+
+> 🔹 `curl -I http://3.95.27.208` tests the public HTTP response.
+
+> 🔹 `Test-NetConnection ... -Port 80` checks TCP connectivity from Windows.
+
+> 🔹 Apache access logs show incoming HTTP requests.
+
+> 🔹 `200 OK` means the HTTP request was successfully served.
+
+> 🔹 NodePort belongs to Kubernetes and is not required for this EC2 + Apache deployment.
+
+---
+
+# 📝 39. COMPLETE PRACTICAL IN SHORT
+
+```text
+1. Create / use AWS EC2 Ubuntu instance.
+
+2. Install Apache2.
+
+3. Start Apache2.
+
+4. Enable Apache2.
+
+5. Verify Apache2 status.
+
+6. Verify Apache is listening on port 80.
+
+7. Copy Dimension website files into /var/www/html.
+
+8. Verify the website files.
+
+9. Verify index.html.
+
+10. Allow HTTP port 80 in AWS Security Group.
+
+11. Check UFW.
+
+12. Test website using localhost.
+
+13. Find EC2 public IP.
+
+14. Test external TCP connectivity.
+
+15. Test public HTTP response.
+
+16. Monitor Apache access logs.
+
+17. Open the website in the browser.
+
+18. Verify the Dimension website is displayed.
+```
+
+---
+
+# 💻 40. ALL COMMANDS USED — FIRST TO LAST
+
+## Ubuntu / EC2 Commands
+
+```bash
+sudo apt update
+sudo apt install apache2 -y
+sudo systemctl start apache2
+sudo systemctl enable apache2
+sudo systemctl status apache2
+sudo ss -tulpn | grep :80
+sudo cp -r ./* /var/www/html/
+sudo ls -la /var/www/html
+sudo head -20 /var/www/html/index.html
+curl http://localhost
+sudo ufw status
+curl http://checkip.amazonaws.com
+curl -I http://3.95.27.208
+sudo tail -f /var/log/apache2/access.log
+```
+
+## Windows PowerShell Test
+
+```powershell
+Test-NetConnection 3.95.27.208 -Port 80
+```
+
+## Browser URLs
+
+```text
+http://3.95.27.208
+http://3.95.27.208/?test=123
+```
+
+---
+
+# ⚡ 41. COMMAND PURPOSE CHEAT SHEET
+
+```text
+sudo apt update
+→ Refresh Ubuntu package information.
+
+sudo apt install apache2 -y
+→ Install Apache2.
+
+sudo systemctl start apache2
+→ Start Apache2 immediately.
+
+sudo systemctl enable apache2
+→ Start Apache2 automatically after boot.
+
+sudo systemctl status apache2
+→ Check Apache2 service status.
+
+sudo ss -tulpn | grep :80
+→ Verify something is listening on TCP port 80.
+
+sudo cp -r ./* /var/www/html/
+→ Copy website files into Apache document root.
+
+sudo ls -la /var/www/html
+→ List deployed website files.
+
+sudo head -20 /var/www/html/index.html
+→ View first 20 lines of index.html.
+
+curl http://localhost
+→ Test Apache locally.
+
+sudo ufw status
+→ Check Ubuntu firewall status.
+
+curl http://checkip.amazonaws.com
+→ Find the EC2 public IP.
+
+curl -I http://3.95.27.208
+→ Test public HTTP headers/status.
+
+sudo tail -f /var/log/apache2/access.log
+→ Watch Apache requests in real time.
+
+Test-NetConnection 3.95.27.208 -Port 80
+→ Test TCP connectivity to port 80 from Windows.
+```
+
+---
+
+# 🏁 42. FINAL RESULT
+
+The final deployment architecture was:
+
+```text
+                         🌍 INTERNET
+                              │
+                              │ HTTP :80
+                              ▼
+                    ┌──────────────────┐
+                    │   AWS EC2        │
+                    │   Ubuntu         │
+                    │                  │
+                    │ Public IP:       │
+                    │ 3.95.27.208      │
+                    └────────┬─────────┘
+                             │
+                             ▼
+                    ┌──────────────────┐
+                    │    Apache2       │
+                    │      :80         │
+                    └────────┬─────────┘
+                             │
+                             ▼
+                    ┌──────────────────┐
+                    │ /var/www/html    │
+                    │                  │
+                    │ index.html       │
+                    │ assets/          │
+                    │ images/          │
+                    │ error/           │
+                    └────────┬─────────┘
+                             │
+                             ▼
+                    ┌──────────────────┐
+                    │ Dimension        │
+                    │ Static Website   │
+                    └──────────────────┘
+```
+
+### ✅ Deployment Status
+
+```text
+AWS EC2              → ✅
+Ubuntu               → ✅
+Apache2              → ✅
+Apache Port 80       → ✅
+Website Files        → ✅
+AWS Security Group   → ✅
+UFW Check            → ✅
+Local HTTP Test      → ✅
+Public TCP Test      → ✅
+Public HTTP Test     → ✅
+Apache Logs          → ✅
+Browser Test         → ✅
+Dimension Website    → ✅
+```
+
+# 🎉 AWS LIVE PROJECT COMPLETE
+
+**EC2 → Ubuntu → Apache2 → Port 80 → Website → Internet**
+
+```text
+🚀 I deployed a static website on AWS EC2 using Apache HTTPD.
+```
