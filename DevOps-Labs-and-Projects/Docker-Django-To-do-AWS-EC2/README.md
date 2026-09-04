@@ -1,4 +1,4 @@
-# Dockerized Django Todo Application Deployment on AWS EC2
+# Dockerized Django To-do Application Deployment on AWS EC2
 
 ## 📌 Practical Overview
 
