@@ -1,149 +1,32 @@
-# 🐧 LINUX FUNDAMENTALS
+# 🐧 Linux Fundamentals
 
-## 1. Introduction to Linux
+## 1. The Big Picture
 
-Before learning Linux commands, it is important to understand the basic structure of a computer and how the operating system interacts with hardware.
+Before learning Linux commands, first we need to understand how Linux is actually structured.
 
-A computer mainly consists of:
+The easiest way to understand it is:
 
-* **Hardware**
-* **Software**
+```text
+USER
+  ↓
+USER SPACE
+  ↓
+LINUX KERNEL
+  ↓
+HARDWARE
+```
 
-Hardware refers to the physical components of a computer, while software refers to the programs that run on the computer.
+So basically, the user works with programs in **User Space**, and whenever those programs need to access system resources or hardware, the **Linux Kernel** handles it.
 
-The basic relationship is:
+The kernel then communicates with the actual **hardware**.
+
+### Complete picture
 
 ```mermaid
-flowchart TB
-    U["👤 USER"]
-    OS["🖥️ OPERATING SYSTEM"]
-    H["⚙️ HARDWARE"]
-
-    U --> OS
-    OS --> H
-```
-
-The operating system acts as a bridge between users/applications and hardware.
-
----
-
-# 2. Hardware
-
-Hardware means the **physical components of a computer that can be touched**.
-
-Examples include:
-
-```text
-CPU
-RAM
-SSD / HDD
-Motherboard
-Network Card
-Keyboard
-Mouse
-Monitor
-```
-
-Some important hardware components and their basic responsibilities are:
-
-```text
-CPU        → Performs calculations and executes instructions
-RAM        → Provides temporary working memory
-SSD / HDD  → Permanently stores data
-Network    → Allows communication over a network
-```
-
-Applications require these hardware resources to perform their work.
-
-For example, when a Python program runs, it requires CPU time, RAM and possibly storage.
-
-Applications do not normally directly control all the hardware. The operating system manages access to these resources.
-
----
-
-# 3. Operating System
-
-An **Operating System (OS)** is software that manages hardware resources and provides an interface through which users and applications can use those resources.
-
-Some examples of operating systems are:
-
-```text
-Windows
-Linux
-macOS
-```
-
-The basic relationship is:
-
-```text
-Application
-     ↓
-Operating System
-     ↓
-Hardware
-```
-
-The operating system manages resources such as:
-
-```text
-CPU
-RAM
-Storage
-Network
-Devices
-```
-
-It also manages processes, files and other system resources.
-
----
-
-# 4. Linux
-
-**Technically, Linux refers to the Linux kernel.**
-
-The Linux kernel is the **core component** responsible for managing system resources and communicating with hardware.
-
-The kernel handles important operations such as:
-
-```text
-Process Management
-Memory Management
-File System Management
-Network Management
-Device Drivers
-```
-
-Therefore:
-
-```text
-Linux Kernel = Core of Linux
-```
-
-A complete Linux-based operating system contains the Linux kernel together with user-space software such as shells, libraries, utilities and applications.
-
----
-
-# 5. Linux Architecture
-
-The Linux environment can be broadly understood using two major areas:
-
-```text
-User Space
-     ↓
-System Calls
-     ↓
-Kernel Space
-     ↓
-Hardware
-```
-
-### Complete architecture
-
-```mermaid
-flowchart TB
+flowchart TD
     U["👤 USER"]
 
-    subgraph US["USER SPACE — USER MODE"]
+    subgraph US["USER SPACE"]
         CLI["💻 CLI / GUI"]
         APP["📦 Applications<br/>Python • Docker • Git • Nginx"]
         SHELL["🐚 Shell<br/>Bash • Zsh"]
@@ -151,169 +34,449 @@ flowchart TB
         UTIL["🛠️ System Utilities"]
     end
 
-    SC["📞 SYSTEM CALLS"]
-
-    subgraph KS["KERNEL SPACE — KERNEL MODE"]
-        K["🐧 LINUX KERNEL"]
+    subgraph K["🐧 LINUX KERNEL"]
         PM["Process Management"]
         MM["Memory Management"]
         FS["File System Management"]
         NM["Network Management"]
         DD["Device Drivers"]
+        SC["System Calls"]
     end
 
-    subgraph HW["HARDWARE"]
+    subgraph H["🖥️ HARDWARE"]
         CPU["CPU"]
         RAM["RAM"]
-        DISK["💾 SSD / HDD"]
+        DISK["Disk / SSD / HDD"]
         NET["Network"]
-        DEV["Devices"]
+        DEV["Other Devices"]
     end
 
     U --> CLI
     CLI --> SHELL
     CLI --> APP
-
     SHELL --> LIB
     APP --> LIB
-    APP --> UTIL
-
-    LIB --> SC
+    LIB --> UTIL
     UTIL --> SC
+    LIB --> SC
     SC --> K
-
-    K --> PM
-    K --> MM
+    K --> CPU
+    K --> RAM
     K --> FS
     K --> NM
     K --> DD
-
-    PM --> CPU
-    MM --> RAM
     FS --> DISK
     NM --> NET
     DD --> DEV
 ```
 
-The most important relationship is:
-
-> **User-space programs → System Calls → Linux Kernel → Hardware**
-
----
-
-# 6. User Space
-
-**User Space** is the area where normal user-level programs and applications run.
-
-It contains:
+The most important relationship here is:
 
 ```text
 Applications
-Shell
-System Libraries
-System Utilities
+      ↓
+Linux Kernel
+      ↓
+Hardware
 ```
 
-Examples include:
+---
+
+# 2. What is Hardware?
+
+So first, what exactly is hardware?
+
+Hardware basically means the **physical components of a computer**.
+
+For example:
+
+```text
+CPU
+RAM
+Hard Disk / SSD
+Motherboard
+Network Card
+Keyboard
+Mouse
+Monitor
+```
+
+These are things that we can physically touch.
+
+We can understand some of them like this:
+
+```text
+CPU      → Performs calculations
+RAM      → Temporary working memory
+Disk     → Stores data
+Network  → Communicates over a network
+```
+
+Now the question is, if we have an application, can that application directly communicate with the CPU or disk?
+
+For example, can an application simply say:
+
+```text
+"Hey CPU, give me some memory and run my program."
+```
+
+No.
+
+Something has to manage access to the hardware.
+
+That is where the **Operating System** comes in.
+
+---
+
+# 3. What is an Operating System?
+
+The Operating System acts as a **bridge between users/applications and hardware**.
+
+In simple words:
+
+> An Operating System manages hardware resources and provides an interface for users and applications to use those resources.
+
+We can understand it like this:
+
+```mermaid
+flowchart TD
+    USER["👤 User"]
+    APP["📦 Applications"]
+    OS["🖥️ Operating System"]
+    HW["⚙️ Hardware"]
+
+    USER --> OS
+    APP --> OS
+    OS --> HW
+```
+
+For example:
+
+```text
+Python Application
+       ↓
+Operating System
+       ↓
+CPU / RAM / Disk
+```
+
+So the application doesn't have to directly control the hardware.
+
+The Operating System manages that interaction.
+
+---
+
+# 4. What is Linux?
+
+This is something beginners usually get confused about.
+
+Technically, **Linux refers to the Linux Kernel**.
+
+The kernel is basically the **core component** of Linux.
+
+Its job is to manage system resources and communicate with the hardware.
+
+For example, the kernel handles things like:
+
+```text
+Process Management
+Memory Management
+File Systems
+Networking
+Drivers
+```
+
+We can see it like this:
+
+```mermaid
+flowchart TD
+    L["🐧 Linux"]
+
+    K["Linux Kernel<br/><br/>Process Management<br/>Memory Management<br/>File Systems<br/>Networking<br/>Drivers"]
+
+    US["User Space<br/><br/>Shell<br/>Libraries<br/>Utilities<br/>Applications"]
+
+    HW["Hardware<br/><br/>CPU<br/>RAM<br/>Disk<br/>Network"]
+
+    L --> US
+    L --> K
+    K --> HW
+```
+
+So remember:
+
+```text
+Linux Kernel = Core of Linux
+```
+
+---
+
+# 5. Linux Architecture
+
+Now let's understand the **Linux Architecture**.
+
+A simple way of looking at Linux architecture is:
+
+```text
+Applications
+     ↓
+Shell
+     ↓
+System Libraries
+     ↓
+System Utilities
+     ↓
+Linux Kernel
+     ↓
+Hardware
+```
+
+There are different components involved here.
+
+```mermaid
+flowchart TB
+    A["📦 Applications<br/>Python • Docker • Git • Nginx"]
+
+    S["🐚 Shell<br/>Bash • Zsh"]
+
+    L["📚 System Libraries"]
+
+    U["🛠️ System Utilities"]
+
+    K["🐧 LINUX KERNEL"]
+
+    H["⚙️ HARDWARE<br/>CPU • RAM • Disk • Network"]
+
+    A --> S
+    A --> L
+    S --> L
+    L --> U
+    U --> K
+    L --> K
+    K --> H
+```
+
+The important thing to understand is that the **kernel is the heart or core of the system**.
+
+The applications and other user-level programs are above the kernel, while the actual hardware is below the kernel.
+
+---
+
+# 6. What is User Space?
+
+So now what exactly is **User Space**?
+
+Basically, User Space is where the normal applications and user-level programs run.
+
+For example:
 
 ```text
 Python
 Docker
 Git
 Nginx
-Bash
-ls
-grep
+Shell
+System Utilities
+Libraries
 ```
 
-Normal applications run with **limited privileges** and do not have unrestricted access to the system hardware.
+We can represent User Space like this:
+
+```text
+USER SPACE
+│
+├── Applications
+├── Shell
+├── Libraries
+└── Utilities
+```
+
+These programs normally **do not have unrestricted access to hardware**.
+
+That is important because we don't want every normal application to have complete control over the system.
 
 ---
 
-# 7. User Mode and Kernel Mode
+# 7. Privileged vs Non-Privileged Mode
 
-Linux separates normal program execution from highly privileged kernel execution.
+This is another important concept.
 
-### User Mode
+We can compare it to a building.
 
-Normal applications generally run in **User Mode** with limited privileges.
-
-Examples:
+Suppose there is a normal employee:
 
 ```text
-Python
+Normal employee
+      ↓
+Limited access
+```
+
+And then there is a building administrator:
+
+```text
+Building administrator
+      ↓
+High-level access
+```
+
+Linux also has a similar separation.
+
+Normal programs don't get the same level of access as the Linux Kernel.
+
+---
+
+## Non-Privileged Mode
+
+Normal applications generally run with **limited privileges**.
+
+For example:
+
+```text
+Python Application
+Shell
 Git
 Nginx
-Shell
-System Utilities
+Normal User Programs
 ```
 
-### Kernel Mode
-
-The Linux kernel runs in **Kernel Mode**, where it has the privileges required to manage system resources and hardware.
-
-The basic difference is:
+These programs should not be able to freely do things like:
 
 ```text
-USER MODE
-    ↓
-Normal programs
-Limited privileges
-
-KERNEL MODE
-    ↓
-Linux Kernel
-Privileged access
+Control the CPU
+Access any RAM location
+Directly control hardware
+Modify critical kernel data
+Access everything on the disk
 ```
 
-This separation helps improve **security and system stability**.
+If every application had complete access to everything, it could become a serious problem.
 
-If every application had unrestricted access to the system, a faulty or malicious application could potentially damage important parts of the machine.
+So this separation helps improve:
 
-For example, a normal Python application should not be able to freely:
+```text
+Security
+System Stability
+```
+
+---
+
+## Privileged Mode
+
+The Linux Kernel operates with very high privileges.
+
+The kernel can manage:
+
+```text
+CPU
+RAM
+Disk
+Network
+Devices
+Processes
+File Systems
+```
+
+So we can represent it like this:
+
+```mermaid
+flowchart TD
+    subgraph USER["👤 USER SPACE"]
+        APP["Applications"]
+        SHELL["Shell"]
+        UTIL["Utilities"]
+    end
+
+    subgraph KERNEL["👑 PRIVILEGED / KERNEL SPACE"]
+        K["Linux Kernel"]
+    end
+
+    HW["⚙️ Hardware"]
+
+    APP --> K
+    SHELL --> K
+    UTIL --> K
+    K --> HW
+```
+
+### Easy way to remember
+
+```text
+Non-Privileged
+      ↓
+Normal programs
+      ↓
+Limited access
+
+
+Privileged
+      ↓
+Kernel
+      ↓
+High-level system access
+```
+
+---
+
+# 8. Why do we need Non-Privileged Mode?
+
+Let's say we run:
+
+```bash
+python3 app.py
+```
+
+Now imagine if Python had complete access to the system.
+
+Could it do something like:
 
 ```text
 Delete the entire disk
 Modify kernel memory
-Control every hardware device
-Access everything in RAM
+Control every device
 ```
 
-Therefore, normal programs request services from the kernel instead of directly controlling the hardware.
+That would obviously be dangerous.
+
+So ❌ we don't want every application to have that kind of access.
+
+If every application had complete access to the system, a buggy or malicious application could damage the entire machine.
+
+That's why normal applications have limited access.
+
+The basic idea is:
+
+```mermaid
+flowchart TD
+    APP["📦 Application<br/>Python / Git / Nginx"]
+
+    USER["👤 User Space<br/>Limited Access"]
+
+    K["🐧 Linux Kernel<br/>Controlled / Privileged Access"]
+
+    HW["⚙️ Hardware"]
+
+    APP --> USER
+    USER -->|"Requests"| K
+    K -->|"Controlled Access"| HW
+```
+
+So the main thing to remember is:
+
+> **Normal programs request services from the kernel instead of directly controlling the hardware.**
 
 ---
 
-# 8. System Calls
+# 9. What are System Calls?
 
-Applications sometimes need the kernel to perform operations for them.
+Now suppose an application needs the kernel to perform some operation.
 
-Examples include:
+For example, an application wants to read a file.
 
-```text
-Read a file
-Write a file
-Allocate memory
-Create a process
-Communicate over a network
-```
+The application cannot simply directly access the disk.
 
-For these operations, user-space programs use **system calls**.
+It uses something called a **System Call**.
 
-A system call provides a controlled interface between User Space and the Linux kernel.
-
-The simplified flow is:
-
-```text
-Application
-     ↓
-System Call
-     ↓
-Linux Kernel
-     ↓
-System Resource / Hardware
-```
-
-For example, when an application needs to read a file:
+The flow is:
 
 ```text
 Application
@@ -324,16 +487,36 @@ Linux Kernel
      ↓
 File System
      ↓
-Storage
+Disk
 ```
 
-Libraries often provide convenient functions that ultimately use system calls when interaction with the kernel is required.
+We can see the same thing using a diagram:
+
+```mermaid
+flowchart TD
+    A["📦 Application"]
+    SC["📞 System Call"]
+    K["🐧 Linux Kernel"]
+    FS["📁 File System"]
+    D["💾 SSD / HDD"]
+
+    A --> SC
+    SC --> K
+    K --> FS
+    FS --> D
+```
+
+So the important point is:
+
+> **System calls provide a controlled way for user-space programs to request services from the kernel.**
 
 ---
 
-# 9. Shell
+# 10. What is a Shell?
 
-A **Shell is a program that interprets commands**.
+Now let's understand the **Shell**.
+
+A Shell is basically a **program that interprets commands**.
 
 For example, when we type:
 
@@ -341,9 +524,9 @@ For example, when we type:
 ls
 ```
 
-the shell interprets the command and starts the appropriate program.
+the shell understands that command and helps execute it.
 
-Some common shells are:
+There are different types of shells:
 
 ```text
 Bash
@@ -353,149 +536,75 @@ Dash
 Ksh
 ```
 
-For Linux and DevOps learning, the most important shell to know first is:
+For Linux and DevOps, the shell we will commonly encounter is:
 
 ```text
 Bash
 ```
 
-The shell provides a command-line interface through which we interact with the Linux system.
-
 ---
 
-# 10. CLI and GUI
+# 11. What happens when we type `ls`?
 
-There are two common ways to interact with an operating system.
-
-## CLI — Command Line Interface
-
-The CLI allows us to interact with the system by typing commands.
-
-Examples:
+Suppose I open the terminal and type:
 
 ```bash
 ls
-cd
-mkdir
-rm
-pwd
 ```
 
-For DevOps, the CLI is especially important because a large amount of server and infrastructure work is performed through the command line.
+What actually happens?
 
-## GUI — Graphical User Interface
-
-A GUI allows us to interact with the system using graphical elements such as:
+First, I type the command.
 
 ```text
-Folders
-Files
-Applications
-Settings
-Windows
-Menus
+You
+ ↓
+Bash
 ```
 
-Examples include graphical desktop environments on Windows, Ubuntu and macOS.
+Bash understands the command and executes the `ls` utility.
 
----
-
-# 11. System Utilities
-
-System utilities are programs that provide common functionality for working with and managing the Linux system.
-
-Examples include:
+Then:
 
 ```text
-ls
-grep
-cp
-mv
-rm
-systemctl
-```
-
-For example:
-
-```bash
+You
+ ↓
+Bash
+ ↓
 ls
 ```
 
-lists directory contents.
+The `ls` utility needs information about the files and directories.
 
-```bash
-grep
-```
+It uses a system call to request the required information from the kernel.
 
-is used to search text.
-
-```bash
-systemctl
-```
-
-is used to manage system services on systems using systemd.
-
-These utilities run in User Space.
-
----
-
-# 12. System Libraries
-
-System libraries provide **reusable functionality that applications can use**.
-
-Examples include:
-
-```text
-glibc
-libc
-OpenSSL
-```
-
-Applications can use functions provided by libraries instead of implementing everything themselves.
-
-Libraries may also provide functionality that eventually interacts with the operating system through system calls.
-
-The important point is:
-
-> **Libraries provide reusable functionality for applications.**
-
----
-
-# 13. Example — What Happens When We Run `ls`?
-
-Suppose we type:
-
-```bash
-ls
-```
-
-A simplified representation is:
+So the complete flow can be understood as:
 
 ```mermaid
 flowchart TD
-    USER["👤 User"]
-    BASH["🐚 Bash"]
-    LS["📋 ls"]
-    SC["📞 System Calls"]
+    YOU["👤 YOU"]
+    BASH["🐚 Bash / Shell"]
+    LS["📋 ls Utility"]
+    SC["📞 System Call"]
     K["🐧 Linux Kernel"]
     FS["📁 File System"]
-    STORAGE["💾 SSD / HDD"]
-    RESULT["📄 Directory Listing"]
+    D["💾 Disk / SSD"]
+    R["📄 Result"]
 
-    USER --> BASH
+    YOU --> BASH
     BASH --> LS
     LS --> SC
     SC --> K
     K --> FS
-    FS --> STORAGE
-    STORAGE --> FS
+    FS --> D
+    D --> FS
     FS --> K
     K --> LS
-    LS --> RESULT
-    RESULT --> USER
+    LS --> R
+    R --> YOU
 ```
 
-The simplified flow is:
+### Simple version
 
 ```text
 You
@@ -504,26 +613,32 @@ Bash
  ↓
 ls
  ↓
-System Calls
+System Call
  ↓
 Linux Kernel
  ↓
-File System / Storage
+File System / Disk
  ↓
 Result
  ↓
 You
 ```
 
-The user does not directly communicate with the hardware. The kernel manages access to the underlying system resources.
+The important thing here is:
+
+> **You don't directly communicate with the hardware.**
+
+The Linux Kernel manages access to the hardware.
 
 ---
 
-# 14. Storage
+# 12. What is Disk / Storage?
 
-Storage is used to **permanently store data**.
+Now let's talk about **storage**.
 
-Examples of data stored on storage devices include:
+Disk storage is used to **permanently store data**.
+
+For example, your system can store:
 
 ```text
 Operating System
@@ -536,59 +651,69 @@ Logs
 Configuration Files
 ```
 
-Two common types of storage are:
+Two common types of storage devices are:
 
 ```text
-SSD
 HDD
+SSD
 ```
 
 Both are storage devices.
 
 ---
 
-# 15. HDD — Hard Disk Drive
+# 13. What is HDD?
 
-**HDD = Hard Disk Drive**
+HDD means:
+
+> **Hard Disk Drive**
 
 An HDD uses **magnetic spinning platters** and mechanical components.
 
-A simplified representation is:
+A simplified view:
 
 ```mermaid
 flowchart LR
     HDD["🌀 HDD"]
-    P["Spinning Magnetic Platters"]
+
+    P["Spinning<br/>Magnetic Platters"]
     H["Read / Write Head"]
 
     HDD --> P
     HDD --> H
 ```
 
-Important characteristics:
+Some characteristics of HDD:
 
 ```text
-Mechanical storage
+Mechanical
 Spinning platters
 Moving parts
 Generally slower than SSD
 Usually lower cost per GB
-Useful for bulk storage
+Good for bulk storage
 ```
+
+The important thing is that an HDD has moving mechanical parts.
 
 ---
 
-# 16. SSD — Solid State Drive
+# 14. What is SSD?
 
-**SSD = Solid State Drive**
+SSD means:
 
-An SSD uses **flash memory** and does not contain spinning mechanical platters.
+> **Solid State Drive**
 
-A simplified representation is:
+An SSD uses **flash memory**.
+
+Unlike an HDD, it doesn't have spinning mechanical platters.
+
+A simplified view:
 
 ```mermaid
 flowchart LR
     SSD["⚡ SSD"]
+
     F["Flash Memory"]
     C["Controller"]
 
@@ -596,74 +721,87 @@ flowchart LR
     SSD --> C
 ```
 
-Important characteristics:
+Some characteristics:
 
 ```text
 Flash memory
 No spinning platters
 No mechanical moving parts
-Generally faster than HDD
+Faster response
 Quiet
-Usually higher cost per GB
+Generally more expensive per GB
 ```
 
 ---
 
-# 17. SSD vs HDD
+# 15. SSD vs HDD
 
-| Feature          | SSD                            | HDD              |
-| ---------------- | ------------------------------ | ---------------- |
-| Technology       | Flash memory                   | Magnetic disk    |
-| Moving parts     | No                             | Yes              |
-| Speed            | Generally faster               | Generally slower |
-| Noise            | Quiet                          | Can make noise   |
-| Cost per GB      | Usually higher                 | Usually lower    |
-| Shock resistance | Generally better               | Generally worse  |
-| Common use       | OS, applications, fast storage | Bulk storage     |
+We can compare them like this:
 
-Easy way to remember:
+| Feature          | SSD                            | HDD             |
+| ---------------- | ------------------------------ | --------------- |
+| Technology       | Flash memory                   | Magnetic disk   |
+| Moving parts     | No                             | Yes             |
+| Speed            | Faster                         | Slower          |
+| Noise            | Quiet                          | Can make noise  |
+| Cost per GB      | Usually higher                 | Usually lower   |
+| Shock resistance | Generally better               | Generally worse |
+| Common use       | OS, applications, fast storage | Bulk storage    |
+
+The easiest way to remember:
 
 ```text
-SSD → Flash Memory → Faster ⚡
+SSD → Speed ⚡
 
-HDD → Spinning Magnetic Disk → Mechanical 🌀
+HDD → Spinning Disk 🌀
 ```
 
 ---
 
-# 18. Linux and Storage
+# 16. Where does SSD/HDD fit into Linux?
 
-SSD and HDD are **hardware devices**.
+The SSD or HDD is actually **hardware**.
 
-The Linux kernel manages access to the storage.
+Linux doesn't directly become the disk.
 
-```text
-Application
-     ↓
-System Call
-     ↓
-Linux Kernel
-     ↓
-File System
-     ↓
-SSD / HDD
+The Linux Kernel manages access to that hardware.
+
+So we can understand the flow like this:
+
+```mermaid
+flowchart TB
+    APP["📦 Application"]
+    LIB["📚 Libraries"]
+    SC["📞 System Calls"]
+    K["🐧 Linux Kernel"]
+    FS["📁 File System"]
+    STORAGE["💾 Storage"]
+
+    SSD["⚡ SSD"]
+    HDD["🌀 HDD"]
+
+    APP --> LIB
+    LIB --> SC
+    SC --> K
+    K --> FS
+    FS --> STORAGE
+    STORAGE --> SSD
+    STORAGE --> HDD
 ```
 
-Therefore:
+So remember:
 
 ```text
-SSD / HDD
-    ↓
-Hardware
+SSD / HDD = Hardware
 
-Linux Kernel
-    ↓
-Manages access to storage
+Linux Kernel = Manages access to storage
 ```
 
 ---
 
-# 19. Example — Reading a File
+# 17. Complete Example — Reading a File
+
+Now let's take everything we learned and use one practical example.
 
 Suppose we run:
 
@@ -671,7 +809,62 @@ Suppose we run:
 cat notes.txt
 ```
 
-The simplified flow is:
+What happens?
+
+First, we type the command.
+
+```text
+You
+ ↓
+Bash
+```
+
+Bash executes the `cat` utility.
+
+```text
+You
+ ↓
+Bash
+ ↓
+cat
+```
+
+Now `cat` needs to read the contents of `notes.txt`.
+
+So it uses a system call.
+
+The request goes to the Linux Kernel.
+
+The kernel works with the file system and storage to get the data.
+
+The complete flow is:
+
+```mermaid
+flowchart TD
+    U["👤 User"]
+    B["🐚 Bash"]
+    C["📖 cat"]
+    SC["📞 System Call"]
+    K["🐧 Linux Kernel"]
+    FS["📁 File System"]
+    SSD["💾 SSD / HDD"]
+    DATA["📄 notes.txt Data"]
+    T["🖥️ Terminal"]
+
+    U --> B
+    B --> C
+    C --> SC
+    SC --> K
+    K --> FS
+    FS --> SSD
+    SSD --> DATA
+    DATA --> K
+    K --> C
+    C --> T
+    T --> U
+```
+
+### Simple flow
 
 ```text
 You
@@ -688,54 +881,22 @@ File System
  ↓
 SSD / HDD
  ↓
-File Data
- ↓
-cat
+Data
  ↓
 Terminal
  ↓
 You
 ```
 
-The important concept is that the application requests access to the file, while the kernel manages the underlying system resources.
+This one example helps connect many of the Linux concepts together.
 
 ---
 
-# 20. `sudo`
+# 18. Linux Distribution
 
-In Linux, commands sometimes require administrative privileges.
+Now another important concept is **Linux Distribution**.
 
-For example:
-
-```bash
-sudo apt update
-```
-
-`sudo` allows an authorized user to execute a command as another user, with **root as the default**.
-
-The basic idea is:
-
-```text
-Normal User
-     ↓
-sudo
-     ↓
-Elevated Privileges
-     ↓
-Administrative Operation
-```
-
-Users, groups, permissions and `sudo` are important Linux concepts that are covered separately.
-
----
-
-# 21. Linux Distribution
-
-Although Linux technically refers to the kernel, we commonly use the term Linux when talking about complete Linux-based operating systems.
-
-A **Linux distribution** combines the Linux kernel with user-space software, packages, tools, configuration and other components required to provide a usable operating system environment.
-
-Examples include:
+We often hear names such as:
 
 ```text
 Ubuntu
@@ -748,7 +909,18 @@ Alpine
 Arch
 ```
 
-The basic relationship is:
+These are Linux distributions built around the Linux Kernel.
+
+They have their own:
+
+```text
+Packages
+Tools
+Defaults
+Release Models
+```
+
+We can visualize it like this:
 
 ```mermaid
 flowchart TD
@@ -769,65 +941,23 @@ flowchart TD
     K --> AR
 ```
 
-Think of the Linux kernel as the **foundation**, while each distribution provides its own collection of packages, tools, defaults and configuration around that kernel.
+So basically, think of the **Linux Kernel as the common foundation**.
+
+Different distributions are built around that foundation.
 
 ---
 
-# 22. Important Linux Distributions
+# 19. Ubuntu and APT
 
-## Ubuntu
-
-Ubuntu is widely used for:
+For our current learning, one important combination is:
 
 ```text
-Learning
-Servers
-Cloud
-DevOps
-Development
+Ubuntu → APT
 ```
 
-It is a common distribution for learning Linux and DevOps.
+APT is a **package manager**.
 
-## Debian
-
-Debian is known for stability and is an important base for Ubuntu.
-
-```text
-Debian
-   ↓
-Ubuntu
-```
-
-## Fedora
-
-Fedora is a modern Linux distribution associated with the Red Hat ecosystem and often provides newer technologies earlier.
-
-## RHEL
-
-RHEL stands for **Red Hat Enterprise Linux**.
-
-It is widely used in enterprise environments.
-
-## Rocky Linux / AlmaLinux
-
-These are enterprise-oriented Linux distributions compatible with the RHEL ecosystem.
-
-## Alpine Linux
-
-Alpine Linux is a lightweight distribution that is frequently encountered when working with containers.
-
-## Arch Linux
-
-Arch Linux is known for customization and a rolling-release model and is generally aimed at more experienced users.
-
----
-
-# 23. Package Manager
-
-Linux distributions provide **package managers** to make software installation and management easier.
-
-A package manager can be used to:
+It helps us with things like:
 
 ```text
 Install software
@@ -837,257 +967,69 @@ Remove software
 Manage dependencies
 ```
 
-Different distributions use different package managers:
-
-| Distribution    | Package Manager |
-| --------------- | --------------- |
-| Ubuntu / Debian | `apt`           |
-| Fedora / RHEL   | `dnf`           |
-| Arch            | `pacman`        |
-| openSUSE        | `zypper`        |
-
-For your current learning:
-
-```text
-Ubuntu → APT
-```
-
----
-
-# 24. APT
-
-APT is the package manager commonly used on Ubuntu and Debian-based systems.
-
 For example:
 
 ```bash
 sudo apt install nginx
 ```
 
-APT can obtain packages from configured repositories and handle required dependencies.
-
-The basic flow is:
-
-```text
-Ubuntu Machine
-      ↓
-     APT
-      ↓
-Repository
-      ↓
-Package
-      ↓
-Download
-      ↓
-Install
-```
+Here we are using APT to install the Nginx package.
 
 ---
 
-# 25. Package Repository
+# 20. Why do we use `sudo`?
 
-A **package repository** is a location containing software packages and information about those packages.
-
-For example, when running:
-
-```bash
-sudo apt install nginx
-```
-
-APT conceptually:
-
-```text
-Checks configured repositories
-          ↓
-Finds nginx
-          ↓
-Downloads package
-          ↓
-Resolves dependencies
-          ↓
-Installs package
-          ↓
-Configures package
-```
-
-This is why package managers make software installation easier.
-
----
-
-# 26. `apt update`
-
-The command:
+You will often see commands such as:
 
 ```bash
 sudo apt update
 ```
 
-refreshes the local package information from the configured repositories.
+So what is `sudo`?
 
-It does **not** mean that all installed software is upgraded.
+`sudo` allows an authorized user to run a command with **elevated privileges**.
 
-The basic idea is:
-
-```text
-Repository
-     ↓
-Latest Package Information
-     ↓
-apt update
-     ↓
-Local Package Information Refreshed
-```
-
-Therefore:
-
-> **`apt update` refreshes package information.**
-
----
-
-# 27. `apt upgrade`
-
-The command:
-
-```bash
-sudo apt upgrade
-```
-
-is used to upgrade installed packages when newer versions are available.
-
-The difference is:
+We can understand it like this:
 
 ```text
-apt update
+Normal User
      ↓
-Refresh package information
-
-apt upgrade
+   sudo
      ↓
-Upgrade installed packages
+Elevated Privileges
+     ↓
+Administrative Operation
 ```
 
-This distinction is important when working with Ubuntu and Debian-based systems.
+So when we perform certain administrative operations, we may need elevated privileges.
+
+Users, groups, permissions and `sudo` will be covered more deeply when studying Linux user management and file permissions.
 
 ---
 
-# 28. Important APT Commands
+# 21. Complete Linux Mental Model
 
-### Update package information
+Now let's put everything together.
 
-```bash
-sudo apt update
-```
-
-### Upgrade installed packages
-
-```bash
-sudo apt upgrade
-```
-
-### Install a package
-
-```bash
-sudo apt install nginx
-```
-
-### Remove a package
-
-```bash
-sudo apt remove nginx
-```
-
-### Search for a package
-
-```bash
-apt search nginx
-```
-
-### Remove unused dependencies
-
-```bash
-sudo apt autoremove
-```
-
----
-
-# 29. WSL
-
-If Windows is being used, **WSL (Windows Subsystem for Linux)** provides a way to run a Linux environment within Windows.
-
-The basic installation command is:
-
-```bash
-wsl --install
-```
-
-After installation and setup, a Linux distribution can be opened and used to practice Linux commands.
-
----
-
-# 30. Docker as a Linux Practice Environment
-
-Docker can also be used to run an Ubuntu container for practicing Linux commands.
-
-The basic idea is:
-
-```text
-Your Computer
-      ↓
-    Docker
-      ↓
-Ubuntu Container
-      ↓
-Linux Environment
-      ↓
-Linux Commands
-```
-
-A running container can be entered using:
-
-```bash
-docker exec -it <container-id> /bin/bash
-```
-
-Once inside the container, commands such as:
-
-```bash
-ls
-pwd
-cd
-mkdir
-touch
-cat
-```
-
-can be practiced.
-
-A container is an isolated environment running on the computer.
-
----
-
-# 31. Final Linux Mental Model
-
-The complete Linux concept can now be connected together:
+This is the most important diagram to remember:
 
 ```mermaid
 flowchart TB
     USER["👤 USER"]
 
-    subgraph US["USER SPACE — USER MODE"]
+    subgraph US["USER SPACE — NON-PRIVILEGED"]
         CLI["💻 CLI / GUI"]
-        APP["📦 Applications"]
-        SHELL["🐚 Shell — Bash"]
-        LIB["📚 System Libraries"]
-        UTIL["🛠️ System Utilities"]
+        APP["📦 Applications<br/>Python • Docker • Git • Nginx"]
+        SHELL["🐚 Shell<br/>Bash"]
+        LIB["📚 Libraries"]
+        UTIL["🛠️ Utilities"]
     end
 
-    SC["📞 SYSTEM CALLS"]
-
-    subgraph KS["KERNEL SPACE — KERNEL MODE"]
+    subgraph KS["KERNEL SPACE — PRIVILEGED"]
         K["🐧 LINUX KERNEL"]
         PM["Process Management"]
         MM["Memory Management"]
-        FS["File System Management"]
+        FM["File System Management"]
         NM["Network Management"]
         DD["Device Drivers"]
     end
@@ -1106,32 +1048,57 @@ flowchart TB
 
     SHELL --> LIB
     APP --> LIB
-    APP --> UTIL
-
-    LIB --> SC
-    UTIL --> SC
-    SC --> K
+    LIB --> UTIL
+    LIB --> K
+    UTIL --> K
 
     K --> PM
     K --> MM
-    K --> FS
+    K --> FM
     K --> NM
     K --> DD
 
     PM --> CPU
     MM --> RAM
-    FS --> STORAGE
+    FM --> STORAGE
     NM --> NETWORK
     DD --> DEVICES
 ```
 
----
+So now we have:
 
-# 32. 🎯 What I Need to Remember
+```text
+USER
+  ↓
+USER SPACE
+  ↓
+System Calls
+  ↓
+LINUX KERNEL
+  ↓
+HARDWARE
+```
 
-### 1️⃣ Hardware
+Inside User Space we have:
 
-Physical components:
+```text
+Applications
+Shell
+Libraries
+Utilities
+```
+
+And the Kernel handles things such as:
+
+```text
+Process Management
+Memory Management
+File System Management
+Network Management
+Device Drivers
+```
+
+And finally, the kernel manages the hardware:
 
 ```text
 CPU
@@ -1141,17 +1108,33 @@ Network
 Devices
 ```
 
-### 2️⃣ Operating System
+---
 
-Manages hardware resources and provides an interface for users and applications.
+# 22. The Things I Should Remember
 
-### 3️⃣ Linux Kernel
+I don't need to memorize every single line.
 
-The core of Linux that manages system resources and hardware.
+I mainly need to understand these concepts.
 
-### 4️⃣ User Space
+## 1️⃣ Hardware
 
-Contains:
+```text
+CPU
+RAM
+Disk
+Network
+Devices
+```
+
+## 2️⃣ Operating System
+
+The Operating System acts as a bridge between users/applications and hardware.
+
+## 3️⃣ Linux Kernel
+
+The Linux Kernel is the core of Linux and manages system resources and hardware.
+
+## 4️⃣ User Space
 
 ```text
 Applications
@@ -1160,94 +1143,132 @@ Libraries
 Utilities
 ```
 
-### 5️⃣ User Mode
+These are normal user-level programs.
 
-Normal programs execute with limited privileges.
-
-### 6️⃣ Kernel Mode
-
-The Linux kernel executes with the privileges required to manage system resources.
-
-### 7️⃣ System Calls
-
-Provide a controlled interface through which user-space programs request services from the kernel.
-
-### 8️⃣ Shell
-
-A program that interprets commands.
+## 5️⃣ Kernel Space
 
 ```text
-Bash
+Linux Kernel
 ```
 
-is the main shell to focus on first.
+The kernel operates with high-level system access.
 
-### 9️⃣ SSD vs HDD
+## 6️⃣ Non-Privileged Mode
+
+Normal applications run with limited privileges.
+
+## 7️⃣ Privileged Mode
+
+The kernel operates with high-level privileges to manage the system.
+
+## 8️⃣ System Calls
+
+System calls provide a controlled way for applications to request services from the kernel.
+
+## 9️⃣ SSD vs HDD
 
 ```text
-SSD → Flash Memory → Generally Faster
+SSD → Flash memory → Faster
 
-HDD → Spinning Magnetic Disk → Mechanical
+HDD → Spinning magnetic disk → Slower
 ```
 
-### 🔟 Linux Distribution
+## 🔟 Linux Distribution
 
 ```text
 Linux Kernel
      ↓
-Linux Distribution
+Distribution
      ↓
 Ubuntu / Debian / Fedora / RHEL / etc.
-```
-
-### 1️⃣1️⃣ Package Manager
-
-```text
-Ubuntu / Debian → APT
-Fedora / RHEL   → DNF
-Arch            → Pacman
-openSUSE        → Zypper
-```
-
-### 1️⃣2️⃣ APT
-
-```text
-apt update
-    ↓
-Refresh package information
-
-apt upgrade
-    ↓
-Upgrade installed packages
 ```
 
 ---
 
 # 🧠 FINAL MEMORY CHAIN
 
-The entire topic can be remembered as:
+If someone asks me:
+
+> **"Explain Linux from the basics."**
+
+I should think about this:
 
 ```text
-                         👤 USER
-                            ↓
-                       USER SPACE
-                            ↓
-             ┌──────────────┼──────────────┐
-             ↓              ↓              ↓
-       Applications       Shell        Utilities
-             │              │              │
-             └──────────────┼──────────────┘
-                            ↓
-                      System Calls
-                            ↓
-                    🐧 LINUX KERNEL
-                            ↓
-             ┌──────────────┼──────────────┐
-             ↓              ↓              ↓
-            CPU            RAM          SSD / HDD
-                            ↓
-                        HARDWARE
+Hardware
+   ↓
+Linux Kernel
+   ↓
+User Space
+   ↓
+Applications / Shell / Libraries / Utilities
+   ↓
+System Calls
+   ↓
+Linux Kernel
+   ↓
+Hardware
 ```
 
-> **Main concept:**
-> **Users and applications run in User Space. They request services from the Linux Kernel through controlled interfaces such as system calls. The Linux Kernel manages system resources and hardware.**
+And Linux distributions are built around the Linux Kernel:
+
+```text
+Linux Kernel
+     ↓
+Linux Distribution
+     ↓
+Ubuntu / Fedora / RHEL / Alpine / etc.
+```
+
+Ubuntu uses APT as its package manager:
+
+```text
+Ubuntu
+   ↓
+APT
+```
+
+---
+
+# ⭐ Simplest Mental Model
+
+```text
+                👤 USER
+                   │
+                   ▼
+           ┌─────────────────┐
+           │   USER SPACE    │
+           │                 │
+           │ Applications    │
+           │ Shell           │
+           │ Libraries       │
+           │ Utilities       │
+           └────────┬────────┘
+                    │
+               System Calls
+                    │
+                    ▼
+           ┌─────────────────┐
+           │  LINUX KERNEL   │
+           │                 │
+           │ Process         │
+           │ Memory          │
+           │ File System     │
+           │ Network         │
+           │ Drivers         │
+           └────────┬────────┘
+                    │
+                    ▼
+           ┌─────────────────┐
+           │    HARDWARE     │
+           │                 │
+           │ CPU             │
+           │ RAM             │
+           │ SSD / HDD       │
+           │ Network         │
+           │ Devices         │
+           └─────────────────┘
+```
+
+> 🧠 **The main thing I need to remember:**
+>
+> **Users and applications run in User Space, they request services through the Linux Kernel, and the Kernel manages access to the Hardware.**
