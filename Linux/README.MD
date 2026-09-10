@@ -8,7 +8,7 @@ I have documented the concepts I learned along with the commands and hands-on pr
 
 I also use the following repository as a reference while learning and revising Linux:
 
-🔗 **[Ultimate Linux Guide — KodeKloud / Veeramalla](https://github.com/iam-veeramalla/ultimate-linux-guide)**
+🔗 **[Ultimate Linux Guide — Veeramalla](https://github.com/iam-veeramalla/ultimate-linux-guide)**
 
 > This repository is used only as a learning reference alongside my own notes and practical work.
 
