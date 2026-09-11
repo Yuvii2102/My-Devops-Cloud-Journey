@@ -1,4 +1,4 @@
-# 🚀 DAY 2 — IP Addressing & Subnetting
+# 🚀 IP Addressing & Subnetting
 
 Today I continued my **Networking Fundamentals** preparation for Cloud Support Associate.
 
