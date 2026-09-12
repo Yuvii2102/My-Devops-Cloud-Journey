@@ -1,4 +1,8 @@
-# 🚀 AWS Zero to Hero — Day 1
+<div align="center">
+        
+#  ✅ AWS Zero to Hero — Day 1
+
+</div>
 
 # ☁️ Introduction to AWS & Public Cloud
 
