@@ -1,6 +1,6 @@
 <div align="center">
 
-# 🚀 DAY 5 — DNS (DOMAIN NAME SYSTEM)
+# 🚀 DAY 6 — DNS (DOMAIN NAME SYSTEM)
 
 </div>
 
