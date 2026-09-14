@@ -6,7 +6,7 @@ I have documented the concepts I learned along with the commands and hands-on pr
 
 ### 📚 Reference
 
-I also use the following repository as a reference while learning and revising Linux:
+I also used the following repository as a reference while learning and revising Linux:
 
 🔗 **[Ultimate Linux Guide — Veeramalla](https://github.com/iam-veeramalla/ultimate-linux-guide)**
 
