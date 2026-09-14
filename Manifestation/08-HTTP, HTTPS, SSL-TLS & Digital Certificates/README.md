@@ -1,6 +1,6 @@
 <div align="center">
 
-# 🚀 DAY 7 — HTTP, HTTPS, SSL/TLS & Digital Certificates
+# 🚀 DAY 8 — HTTP, HTTPS, SSL/TLS & Digital Certificates
 
 </div>
 
