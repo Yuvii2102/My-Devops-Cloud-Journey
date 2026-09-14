@@ -1,4 +1,4 @@
-# 🚀 DAY 3 — SUBNETTING
+# 🚀 DAY 4 — SUBNETTING
 
 ## 🎯 Today's Roadmap
 
