@@ -1,6 +1,6 @@
 <div align="center">
 
-# 🚀 DAY 6 — DHCP + NAT
+# 🚀 DAY 7 — DHCP + NAT
 
 </div>
 
