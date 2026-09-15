@@ -1,6 +1,6 @@
 <div align="center">
 
-# 🚀 AWS ZERO TO HERO — DAY 3
+# AWS ZERO TO HERO — DAY 3
 
 ## 🖥️ EC2 — ELASTIC COMPUTE CLOUD
 
