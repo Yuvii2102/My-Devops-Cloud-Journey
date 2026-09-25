@@ -1,4 +1,4 @@
-🚀 DAY 17 — FINAL OS INTERVIEW REVISIONN
+🚀 DAY 17 — FINAL OS INTERVIEW REVISION
 
 Today is the final day of my OS roadmap.
 
