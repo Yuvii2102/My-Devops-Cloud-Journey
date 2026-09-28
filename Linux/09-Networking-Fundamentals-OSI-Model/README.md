@@ -1,4 +1,4 @@
-# 🌐 Networking Fundamentals — OSI Model
+# 🌐 Networking Fundamentals — OSI Modell
 
 ## What am I learning?
 
