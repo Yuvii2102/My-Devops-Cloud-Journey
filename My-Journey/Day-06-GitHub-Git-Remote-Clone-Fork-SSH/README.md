@@ -1,6 +1,6 @@
 <h1 align="center"> DAY 06 — GITHUB, GIT REMOTE, CLONE, FORK & SSH</h1>
 
-<p align="center">
+<p align="center"> .
 
   <img src="https://img.shields.io/badge/DevOps-Cloud%20Journey-2496ED?style=for-the-badge&logo=docker&logoColor=white"/>
   <img src="https://img.shields.io/badge/Git-Learning-F05032?style=for-the-badge&logo=git&logoColor=white"/>
