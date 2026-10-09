@@ -1,1076 +1,955 @@
-🚀 DAY 17 — FINAL OS INTERVIEW REVISION
+# 🚀 DAY 17 — FINAL OS INTERVIEW REVISION
 
-Today is the final day of my OS roadmap.
-
-I have already learned the concepts. Today I am converting everything into interview-ready answers.
-
-My interview rule
-
-«Explain the concept clearly → give the troubleshooting steps → mention the command when useful.»
-
-I don't need to give a huge textbook answer in an interview. I need to show that I understand the concept and know how to troubleshoot it.
+**Cloud Support Engineer Preparation | Linux | Operating Systems | Interview Revision**
 
 ---
 
-🧠 PART 1 — BOOT PROCESS
+## 🎯 What I'm Learning Today
 
-Q1. Explain the Linux boot process in detail.
+Today is the final day of my Operating Systems roadmap.
 
-Simple understanding
+I have already learned the concepts. Today, I'm converting everything into interview-ready answers.
 
-When I switch on a computer:
+### My Interview Rule
 
-Power ON
-   ↓
-BIOS / UEFI
-   ↓
-POST
-   ↓
-Boot Device
-   ↓
-GRUB / Bootloader
-   ↓
-Linux Kernel
-   ↓
-systemd
-   ↓
-Services
-   ↓
-Login
+**Explain the concept clearly → Give troubleshooting steps → Mention commands when useful.**
 
-Interview answer
-
-«“When the system is powered on, BIOS or UEFI initializes the hardware and performs POST. It identifies the boot device according to the boot configuration. The bootloader, commonly GRUB in Linux, loads the Linux kernel. The kernel initializes the system and starts the user-space initialization system, commonly systemd. systemd starts and manages services, and finally the system reaches the login stage.”»
+I don't need to give a huge textbook answer in an interview. I need to demonstrate that I understand the concept and know how to troubleshoot it.
 
 ---
 
-🧠 PART 2 — BOOT TROUBLESHOOTING
+# 🧠 PART 1 — LINUX BOOT PROCESS
 
-Q2. How would I troubleshoot a boot issue?
+## Q1. Explain the Linux Boot Process
+
+### Simple Understanding
+
+When I switch on a computer, the system follows these stages:
+
+```mermaid
+flowchart TD
+    A["Power ON"] --> B["BIOS / UEFI"]
+    B --> C["POST"]
+    C --> D["Boot Device"]
+    D --> E["GRUB / Bootloader"]
+    E --> F["Linux Kernel"]
+    F --> G["systemd"]
+    G --> H["System Services"]
+    H --> I["Login"]
+```
+
+### Explanation
+
+1. **Power ON:** The computer receives power.
+2. **BIOS / UEFI:** Initializes the hardware and starts the boot process.
+3. **POST:** Performs initial hardware checks.
+4. **Boot Device:** The firmware selects a bootable device.
+5. **GRUB / Bootloader:** Loads the Linux kernel.
+6. **Linux Kernel:** Initializes hardware and core operating system components.
+7. **systemd:** Starts and manages system services.
+8. **Services:** Required services start according to system configuration.
+9. **Login:** The system becomes available for user login.
+
+### Interview Answer
+
+When the system is powered on, BIOS or UEFI initializes the hardware and performs POST. It identifies the boot device according to the boot configuration. The bootloader, commonly GRUB in Linux, loads the Linux kernel. The kernel initializes the system and starts the user-space initialization system, commonly systemd. systemd starts and manages services, and finally the system reaches the login stage.
+
+---
+
+# 🧠 PART 2 — BOOT TROUBLESHOOTING
+
+## Q2. How Would You Troubleshoot a Boot Issue?
 
 I should not randomly repair things.
 
-First I ask:
+First, I need to identify the stage where the boot process stops.
 
-«At which stage does the boot process stop?»
+### Troubleshooting Flow
 
-Troubleshooting flow
+```mermaid
+flowchart TD
+    A["Power ON"] --> B["BIOS / UEFI"]
+    B --> C["Is the Disk Detected?"]
+    C --> D["Check Boot Order"]
+    D --> E["Check Bootloader / GRUB"]
+    E --> F["Check Linux Kernel"]
+    F --> G["Check systemd"]
+    G --> H["Check Services"]
+    H --> I["Verify Login"]
+```
 
-Power
-  ↓
-BIOS / UEFI
-  ↓
-Disk detected?
-  ↓
-Boot order
-  ↓
-Bootloader / GRUB
-  ↓
-Kernel
-  ↓
-systemd
-  ↓
-Services
-  ↓
-Login
+### Useful Commands
 
-Useful commands
+Check current boot logs:
 
-After gaining access through a recovery/working environment:
-
+```bash
 journalctl -b
+```
 
-Previous boot:
+Check previous boot logs, if retained:
 
+```bash
 journalctl -b -1
+```
 
-Interview answer
+### Interview Answer
 
-«“I would first identify the stage where the boot process is failing. I would check hardware and BIOS/UEFI detection, boot order, bootloader, kernel and systemd/services. If the system is accessible through a recovery environment, I would review boot logs using journalctl.”»
-
----
-
-💻 PART 3 — BOOTABLE DEVICE NOT FOUND
-
-Q3. What would I do if the system shows "Bootable Device Not Found"?
-
-I think about the problem step-by-step:
-
-Is disk detected?
-       ↓
-Is boot order correct?
-       ↓
-Correct boot device?
-       ↓
-Bootloader?
-       ↓
-Boot configuration?
-       ↓
-Filesystem / OS?
-
-Interview answer
-
-«“First I would check whether the storage device is detected by BIOS/UEFI. If it is detected, I would verify the boot order and correct boot device. Then I would investigate the bootloader, boot configuration and filesystem or OS. If necessary, I would use a recovery environment.”»
+I would first identify the stage where the boot process is failing. I would check hardware and BIOS/UEFI detection, boot order, bootloader, kernel, and systemd services. If the system is accessible through a recovery environment, I would review boot logs using `journalctl`.
 
 ---
 
-🐌 PART 4 — SLOW LINUX MACHINE
+# 💻 PART 3 — BOOTABLE DEVICE NOT FOUND
 
-Q4. A Linux machine is very slow. How would I troubleshoot it?
+## Q3. What Would You Do If the System Shows "Bootable Device Not Found"?
 
-This is a very important Cloud Support question.
+I would investigate step by step instead of immediately assuming GRUB is broken.
 
-I should not immediately say I will restart the server.
+### Troubleshooting Flow
 
-I should investigate the resources first.
+```mermaid
+flowchart TD
+    A["Bootable Device Not Found"] --> B{"Is Disk Detected?"}
+    B -->|No| C["Investigate Storage Detection"]
+    B -->|Yes| D["Check Boot Order"]
+    D --> E["Verify Correct Boot Device"]
+    E --> F["Investigate Bootloader"]
+    F --> G["Check Boot Configuration"]
+    G --> H["Check Filesystem and OS"]
+    C --> I["Use Recovery Environment if Needed"]
+    H --> I
+    I --> J["Repair and Verify"]
+```
 
-Troubleshooting flow
+### Interview Answer
 
-CPU
- ↓
-Memory
- ↓
-Load
- ↓
-Disk
- ↓
-Processes
- ↓
-Historical data
- ↓
-Logs / Application
+First, I would check whether the storage device is detected by BIOS/UEFI. If it is detected, I would verify the boot order and correct boot device. Then I would investigate the bootloader, boot configuration, and filesystem or operating system. If necessary, I would use a recovery environment.
 
-CPU / Processes
+---
 
+# 🐌 PART 4 — SLOW LINUX MACHINE
+
+## Q4. A Linux Machine Is Very Slow. How Would You Troubleshoot It?
+
+This is an important Cloud Support interview question.
+
+I should not immediately restart the server. I should investigate resource utilization first.
+
+### Troubleshooting Flow
+
+```mermaid
+flowchart TD
+    A["Linux Machine Is Slow"] --> B["Check CPU"]
+    B --> C["Check Memory and Swap"]
+    C --> D["Check Load Average"]
+    D --> E["Check Disk Space"]
+    E --> F["Find Resource-Intensive Processes"]
+    F --> G["Check Historical Data"]
+    G --> H["Review Logs and Applications"]
+    H --> I["Identify Root Cause"]
+    I --> J["Fix and Verify"]
+```
+
+### CPU and Processes
+
+```bash
 top
+```
 
+Find processes consuming the most CPU:
+
+```bash
 ps aux --sort=-%cpu | head
+```
 
-Memory
+### Memory
 
+```bash
 free -h
+```
 
-Load
+Find processes consuming the most memory:
 
+```bash
+ps aux --sort=-%mem | head
+```
+
+### Load Average
+
+```bash
 uptime
+```
 
-Disk
+### Disk Space
 
+```bash
 df -h
+```
 
-Directory usage
+### Directory Usage
 
+```bash
 du -sh /var/*
+```
 
-Historical CPU
+### Historical CPU Usage
 
+```bash
 sar -u
+```
 
-Interview answer
+Historical data depends on whether `sar` is installed and data collection is configured.
 
-«“I would first check CPU utilization and high-CPU processes using top or ps. Then I would check memory and swap using free, load using uptime, disk usage using df and du, and historical resource usage using sar. Then I would identify the bottleneck and investigate the responsible process or application.”»
+### Interview Answer
+
+I would first check CPU utilization and high-CPU processes using `top` or `ps`. Then I would check memory and swap using `free -h`, load using `uptime`, disk usage using `df` and `du`, and historical resource usage using `sar`. Finally, I would identify the bottleneck and investigate the responsible process or application.
 
 ---
 
-🔥 PART 5 — SERVER HEATING
+# 🔥 PART 5 — SERVER HEATING
 
-Q5. A server is heating up. How would I troubleshoot it?
+## Q5. A Server Is Heating Up. How Would You Troubleshoot It?
 
-First I check CPU:
+First, I would check CPU utilization.
 
+```bash
 top
+```
 
-I look for processes consuming excessive CPU.
+Find processes consuming excessive CPU:
 
+```bash
 ps aux --sort=-%cpu | head
+```
 
-Then I check:
+Then I would check:
 
+```bash
 free -h
+```
 
+```bash
 uptime
+```
 
+```bash
 sar -u
+```
 
-For a physical machine, I would also investigate:
+### For a Physical Machine
 
-- Fans
-- Airflow
-- Dust
-- Environment temperature
-- Hardware
+I would also investigate:
 
-Interview answer
+- Cooling fans.
+- Airflow.
+- Dust accumulation.
+- Environmental temperature.
+- Hardware condition.
 
-«“I would check CPU utilization and processes consuming excessive CPU, then check memory, load and historical resource usage. If it is a physical machine, I would also check cooling, airflow and hardware conditions.”»
+### For an EC2 Instance
+
+I would investigate:
+
+- CPU utilization in CloudWatch.
+- Resource-intensive processes.
+- Memory and disk usage.
+- Application logs.
+- Monitoring alerts.
+
+### Interview Answer
+
+I would check CPU utilization and processes consuming excessive CPU, then check memory, load, and historical resource usage. If it is a physical machine, I would also check cooling, airflow, and hardware conditions. For an EC2 instance, I would investigate CloudWatch metrics and application behavior.
 
 ---
 
-💾 PART 6 — DISK FREE SPACE
+# 💾 PART 6 — DISK FREE SPACE
 
-Q6. How do I check disk free space?
+## Q6. How Do You Check Disk Free Space?
 
 I use:
 
+```bash
 df -h
+```
 
-Meaning
+### Meaning
 
-df → filesystem disk usage
--h → human-readable format
+- `df` → Displays filesystem disk usage.
+- `-h` → Displays values in a human-readable format.
 
-Example:
+### Example
 
-Filesystem      Size  Used Avail Use%
-/dev/sda1        50G   30G   20G  60%
+```text
+Filesystem      Size  Used  Avail  Use%
+/dev/sda1        50G   30G    20G   60%
+```
 
-Interview answer
+### Interview Answer
 
-«“I use df -h to check filesystem disk space in a human-readable format.”»
+I use `df -h` to check filesystem disk space in a human-readable format.
 
 ---
 
-📁 PART 7 — DISK SPACE AVAILABLE BUT FILE CANNOT BE CREATED
+# 📁 PART 7 — DISK SPACE AVAILABLE BUT FILE CANNOT BE CREATED
 
-Q7. Disk space is available, but a file cannot be created. Why?
+## Q7. Disk Space Is Available, but a File Cannot Be Created. Why?
 
-This is an important interview question.
+First, I check disk space:
 
-First:
-
+```bash
 df -h
+```
 
-If there is still space available, I check:
+If space is available, I check inode usage:
 
+```bash
 df -i
+```
 
-Why?
+### Why?
 
-Disk space and inodes are two different resources.
+Disk space and inodes are different resources.
 
 For example:
 
-20 GB free
-BUT
-0 free inodes
+- Disk space available: 20 GB.
+- Free inodes: 0.
 
 In this situation, creating another file may fail.
 
-I should also check permissions:
+I should also check directory permissions:
 
+```bash
 ls -ld /path/to/directory
+```
 
-And I should look at the exact error message.
+Finally, I should investigate the exact error message.
 
-Interview answer
+### Troubleshooting Flow
 
-«“If disk space is available but a file cannot be created, I would check inode availability using df -i. The filesystem may have exhausted its inodes, especially if there are many small files. I would also check directory permissions and the exact error message.”»
+```mermaid
+flowchart TD
+    A["Cannot Create File"] --> B["Check df -h"]
+    B --> C{"Space Available?"}
+    C -->|No| D["Investigate Disk Usage"]
+    C -->|Yes| E["Check df -i"]
+    E --> F{"Free Inodes Available?"}
+    F -->|No| G["Investigate Inode Exhaustion"]
+    F -->|Yes| H["Check Permissions and Filesystem"]
+    D --> I["Identify Root Cause"]
+    G --> I
+    H --> I
+    I --> J["Fix and Verify"]
+```
+
+### Interview Answer
+
+If disk space is available but a file cannot be created, I would check inode availability using `df -i`. The filesystem may have exhausted its inodes, especially if there are many small files. I would also check directory permissions and the exact error message.
 
 ---
 
-🧬 PART 8 — INODES
+# 🧬 PART 8 — INODES
 
-Q8. What is an inode?
+## Q8. What Is an Inode?
 
 I can think of an inode as a file's information card.
 
 It stores metadata such as:
 
-- File type
-- Permissions
-- Owner
-- Group
-- Timestamps
-- Information used to locate the file's data
+- File type.
+- Permissions.
+- Owner and group.
+- Timestamps.
+- Information used to locate the file's data.
 
-Check inode usage
+### Check Inode Usage
 
+```bash
 df -i
+```
 
-Interview answer
+### Interview Answer
 
-«“An inode is a filesystem data structure that stores metadata about a file, such as its type, permissions, ownership and timestamps. df -i can be used to check inode availability.”»
+An inode is a filesystem data structure that stores metadata about a file, such as its type, permissions, ownership, and timestamps. I can use `df -i` to check inode availability.
 
 ---
 
-🧠 PART 9 — PAGING
+# 🧠 PART 9 — PAGING
 
-Q9. What is paging?
+## Q9. What Is Paging?
 
-I imagine RAM has many small boxes.
+Paging is a memory-management technique used by operating systems.
 
-The OS divides virtual memory into pages.
+Virtual memory is divided into pages, while physical memory is divided into frames.
 
-Physical memory is divided into frames.
+### Paging Flow
 
-Virtual Memory
-      ↓
-    Pages
-      ↓
-   Mapped to
-      ↓
- Physical RAM
-      ↓
-   Frames
+```mermaid
+flowchart TD
+    A["Virtual Memory"] --> B["Pages"]
+    B --> C["Page Table"]
+    C --> D["Physical Memory"]
+    D --> E["Frames"]
+    E --> F["Memory Access"]
+```
 
-Paging helps the OS manage memory efficiently.
+### Related Concepts
 
-Related concepts
-
-Virtual memory
+**Virtual Memory**
 
 It gives processes their own virtual address spaces.
 
-Swap
+**Swap**
 
-It is disk space used when memory pages need to be moved out of RAM.
+It is disk space used to hold memory pages that are moved out of RAM.
 
-Page fault
+**Page Fault**
 
-It occurs when a process accesses a page that isn't currently available in the required physical memory location, so the OS must handle it.
+It occurs when a process accesses a page that is not currently mapped to the required physical memory location. The operating system handles the fault, potentially loading the page into memory.
 
-Interview answer
+### Interview Answer
 
-«“Paging is a memory-management technique where virtual memory is divided into fixed-size pages and physical memory into frames. The OS maps pages to physical frames. It allows efficient memory management and supports virtual memory.”»
+Paging is a memory-management technique where virtual memory is divided into fixed-size pages and physical memory into frames. The operating system maps pages to physical frames using page tables. It helps manage memory efficiently and supports virtual memory.
 
 ---
 
-⚙️ PART 10 — SYSTEM CALLS
+# ⚙️ PART 10 — SYSTEM CALLS
 
-Q10. What is a system call?
+## Q10. What Is a System Call?
 
-A normal program cannot directly perform every privileged operation.
-
-It asks the Linux kernel to perform the operation.
+A normal program cannot directly perform every privileged operation. It requests services from the operating system kernel.
 
 That request is called a system call.
 
-Application
-     ↓
-System Call
-     ↓
-Kernel
-     ↓
-Hardware / OS resource
+### System Call Flow
 
-Examples
+```mermaid
+flowchart TD
+    A["User Application"] --> B["System Call"]
+    B --> C["Linux Kernel"]
+    C --> D["Operating System Resource"]
+    D --> E["Result Returned to Application"]
+```
 
-fork()
-open()
-read()
-write()
-close()
-execve()
+### Examples
 
-Interview answer
+- `fork()`
+- `open()`
+- `read()`
+- `write()`
+- `close()`
+- `execve()`
 
-«“A system call is an interface through which a user-space program requests a service from the operating system kernel, such as creating a process or reading a file.”»
+### Interview Answer
 
----
-
-👶 PART 11 — fork()
-
-Q11. Explain fork().
-
-I can think of it like:
-
-👨 One process
-      ↓
-    fork()
-      ↓
- ┌────┴────┐
-Parent    Child
-
-"fork()" creates a new child process from the calling process.
-
-The child gets its own PID.
-
-Return values
-
-Parent → receives child's PID
-Child  → receives 0
-Failure → -1
-
-Interview answer
-
-«“fork() is a Linux/Unix system call used to create a new child process from the calling process. The parent receives the child's PID, the child receives zero, and -1 indicates failure.”»
+A system call is an interface through which a user-space program requests a service from the operating system kernel, such as creating a process or reading a file.
 
 ---
 
-🔄 PART 12 — PROCESS LIFE CYCLE
+# 👶 PART 11 — fork()
 
-Q12. Explain process states/lifecycle.
+## Q11. Explain fork().
 
-Simple flow
+`fork()` creates a new child process from the calling process.
 
-NEW
- ↓
-READY
- ↓
-RUNNING
- ↓
-WAITING / BLOCKED
- ↓
-READY
- ↓
-RUNNING
- ↓
-TERMINATED
+### Process Creation Flow
 
-Linux process states I should know
+```mermaid
+flowchart TD
+    A["Parent Process"] --> B["fork()"]
+    B --> C["Parent Continues"]
+    B --> D["Child Process Created"]
+    C --> E["Parent Receives Child PID"]
+    D --> F["Child Receives Return Value 0"]
+```
 
-State| Meaning
-"R"| Running / Runnable
-"S"| Interruptible sleep
-"D"| Uninterruptible sleep
-"T"| Stopped
-"Z"| Zombie
+### Return Values
 
-Zombie process
+- **Parent:** Receives the child's PID.
+- **Child:** Receives `0`.
+- **Failure:** Returns `-1` to the calling process.
 
-A zombie process has finished execution, but its parent hasn't collected its termination status yet.
+### Interview Answer
 
-Interview answer
-
-«“A process can move through states such as new, ready, running, waiting or blocked, and terminated. In Linux, common process states include R, S, D, T and Z. A zombie is a terminated child process whose parent has not yet collected its exit status.”»
+`fork()` is a Linux/Unix system call used to create a new child process from the calling process. The parent receives the child's PID, the child receives zero, and `-1` indicates failure.
 
 ---
 
-🔐 PART 13 — SSH TROUBLESHOOTING
+# 🔄 PART 12 — PROCESS LIFE CYCLE
 
-Q13. SSH is not working. How do I troubleshoot it?
+## Q12. Explain Process States and the Lifecycle.
 
-I think layer-by-layer:
+A process moves through different states during execution.
 
-Correct IP
-   ↓
-Network
-   ↓
-Security Group / Firewall
-   ↓
-Port 22
-   ↓
-SSH service
-   ↓
-Listening socket
-   ↓
-Authentication
+### General Process Lifecycle
 
-Check listening ports
+```mermaid
+flowchart TD
+    A["New"] --> B["Ready"]
+    B --> C["Running"]
+    C --> D["Waiting / Blocked"]
+    D --> B
+    C --> E["Terminated"]
+```
 
-ss -lntp
+### Common Linux Process States
 
-Check SSH service
+| State | Meaning |
+|---|---|
+| `R` | Running or runnable |
+| `S` | Interruptible sleep |
+| `D` | Uninterruptible sleep |
+| `T` | Stopped or traced |
+| `Z` | Zombie |
 
-systemctl status ssh
+### What Is a Zombie Process?
 
-Check SSH logs
+A zombie process has finished execution, but its parent has not yet collected its termination status.
 
-journalctl -u ssh
+### Interview Answer
 
-Error clues
-
-Timeout
-   ↓
-Network / security path
-
-Connection refused
-   ↓
-Host reachable, but no service/listener
-or active rejection
-
-Permission denied
-   ↓
-Authentication / access problem
-
-Interview answer
-
-«“I would verify the destination IP and network path, then check whether port 22 is allowed. On the server I would check whether SSH is listening using ss -lntp, check the SSH service using systemctl status ssh, review logs, and investigate authentication if necessary.”»
+A process can move through states such as new, ready, running, waiting or blocked, and terminated. In Linux, common process states include R, S, D, T, and Z. A zombie is a terminated child process whose parent has not yet collected its exit status.
 
 ---
 
-🔎 PART 14 — CHECK LISTENING PORTS
+# 🔐 PART 13 — SSH TROUBLESHOOTING
 
-Q14. How do I check which ports are listening?
+## Q13. SSH Is Not Working. How Do You Troubleshoot It?
+
+I should troubleshoot layer by layer.
+
+### Troubleshooting Flow
+
+```mermaid
+flowchart TD
+    A["SSH Connection Fails"] --> B["Verify Destination IP"]
+    B --> C["Check Network and Routing"]
+    C --> D["Check Security Group and Firewall"]
+    D --> E["Check Port 22"]
+    E --> F["Check SSH Service and Listener"]
+    F --> G["Review Logs"]
+    G --> H["Investigate Authentication"]
+    H --> I["Fix and Verify"]
+```
+
+### Step 1 — Verify the Destination IP
+
+```bash
+ssh username@IP
+```
+
+### Step 2 — Check Listening Ports
+
+```bash
+sudo ss -lntp
+```
+
+### Step 3 — Check SSH Service
+
+On Ubuntu:
+
+```bash
+sudo systemctl status ssh
+```
+
+### Step 4 — Check SSH Logs
+
+```bash
+sudo journalctl -u ssh
+```
+
+The service unit may be named `sshd` on other Linux distributions.
+
+### Common Error Clues
+
+| Error | Possible Cause |
+|---|---|
+| Connection timed out | Network, routing, security rules, or firewall |
+| Connection refused | No listener on the target port or active rejection |
+| Permission denied | Authentication or access configuration |
+| Host key verification failed | Host identity mismatch or changed host key |
+
+### Interview Answer
+
+I would verify the destination IP and network path, then check whether port 22 is allowed. On the server, I would check whether SSH is listening using `ss -lntp`, check the SSH service using `systemctl status ssh`, review logs, and investigate authentication if necessary.
+
+---
+
+# 🔎 PART 14 — CHECK LISTENING PORTS
+
+## Q14. How Do You Check Which Ports Are Listening?
 
 I use:
 
+```bash
 ss -lntp
+```
 
-Meaning
+### Meaning
 
--l → listening
--n → numeric addresses/ports
--t → TCP
--p → process information
+- `-l` → Listening sockets.
+- `-n` → Numeric addresses and ports.
+- `-t` → TCP sockets.
+- `-p` → Process information, where permitted.
 
-I may see:
+### Example
 
+```text
 LISTEN  0  128  0.0.0.0:22
+```
 
-This means something is listening on TCP port 22.
+This indicates that a socket is listening on TCP port 22 on the IPv4 addresses represented by `0.0.0.0`.
 
-Interview answer
+### Interview Answer
 
-«“I use ss -lntp to check listening TCP ports and, where permitted, the associated processes.”»
+I use `ss -lntp` to check listening TCP ports and, where permitted, the associated processes.
 
 ---
 
-⏱️ PART 15 — TOP AND SAR
+# ⏱️ PART 15 — top AND sar
 
-Q15. What is top?
+## Q15. What Is top?
 
-"top" gives me a live view of:
+`top` provides a live view of:
 
-- Processes
-- CPU
-- Memory
-- Load
-- System activity
+- Running processes.
+- CPU utilization.
+- Memory usage.
+- Load average.
+- System activity.
 
-Command:
+### Command
 
+```bash
 top
+```
 
-Interview answer
+### Interview Answer
 
-«“top is a real-time system monitoring command used to view processes and resource utilization such as CPU and memory.”»
+`top` is a real-time system monitoring command used to view running processes and resource utilization, such as CPU and memory.
 
----
+## Q16. What Is sar?
 
-Q16. What is sar?
-
-"sar" means:
-
-«System Activity Reporter»
+`sar` stands for **System Activity Reporter**.
 
 It can provide resource usage information over time when data collection is configured.
 
-CPU
+### CPU Statistics
 
+```bash
 sar -u
+```
 
-Memory
+### Memory Statistics
 
+```bash
 sar -r
+```
 
-Interview answer
+### Interview Answer
 
-«“sar is used to collect and report historical system activity. For example, sar -u provides CPU-related statistics and sar -r provides memory-related statistics.”»
+`sar` is used to collect and report system activity statistics. For example, `sar -u` provides CPU-related statistics, while `sar -r` provides memory-related statistics.
 
 ---
 
-📂 PART 16 — LINUX FILE PERMISSIONS
+# 📂 PART 16 — LINUX FILE PERMISSIONS
 
-Q17. Explain Linux file permissions.
+## Q17. Explain Linux File Permissions.
 
 Linux permissions have three categories:
 
-User
-Group
-Others
+- User.
+- Group.
+- Others.
 
-And three basic permissions:
+### Three Basic Permissions
 
-r = read
-w = write
-x = execute
+| Permission | Meaning | Numeric Value |
+|---|---|---:|
+| `r` | Read | 4 |
+| `w` | Write | 2 |
+| `x` | Execute | 1 |
 
-Example:
+### Example
 
+```text
 -rwxr-xr--
+```
 
-Break it down:
+Breakdown:
 
-User    → rwx
-Group   → r-x
-Others  → r--
+| Category | Permission | Meaning |
+|---|---|---|
+| User | `rwx` | Read, write, execute |
+| Group | `r-x` | Read and execute |
+| Others | `r--` | Read only |
 
-Numeric permissions
-
-r = 4
-w = 2
-x = 1
-
-For example:
-
-755
-
-means:
-
-Owner  → rwx
-Group  → r-x
-Others → r-x
-
-Useful commands
-
-ls -l
-chmod
-chown
-chgrp
-
----
-
-👤 PART 17 — USERS AND GROUPS
-
-Q18. How do I check the current user?
-
-whoami
-
-For more information:
-
-id
-
-To check groups:
-
-groups
-
-Create a user
-
-useradd -m developer
-
-Set password
-
-passwd developer
-
-Create a group
-
-groupadd developers
-
-Add user to group
-
-usermod -aG developers developer
-
----
-
-📦 PART 18 — SOFTWARE MANAGEMENT
-
-Q19. What is apt update vs apt upgrade?
-
-"apt update"
-
-Refreshes package information.
-
-apt update
-
-"apt upgrade"
-
-Upgrades installed packages.
-
-apt upgrade
-
-Install
-
-apt install <package>
-
-Remove
-
-apt remove <package>
-
-Easy memory trick
-
-update
-   ↓
-Refresh information
-
-upgrade
-   ↓
-Upgrade packages
-
----
-
-⚙️ PART 19 — SERVICES
-
-Q20. What is a service?
-
-A service is a background functionality managed by the operating system/service manager.
+### Numeric Permissions
 
 For example:
 
-systemctl status nginx
-
-Start
-
-systemctl start nginx
-
-Stop
-
-systemctl stop nginx
-
-Restart
-
-systemctl restart nginx
-
-Enable at boot
-
-systemctl enable nginx
-
-Disable automatic startup
-
-systemctl disable nginx
-
-Logs
-
-journalctl -u nginx
-
-Important difference
-
-start
-  ↓
-Starts it now
-
-enable
-  ↓
-Configures it to start automatically at boot
-
----
-
-🕐 PART 20 — DATE, TIME AND NTP
-
-Q21. How do I check system time?
-
-I use:
-
-date
-
-For system time configuration:
-
-timedatectl
-
-NTP
-
-NTP means:
-
-«Network Time Protocol»
-
-It synchronizes a system's clock with a reliable time source.
-
-Why is correct time important?
-
-Correct time is important for:
-
-- Logs
-- Monitoring
-- Authentication
-- Scheduled tasks
-- Troubleshooting
-
----
-
-⏰ PART 21 — CRON
-
-Q22. What is cron?
-
-Cron is a Linux scheduler.
-
-It allows me to automatically run commands at scheduled times.
-
-List jobs
-
-crontab -l
-
-Edit jobs
-
-crontab -e
-
-Example
-
-0 22 * * * /home/developer/backup.sh
+```bash
+chmod 755 script.sh
+```
 
 This means:
 
-«Run "backup.sh" every day at 10 PM.»
+- Owner: `rwx` = 7.
+- Group: `r-x` = 5.
+- Others: `r-x` = 5.
 
-Cron structure
+### Useful Commands
 
-Minute
-Hour
-Day of Month
-Month
-Day of Week
+```bash
+ls -l
+```
 
----
+```bash
+chmod 755 script.sh
+```
 
-🌐 PART 22 — PING AND TRACERT
+```bash
+chown developer file.txt
+```
 
-Q23. How does ping work?
+```bash
+chgrp developers file.txt
+```
 
-"ping" checks whether a destination is reachable using:
+### Interview Answer
 
-«ICMP Echo Request and Echo Reply»
-
-Simple flow:
-
-Your computer
-     ↓
-ICMP Echo Request
-     ↓
-Server
-     ↓
-ICMP Echo Reply
-     ↓
-Your computer
-
-Example:
-
-ping example.com
+Linux permissions control who can read, write, or execute a file. Permissions are assigned to the owner, group, and others. I use `ls -l` to view permissions and `chmod` to change them.
 
 ---
 
-Q24. How does tracert/traceroute work?
+# 👤 PART 17 — USERS AND GROUPS
 
-It helps show the path/hops packets take toward a destination.
+## Q18. How Do You Manage Users and Groups in Linux?
 
-Windows
+### Check the Current User
 
-tracert example.com
+```bash
+whoami
+```
 
-Linux
+### Display User and Group Information
 
-traceroute example.com
+```bash
+id
+```
 
-It is useful when troubleshooting where along a path connectivity may be failing.
+### Check Group Membership
 
----
+```bash
+groups
+```
 
-🌐 PART 23 — WHAT HAPPENS WHEN I TYPE AMAZON.COM?
+### Create a User
 
-This was already covered in networking, so today I only revise it.
+```bash
+sudo useradd -m developer
+```
 
-Type amazon.com
-       ↓
-DNS
-       ↓
-Get IP address
-       ↓
-Routing
-       ↓
-TCP 3-way handshake
-       ↓
-TLS handshake
-       ↓
-HTTPS request
-       ↓
-Server
-       ↓
-HTTPS response
-       ↓
-Browser displays page
+The `-m` option creates the user's home directory.
 
-Interview answer
+### Set the User's Password
 
-«“When I enter amazon.com, the browser first needs the server's IP address, so DNS resolution occurs. The system then determines the route to that IP. For a TCP-based HTTPS connection, TCP establishes the connection using the three-way handshake. TLS then establishes secure communication and authenticates the server using its certificate. After that, the browser sends the HTTPS request and receives the response.”»
+```bash
+sudo passwd developer
+```
 
----
+### Create a Group
 
-📡 PART 24 — DHCP DORA
+```bash
+sudo groupadd developers
+```
 
-This is another networking topic that I should know for my interview question bank.
+### Add a User to a Supplementary Group
 
-DORA
+```bash
+sudo usermod -aG developers developer
+```
 
-D → Discover
-O → Offer
-R → Request
-A → Acknowledgement
+The `-aG` options append the user to the specified supplementary group without replacing existing supplementary group memberships.
 
-Flow
+### Interview Answer
 
-Client
-  ↓
-DHCP Discover
-  ↓
-DHCP Server
-  ↓
-DHCP Offer
-  ↓
-Client
-  ↓
-DHCP Request
-  ↓
-DHCP Server
-  ↓
-DHCP ACK
-
-Why is Discover broadcast?
-
-The client initially doesn't know where the DHCP server is.
-
-Important broadcast/unicast detail
-
-- Discover is broadcast.
-- Request is commonly broadcast so DHCP servers can see which offer was selected.
-- Offer and ACK can be broadcast or unicast depending on the DHCP exchange/client state.
-
-Interview answer
-
-«“DORA stands for Discover, Offer, Request and Acknowledgement. The client sends a DHCP Discover to find a DHCP server. The server responds with an Offer. The client sends a Request for the selected configuration, and the server sends an Acknowledgement confirming the lease.”»
+I use `whoami` to check the current user, `id` to view user and group IDs, and `groups` to view group membership. I can create users with `useradd`, create groups with `groupadd`, and add users to supplementary groups with `usermod -aG`.
 
 ---
 
-🏆 FINAL CLOUD SUPPORT TROUBLESHOOTING CHEAT SHEET
+# 📦 PART 18 — SOFTWARE MANAGEMENT
 
-This is the troubleshooting flow I should remember.
+## Q19. What Is the Difference Between apt update and apt upgrade?
 
-                CUSTOMER ISSUE
-                      ↓
-              Understand problem
-                      ↓
-               Check exact error
-                      ↓
-              Check basic health
-                      ↓
-          ┌───────────┼───────────┐
-          ↓           ↓           ↓
-         CPU        Memory       Disk
-          ↓           ↓           ↓
-       Processes     Swap       Inodes
-          ↓           ↓           ↓
-          └───────────┼───────────┘
-                      ↓
-                    Network
-                      ↓
-                     Port
-                      ↓
-                   Service
-                      ↓
-                 Application
-                      ↓
-                    Logs
-                      ↓
-                 Find Cause
-                      ↓
-                     Fix
-                      ↓
-                   Verify
+### apt update
 
----
+Refreshes the local package index from configured repositories.
 
-🔥 MY GOLDEN RULE
+```bash
+sudo apt update
+```
 
-«Don't troubleshoot by guessing. Troubleshoot by collecting evidence.»
+### apt upgrade
 
-When a customer reports an issue, I should:
+Upgrades installed packages when updates are available.
 
-Understand
-    ↓
-Check basics
-    ↓
-Collect evidence
-    ↓
-Find the failing layer
-    ↓
-Identify root cause
-    ↓
-Fix
-    ↓
-Verify
+```bash
+sudo apt upgrade
+```
 
-The goal is not just to make a command succeed.
+### Install a Package
 
-The goal is to verify that the actual customer problem is solved.
+```bash
+sudo apt install nginx
+```
+
+### Remove a Package
+
+```bash
+sudo apt remove nginx
+```
+
+### Easy Memory Trick
+
+```mermaid
+flowchart TD
+    A["apt update"] --> B["Refresh Package Information"]
+    B --> C["apt upgrade"]
+    C --> D["Upgrade Installed Packages"]
+```
+
+### Interview Answer
+
+`apt update` refreshes package information from configured repositories, while `apt upgrade` upgrades installed packages using the updated package information.
 
 ---
 
-🎯 FINAL OS INTERVIEW CHECKLIST
+# ⚙️ PART 19 — SERVICES AND SYSTEMD
 
-Interview Topic| Status
-Boot process| ✅
-Boot troubleshooting| ✅
-Bootable Device Not Found| ✅
-Slow Linux machine| ✅
-CPU utilization| ✅
-"top"| ✅
-"sar"| ✅
-Paging| ✅
-System calls| ✅
-"fork()"| ✅
-Process lifecycle| ✅
-Disk free space| ✅
-Inodes| ✅
-File creation failure| ✅
-Heating server| ✅
-SSH troubleshooting| ✅
-Listening ports| ✅
-File permissions| ✅
-Users & groups| ✅
-Software management| ✅
-Services| ✅
-Date/time| ✅
-NTP| ✅
-Cron| ✅
-Ping| ✅
-Tracert/Traceroute| ✅
-Amazon.com flow| ✅
-DHCP DORA| ✅
+## Q20. What Is a Service?
+
+A service is a background program or functionality managed by the operating system's service manager.
+
+For example, Nginx can run as a service.
+
+### Check Service Status
+
+```bash
+sudo systemctl status nginx
+```
+
+### Start a Service
+
+```bash
+sudo systemctl start nginx
+```
+
+### Stop a Service
+
+```bash
+sudo systemctl stop nginx
+```
+
+### Restart a Service
+
+```bash
+sudo systemctl restart nginx
+```
+
+### Enable Automatic Startup at Boot
+
+```bash
+sudo systemctl enable nginx
+```
+
+### Disable Automatic Startup at Boot
+
+```bash
+sudo systemctl disable nginx
+```
+
+### Check Service Logs
+
+```bash
+sudo journalctl -u nginx
+```
+
+### Important Difference
+
+| Command | Purpose |
+|---|---|
+| `start` | Starts the service now |
+| `stop` | Stops the service now |
+| `restart` | Stops and starts the service |
+| `enable` | Configures automatic startup at boot |
+| `disable` | Disables automatic startup at boot |
+| `status` | Displays service status |
+
+**Remember:** Starting a service does not automatically enable it to start at boot.
+
+### Interview Answer
+
+A service is a background program managed by the operating system. I use `systemctl status` to check its state, `start` to start it, `stop` to stop it, and `enable` to configure automatic startup at boot.
 
 ---
 
-🏆 DAY 17 = COMPLETE
+# 🕐 PART 20 — DATE, TIME AND NTP
 
-🎉 OS ROADMAP = 100% COMPLETE
+## Q21. How Do You Check System Time?
 
-I have now covered the OS syllabus + OS interview questions I collected.
+### Display the Current Date and Time
 
-My main focus going into a Cloud Support interview should be:
+```bash
+date
+```
 
-«Concept → Command → Troubleshooting → Evidence → Root Cause → Fix → Verify»
+### Check System Time Configuration
 
-I should not just memorize commands.
+```bash
+timedatectl
+```
 
-I should understand why I am running each command and what information I am looking for.
+### What Is NTP?
 
-🚀 OS ROADMAP COMPLETE
+NTP stands for **Network Time Protocol**.
 
-DAY 1  → Boot Process
-DAY 2  → Linux Basics & System Information
-DAY 3  → Processes & Process Management
-DAY 4  → CPU, top & sar
-DAY 5  → Memory Management
-DAY 6  → Disk, Filesystems & Inodes
-DAY 7  → File Permissions
-DAY 8  → Users & Groups
-DAY 9  → Software Management
-DAY 10 → Services & systemd
-DAY 11 → SSH & Remote Management
-DAY 12 → Network Services
-DAY 13 → Date, Time & NTP
-DAY 14 → System Automation
-DAY 15 → Server Heating & Resource Troubleshooting
-DAY 16 → Complete OS Troubleshooting
-DAY 17 → Final OS Interview Revision
+It synchronizes a system's clock with a reliable time source.
 
-🏁 FINAL MINDSET
+### Why Is Correct Time Important?
 
-«I don't troubleshoot by guessing. I troubleshoot by collecting evidence.»
+Correct time is important for:
 
-«I don't just fix the server. I identify the root cause and verify the actual problem is resolved.»
+- Logs.
+- Monitoring.
+- Authentication.
+- Scheduled tasks.
+- Troubleshooting.
 
-«I think layer-by-layer.»
+### Interview Answer
 
-Hardware
-   ↓
-Boot
-   ↓
-OS
-   ↓
-CPU / Memory / Disk
-   ↓
-Network
-   ↓
-Port
-   ↓
-Service
-   ↓
-Application
-   ↓
-Logs
-   ↓
-Root Cause
-   ↓
-Fix
-   ↓
-Verify
+I use `date` to display the current date and time and `timedatectl` to inspect system time configuration. NTP synchronizes system clocks with reliable time sources, which is important for logs, monitoring, and authentication.
 
-🔥 DAY 17 COMPLETE.
-🏆 OS ROADMAP 100% COMPLETE.
+---
+
+# ⏰ PART 21 — CRON
+
+## Q22. What Is Cron?
+
+Cron is a Linux job scheduler that allows commands and scripts to run automatically at scheduled times.
+
+### List Scheduled Jobs
+
+```bash
+crontab -l
+```
+
+### Edit Scheduled Jobs
+
+```bash
+crontab -e
+```
+
+### Example
+
+```cron
+0 22 * *
