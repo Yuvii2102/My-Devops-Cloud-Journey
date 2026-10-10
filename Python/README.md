@@ -1,4 +1,4 @@
-# 🐍 How to Run Python Code Using Command Prompt (CMD)
+# 🐍 How to Run Python Code Using Command Prompt.. (CMD)
 
 This guide explains how to install Python on Windows and run your first Python program using Command Prompt (CMD), without using VS Code.
 
