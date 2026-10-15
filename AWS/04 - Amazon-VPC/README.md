@@ -4,7 +4,7 @@
 
 </div>
 
-## 🔐 Amazon VPC — Virtual Private Cloud.
+## 🔐 Amazon VPC — Virtual Private Cloud
 
 Bro, VPC is a **very important AWS networking topic**.
 
