@@ -8,11 +8,6 @@ Today is the final day of my Operating Systems roadmap.
 
 I have already learned the concepts. Today, I'm converting everything into interview-ready answers.
 
-### My Interview Rule
-
-**Explain the concept clearly → Give troubleshooting steps → Mention commands when useful.**
-
-I don't need to give a huge textbook answer in an interview. I need to demonstrate that I understand the concept and know how to troubleshoot it.
 
 ---
 
