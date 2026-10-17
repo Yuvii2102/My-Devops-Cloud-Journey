@@ -1,7 +1,5 @@
 # 🚀 DAY 17 — FINAL OS INTERVIEW REVISION
 
-**Cloud Support Engineer Preparation | Linux | Operating Systems | Interview Revision**
-
 ---
 
 ## 🎯 What I'm Learning Today
