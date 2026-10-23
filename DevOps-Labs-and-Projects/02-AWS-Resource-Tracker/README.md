@@ -29,29 +29,6 @@ Today I built a simple **AWS Resource Tracker** using **Bash Shell Scripting + A
 
 The goal of this project was to execute multiple AWS CLI commands automatically from a Bash script and display information about AWS resources available in the AWS account.
 
-### 🎯 Today I learned how to:
-
-1. Connect to an AWS EC2 instance using **EC2 Instance Connect**
-2. Work with the Ubuntu Linux terminal
-3. Use the **AWS CLI** from an EC2 instance
-4. Configure AWS CLI using `aws configure`
-5. Understand AWS Access Key ID and Secret Access Key
-6. Understand AWS CLI authentication
-7. Create a Bash shell script
-8. Create and edit a script using `vim`
-9. Add comments and documentation to a Bash script
-10. Use `set -x` for Bash debugging
-11. Execute AWS CLI commands from a shell script
-12. List AWS S3 buckets
-13. List AWS EC2 instances
-14. List AWS Lambda functions
-15. List AWS IAM users
-16. Give execute permission to a shell script using `chmod`
-17. Execute a `.sh` file
-18. Understand how Bash executes commands
-19. Build a basic AWS resource visibility/monitoring script
-20. Understand how Shell Scripting can automate AWS CLI operations
-
 ---
 
 # ☁️ 02 — PROJECT OVERVIEW
