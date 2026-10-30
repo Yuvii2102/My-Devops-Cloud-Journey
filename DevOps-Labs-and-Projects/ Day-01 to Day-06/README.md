@@ -1,180 +1,144 @@
-<div align="center">
+# My DevOps & Cloud Learning Journey
 
-# ☁️ DEVOPS CLOUD JOURNEY
+## Day 01 – Day 06
 
-## DAY 01 → DAY 06
-
-### 🚀 From Zero to DevOps Engineer
-
-<p>
-<img src="https://img.shields.io/badge/DEVOPS-Learning-2496ED?style=for-the-badge&logo=docker&logoColor=white"/>
-<img src="https://img.shields.io/badge/CLOUD-AWS-FF9900?style=for-the-badge&logo=amazonaws&logoColor=white"/>
-<img src="https://img.shields.io/badge/LINUX-Learning-FCC624?style=for-the-badge&logo=linux&logoColor=black"/>
-<img src="https://img.shields.io/badge/GIT-GitHub-F05032?style=for-the-badge&logo=git&logoColor=white"/>
-<img src="https://img.shields.io/badge/SSH-Authentication-2C3E50?style=for-the-badge&logo=openssh&logoColor=white"/>
-</p>
-
-**My journey from DevOps fundamentals to Linux, AWS, Shell Scripting, Git & GitHub**
-
-</div>
+My learning journey from DevOps fundamentals to Linux, AWS, Shell Scripting, Git and GitHub.
 
 ---
 
-# 🗺️ MY JOURNEY SO FAR
+# Learning Roadmap
 
 ```mermaid
 flowchart LR
-    D1["🟢 DAY 01<br/>DevOps Fundamentals"]
-    D2["🔵 DAY 02<br/>SDLC • HLD • LLD"]
-    D3["🟣 DAY 03<br/>Servers • Virtualization • Cloud"]
-    D4["🟠 DAY 04<br/>Linux • AWS CLI • IaC"]
-    D5["🟡 DAY 05<br/>Shell Scripting • Monitoring • Git"]
-    D6["🔴 DAY 06<br/>Git • GitHub • Remote • SSH"]
+    D1["Day 01<br/>DevOps Fundamentals"]
+    D2["Day 02<br/>SDLC, HLD & LLD"]
+    D3["Day 03<br/>Servers, Virtualization & Cloud"]
+    D4["Day 04<br/>Linux, AWS CLI & IaC"]
+    D5["Day 05<br/>Shell Scripting & Monitoring"]
+    D6["Day 06<br/>Git, GitHub & SSH"]
 
     D1 --> D2 --> D3 --> D4 --> D5 --> D6
 ```
 
----
+# Day 01 – DevOps Fundamentals
 
-# 🟢 DAY 01 — DEVOPS FUNDAMENTALS
+## What is DevOps?
 
-## 📚 What I Learned
+DevOps is a way of working where Development and Operations teams work together to build, test and deploy software faster.
 
-DevOps is a way of working where **Development and Operations work together** to build, test, deploy and maintain software faster and more reliably.
+It focuses on automation, collaboration, monitoring and continuous improvement.
 
-## 🔑 Concepts Covered
+### Concepts I Learned
 
-- ☁️ What is DevOps?
-- 🤝 Development + Operations
-- 🤖 Automation
-- ⚡ Faster delivery
-- 🛡️ Reliability
-- 📊 Monitoring
-- 🧪 Continuous Testing
-- 🔄 Feedback
-- ♻️ Continuous Improvement
-- 👥 Collaboration
-- 🚫 Reducing manual work
+- Development and Operations
+- Automation
+- Continuous Integration
+- Continuous Delivery
+- Monitoring
+- Reliability
+- Feedback
+- Continuous Improvement
 
-## 🔄 DevOps Lifecycle
+## DevOps Lifecycle
+
+The DevOps lifecycle explains how software is planned, developed, tested, deployed and maintained.
 
 ```mermaid
 flowchart LR
-    A["📋 Plan"]
-    B["📝 Define"]
-    C["🎨 Design"]
-    D["💻 Build"]
-    E["🧪 Test"]
-    F["🚀 Deploy"]
-    G["📊 Monitor"]
-    H["🔄 Improve"]
-
-    A --> B --> C --> D --> E --> F --> G --> H
+    A["Plan"] --> B["Define"]
+    B --> C["Design"]
+    C --> D["Build"]
+    D --> E["Test"]
+    E --> F["Deploy"]
+    F --> G["Monitor"]
+    G --> H["Improve"]
     H --> A
 ```
 
-## 🤝 Development + Operations
+## Development and Operations
+
+Both teams work together to improve the software delivery process.
 
 ```mermaid
 flowchart LR
-    DEV["👨‍💻 Development"]
-    OPS["⚙️ Operations"]
-    AUTO["🤖 Automation"]
-    MON["📊 Monitoring"]
-    FEEDBACK["🔄 Feedback"]
-
-    DEV --> AUTO
-    OPS --> AUTO
-    AUTO --> MON
-    MON --> FEEDBACK
-    FEEDBACK --> DEV
-    FEEDBACK --> OPS
+    DEV["Development"] --> AUTO["Automation"]
+    OPS["Operations"] --> AUTO
+    AUTO --> MON["Monitoring"]
+    MON --> FB["Feedback"]
+    FB --> DEV
+    FB --> OPS
 ```
 
-> 💡 **DevOps = Collaboration + Automation + Reliability + Continuous Improvement**
+**My takeaway:** DevOps is not just about tools. It is about collaboration, automation and continuous improvement.
 
 ---
 
-# 🔵 DAY 02 — SDLC, HLD & LLD
+# Day 02 – SDLC, HLD & LLD
 
-## 📋 SDLC
+## SDLC – Software Development Life Cycle
 
-**SDLC — Software Development Life Cycle**
+SDLC is the process followed to develop and deliver software.
 
-The process used to develop and deliver software.
+### Stages of SDLC
 
-## 🔑 Concepts Covered
-
-- 📋 Planning
-- 📝 Requirements
-- 🎨 Design
-- 💻 Development
-- 🧪 Testing
-- 🚀 Deployment
-- 📊 Monitoring
-- 🔄 Feedback
+- Planning
+- Requirement Gathering
+- Design
+- Development
+- Testing
+- Deployment
+- Monitoring
+- Feedback
 
 ```mermaid
-flowchart LR
-    PLAN["📋 Plan"]
-    REQ["📝 Requirements"]
-    DESIGN["🎨 Design"]
-    DEV["💻 Development"]
-    TEST["🧪 Testing"]
-    DEPLOY["🚀 Deployment"]
-    MON["📊 Monitoring"]
-    FEEDBACK["🔄 Feedback"]
-
-    PLAN --> REQ --> DESIGN --> DEV --> TEST --> DEPLOY --> MON --> FEEDBACK
-    FEEDBACK --> REQ
+flowchart TD
+    A["Planning"] --> B["Requirements"]
+    B --> C["Design"]
+    C --> D["Development"]
+    D --> E["Testing"]
+    E --> F["Deployment"]
+    F --> G["Monitoring"]
+    G --> H["Feedback"]
+    H --> B
 ```
 
-## 📄 SRS — Software Requirements Specification
+## SRS – Software Requirements Specification
 
-### Learned
+SRS is a document that explains what a software application should do.
 
-- Understanding requirements
-- Defining what the software should do
+### Concepts I Learned
+
+- Understanding user requirements
 - Functional requirements
-- Understanding user needs
-- Using requirements before designing the system
+- Defining software features
+- Identifying user needs
+- Preparing requirements before development
 
----
+## HLD – High Level Design
 
-## 🏗️ HLD — High Level Design
+HLD explains the overall architecture of a system. It gives us the big picture of how different components work together.
 
-HLD describes the **big picture** of a system.
-
-### Learned
+### Concepts I Learned
 
 - System architecture
 - Major components
 - Services
 - Technology choices
 - Communication between components
-- Overall system structure
 
 ```mermaid
 flowchart TD
-    USER["👤 User"]
-    APP["🌐 Application"]
-    API["🔌 API"]
-    DB["🗄️ Database"]
-    CLOUD["☁️ Cloud Infrastructure"]
-
-    USER --> APP
-    APP --> API
-    API --> DB
-    API --> CLOUD
+    U["User"] --> APP["Application"]
+    APP --> API["API"]
+    API --> DB["Database"]
+    API --> CLOUD["Cloud Infrastructure"]
 ```
 
----
+## LLD – Low Level Design
 
-## 🔍 LLD — Low Level Design
+LLD explains how each component is implemented in detail.
 
-LLD describes the **detailed implementation** of the system.
-
-### Learned
+### Concepts I Learned
 
 - Classes
 - Methods
@@ -183,176 +147,138 @@ LLD describes the **detailed implementation** of the system.
 - Component-level implementation
 - Validation
 
-## ⚡ HLD vs LLD
+## HLD vs LLD
 
-| 🏗️ HLD | 🔍 LLD |
+| HLD | LLD |
 |---|---|
 | Big picture | Detailed picture |
-| Architecture | Implementation |
-| Major components | Classes & methods |
+| System architecture | Implementation details |
+| Major components | Classes and methods |
 | System level | Component level |
 | What components exist | How components work |
 
-> **HLD = Big Picture**  
-> **LLD = Detailed Implementation**
+**My takeaway:** HLD explains the overall system, while LLD explains how its individual components work.
 
 ---
 
-# 🟣 DAY 03 — SERVERS, VIRTUALIZATION & CLOUD
+# Day 03 – Servers, Virtualization & Cloud
 
-## 🖥️ Servers
+## What is a Server?
 
-A server is a computer that provides resources or services to other systems.
+A server is a computer that provides resources or services to other computers.
 
-### 🔑 Server Components
+### Main Server Components
 
-- ⚙️ CPU
-- 🧠 RAM
-- 💾 Storage
-- 🌐 Network
-- 🐧 Operating System
-- ⚙️ Applications
+- CPU
+- RAM
+- Storage
+- Network
+- Operating System
+- Applications
 
 ```mermaid
 flowchart TD
-    SERVER["🖥️ Physical Server"]
-
-    CPU["⚙️ CPU"]
-    RAM["🧠 RAM"]
-    STORAGE["💾 Storage"]
-    NETWORK["🌐 Network"]
-    OS["🐧 Operating System"]
-
-    SERVER --> CPU
-    SERVER --> RAM
-    SERVER --> STORAGE
-    SERVER --> NETWORK
-    SERVER --> OS
+    S["Physical Server"]
+    S --> CPU["CPU"]
+    S --> RAM["RAM"]
+    S --> DISK["Storage"]
+    S --> NET["Network"]
+    S --> OS["Operating System"]
 ```
 
----
+## Virtualization
 
-## ⚙️ Virtualization
+Virtualization allows multiple virtual machines to run on a single physical server.
 
-Virtualization allows multiple virtual machines to run on one physical server.
+### Concepts I Learned
 
-### 🔑 Concepts Covered
-
-- Virtualization
-- Virtual Machine
+- Virtual Machines
 - Hypervisor
-- Resource allocation
-- Resource sharing
-- Logical isolation
-- Efficient hardware usage
+- Resource Allocation
+- Resource Sharing
+- Logical Isolation
+- Hardware Utilization
 
 ```mermaid
 flowchart TD
-    HARDWARE["🖥️ Physical Server"]
-    HYPERVISOR["⚙️ Hypervisor"]
-
-    VM1["💻 VM 1"]
-    VM2["💻 VM 2"]
-    VM3["💻 VM 3"]
-
-    HARDWARE --> HYPERVISOR
-    HYPERVISOR --> VM1
-    HYPERVISOR --> VM2
-    HYPERVISOR --> VM3
+    H["Physical Server"]
+    H --> HV["Hypervisor"]
+    HV --> VM1["Virtual Machine 1"]
+    HV --> VM2["Virtual Machine 2"]
+    HV --> VM3["Virtual Machine 3"]
 ```
 
----
+### Logical Isolation
 
-## 🔒 Logical Isolation
+Each virtual machine works like an independent environment even though they share the same physical hardware.
 
-Each VM behaves like an independent environment even though multiple VMs can use the same physical hardware.
+## Cloud Computing
 
-```mermaid
-flowchart TD
-    SERVER["🖥️ One Physical Server"]
-    HYP["⚙️ Hypervisor"]
+Cloud computing allows us to use computing resources over the internet without managing all the physical hardware ourselves.
 
-    VM1["💻 VM 1<br/>Isolated"]
-    VM2["💻 VM 2<br/>Isolated"]
-    VM3["💻 VM 3<br/>Isolated"]
+### Concepts I Learned
 
-    SERVER --> HYP
-    HYP --> VM1
-    HYP --> VM2
-    HYP --> VM3
-```
-
----
-
-## ☁️ Cloud Computing
-
-### Concepts Covered
-
-- Cloud infrastructure
-- Virtual servers
-- Compute resources
+- Cloud Infrastructure
+- Virtual Servers
+- Compute Resources
 - AWS
 - EC2
 - APIs
 - Automation
 
----
+## AWS EC2
 
-## ☁️ AWS EC2
+Amazon EC2 provides virtual servers in AWS. We can launch instances and use them to run applications.
 
-EC2 provides virtual servers in AWS.
+### Concepts I Learned
 
-### Concepts Covered
-
-- EC2 Instance
-- AMI
-- Instance Type
-- Key Pair
+- EC2 Instances
+- AMI (Amazon Machine Image)
+- Instance Types
+- Key Pairs
 - Cloud Infrastructure
-- Connecting to an EC2 server
+- Connecting to EC2
 
 ```mermaid
 flowchart TD
-    USER["👨‍💻 User"]
-    AWS["☁️ AWS"]
-    EC2["🖥️ EC2 Instance"]
-    OS["🐧 Linux"]
-    APP["⚙️ Applications"]
-
-    USER --> AWS
-    AWS --> EC2
-    EC2 --> OS
-    OS --> APP
+    U["User"] --> AWS["AWS"]
+    AWS --> EC2["EC2 Instance"]
+    EC2 --> OS["Linux"]
+    OS --> APP["Applications"]
 ```
 
----
+## API – Application Programming Interface
 
-## 🔌 API
+An API allows one application or system to communicate with another.
 
-An API allows one system or application to communicate with another service.
+For example, when we run an AWS CLI command, it sends a request to an AWS service through an API.
 
 ```mermaid
 sequenceDiagram
-    participant U as 👨‍💻 User
-    participant CLI as 💻 CLI
-    participant API as 🔌 API
-    participant AWS as ☁️ AWS
+    participant U as User
+    participant CLI as AWS CLI
+    participant API as AWS API
+    participant AWS as AWS Service
 
     U->>CLI: Run command
     CLI->>API: Send request
     API->>AWS: Process request
     AWS-->>API: Response
-    API-->>CLI: Response
+    API-->>CLI: Return response
     CLI-->>U: Display result
 ```
 
+**My takeaway:** Virtualization helps us use hardware efficiently, while cloud computing provides access to computing resources on demand.
+
 ---
 
-# 🟠 DAY 04 — LINUX, AWS CLI & INFRASTRUCTURE
+# Day 04 – Linux, AWS CLI & Infrastructure as Code
 
-## 🐧 Operating System
+## Operating System
 
-### Concepts Covered
+An Operating System manages the hardware and software resources of a computer.
+
+### Concepts I Learned
 
 - Operating System
 - Kernel
@@ -362,28 +288,11 @@ sequenceDiagram
 - Hardware
 - Applications
 
-```mermaid
-flowchart TD
-    APP["📱 Applications"]
-    LIB["📚 System Libraries"]
-    SHELL["🐚 Shell"]
-    KERNEL["⚙️ Kernel"]
-    HARDWARE["🖥️ Hardware"]
+## Kernel
 
-    APP --> LIB
-    APP --> SHELL
-    LIB --> KERNEL
-    SHELL --> KERNEL
-    KERNEL --> HARDWARE
-```
+The kernel is the core part of an operating system. It manages communication between software and hardware.
 
----
-
-## ⚙️ Kernel
-
-The kernel is the core part of the operating system.
-
-### It manages
+### It Manages
 
 - CPU
 - Memory
@@ -394,162 +303,113 @@ The kernel is the core part of the operating system.
 
 ```mermaid
 flowchart TD
-    USER["👤 User"]
-    SHELL["🐚 Shell"]
-    KERNEL["⚙️ Kernel"]
-
-    CPU["⚙️ CPU"]
-    RAM["🧠 RAM"]
-    DISK["💾 Storage"]
-    NET["🌐 Network"]
-
-    USER --> SHELL
-    SHELL --> KERNEL
-
-    KERNEL --> CPU
-    KERNEL --> RAM
-    KERNEL --> DISK
-    KERNEL --> NET
+    USER["User"] --> SHELL["Shell"]
+    SHELL --> KERNEL["Kernel"]
+    KERNEL --> CPU["CPU"]
+    KERNEL --> RAM["Memory"]
+    KERNEL --> DISK["Storage"]
+    KERNEL --> NET["Network"]
 ```
 
----
+## System Libraries
 
-## 📚 System Libraries
-
-System libraries provide functions that applications can use to communicate with the operating system.
+System libraries provide functions that applications use to interact with the operating system.
 
 ```mermaid
 flowchart LR
-    APP["📱 Application"]
-    LIB["📚 System Libraries"]
-    KERNEL["⚙️ Kernel"]
-    HW["🖥️ Hardware"]
-
-    APP --> LIB
-    LIB --> KERNEL
-    KERNEL --> HW
+    APP["Application"] --> LIB["System Libraries"]
+    LIB --> KERNEL["Kernel"]
+    KERNEL --> HW["Hardware"]
 ```
 
----
+## Compiler
 
-## 🔨 Compiler
-
-A compiler converts source code into a form that can be executed by the computer.
+A compiler converts source code into a form that can be executed by a computer.
 
 ```mermaid
 flowchart LR
-    SOURCE["📝 Source Code"]
-    COMPILER["🔨 Compiler"]
-    CODE["⚙️ Compiled Code"]
-    CPU["🖥️ CPU"]
-
-    SOURCE --> COMPILER
-    COMPILER --> CODE
-    CODE --> CPU
+    A["Source Code"] --> B["Compiler"]
+    B --> C["Compiled Code"]
+    C --> D["Execution"]
 ```
 
----
+## Shell
 
-## 🐚 Shell
-
-A shell provides an interface between the user and the operating system.
+A shell provides an interface between the user and the operating system. We can use it to execute commands.
 
 ```mermaid
 flowchart LR
-    USER["👨‍💻 User"]
-    SHELL["🐚 Shell"]
-    KERNEL["⚙️ Kernel"]
-    HARDWARE["🖥️ Hardware"]
-
-    USER --> SHELL
-    SHELL --> KERNEL
-    KERNEL --> HARDWARE
+    U["User"] --> S["Shell"]
+    S --> K["Kernel"]
+    K --> H["Hardware"]
 ```
 
----
+## AWS CLI
 
-## ☁️ AWS CLI
+AWS CLI (Command Line Interface) allows us to manage AWS services using terminal commands.
 
-AWS CLI allows AWS services to be managed from the command line.
+Example:
 
 ```bash
 aws ec2 describe-instances
 ```
 
+This command displays information about EC2 instances.
+
 ```mermaid
 flowchart LR
-    USER["👨‍💻 User"]
-    CLI["💻 AWS CLI"]
-    API["🔌 AWS API"]
-    SERVICE["☁️ AWS Service"]
-    RESPONSE["📨 Response"]
-
-    USER --> CLI
-    CLI --> API
-    API --> SERVICE
-    SERVICE --> RESPONSE
-    RESPONSE --> CLI
-    CLI --> USER
+    U["User"] --> CLI["AWS CLI"]
+    CLI --> API["AWS API"]
+    API --> AWS["AWS Service"]
+    AWS --> R["Response"]
+    R --> CLI
+    CLI --> U
 ```
 
----
+## Infrastructure as Code (IaC)
 
-## 🏗️ Infrastructure as Code
+Infrastructure as Code allows us to create and manage infrastructure using code instead of manually creating resources.
 
-### Concepts Introduced
+### Tools I Learned About
 
-- Infrastructure as Code
-- CloudFormation
+- AWS CloudFormation
 - AWS CDK
 - Terraform
-- Automation
-- Infrastructure management
 
 ```mermaid
 flowchart TD
-    CODE["📝 Infrastructure Code"]
+    CODE["Infrastructure Code"]
+    CODE --> CF["CloudFormation"]
+    CODE --> CDK["AWS CDK"]
+    CODE --> TF["Terraform"]
 
-    CF["☁️ CloudFormation"]
-    CDK["💻 AWS CDK"]
-    TF["🔧 Terraform"]
-
-    INFRA["🏗️ Cloud Infrastructure"]
-
-    CODE --> CF
-    CODE --> CDK
-    CODE --> TF
-
-    CF --> INFRA
+    CF --> INFRA["Cloud Infrastructure"]
     CDK --> INFRA
     TF --> INFRA
 ```
 
----
+## EC2 Key Pair
 
-## 🔐 EC2 Key Pair
+An EC2 key pair is used to securely connect to an EC2 instance through SSH.
 
-A key pair is used to securely connect to an EC2 instance.
+It contains:
 
-```mermaid
-flowchart LR
-    KEY["🔑 Key Pair"]
-    PRIVATE["🔐 Private Key"]
-    PUBLIC["🔓 Public Key"]
-    EC2["🖥️ EC2"]
+- Public Key
+- Private Key
 
-    KEY --> PRIVATE
-    KEY --> PUBLIC
-    PRIVATE --> EC2
-    PUBLIC --> EC2
-```
+The public key is placed on the EC2 instance, while the private key stays with the user.
+
+**My takeaway:** Linux, AWS CLI and IaC are important foundations for managing cloud infrastructure.
 
 ---
 
-# 🟡 DAY 05 — SHELL SCRIPTING, LINUX MONITORING & GIT
+# Day 05 – Shell Scripting, Linux Monitoring & Git
 
-## 🐚 Shell Scripting
+## Shell Scripting
 
-Shell scripting allows multiple commands to be written and executed as a script.
+Shell scripting allows us to write multiple Linux commands in a file and execute them together.
+
+Example:
 
 ```bash
 #!/bin/bash
@@ -557,61 +417,51 @@ Shell scripting allows multiple commands to be written and executed as a script.
 echo "Hello DevOps"
 ```
 
----
-
-## 📜 Shell Script Flow
+## Shell Script Execution Flow
 
 ```mermaid
 flowchart TD
-    FILE["📄 script.sh"]
-    SHEBANG["#!/bin/bash"]
-    SHELL["🐚 Bash"]
-    COMMANDS["⚙️ Commands"]
-    OUTPUT["📤 Output"]
-
-    FILE --> SHEBANG
-    SHEBANG --> SHELL
-    SHELL --> COMMANDS
-    COMMANDS --> OUTPUT
+    A["script.sh"] --> B["Shebang"]
+    B --> C["Bash Interpreter"]
+    C --> D["Execute Commands"]
+    D --> E["Output"]
 ```
 
----
+## SH vs BASH
 
-## 🆚 SH vs BASH
+### /bin/sh
 
-### `/bin/sh`
+A path to a standard shell interface. The actual shell depends on the system.
 
-A standard shell interface.
+### /bin/bash
 
-### `/bin/bash`
-
-Bash shell with additional features.
+A path to the Bash shell, which provides additional scripting features.
 
 ### Shebang
+
+The shebang tells the system which interpreter to use when executing a script.
 
 ```bash
 #!/bin/sh
 ```
 
-or
+Or
 
 ```bash
 #!/bin/bash
 ```
 
-The shebang tells the system which interpreter should execute the script.
+## Vim Editor
 
----
+Vim is a text editor used to create and edit files directly from the terminal.
 
-## 📝 Vim
-
-Used to create and edit files from the terminal.
+Example:
 
 ```bash
 vim calculator.sh
 ```
 
-### Save and Exit Vim
+### Save and Exit
 
 ```text
 ESC
@@ -619,63 +469,57 @@ ESC
 ENTER
 ```
 
----
+## File Permissions
 
-## 🔐 File Permissions
+We can use `chmod` to change file permissions.
+
+Example:
 
 ```bash
 chmod +x script.sh
 ```
 
-This gives execute permission to the script.
+This adds execute permission to the script.
 
----
+## Shell Debugging
 
-## 🐛 Shell Debugging
+### set -x
 
-### `set -x`
-
-Shows commands while they execute.
+Displays commands while the script is running.
 
 ```bash
 set -x
 ```
 
-### `set -e`
+### set -e
 
-Stops the script when a command fails.
+Stops the script when a command fails with a non-zero exit status in applicable cases.
 
 ```bash
 set -e
 ```
 
-### `set -o`
+### set -o
 
-Shows shell options.
+Displays or manages shell options.
 
 ```bash
 set -o
 ```
 
----
+## grep
 
-## 🔎 grep
+`grep` is used to search for specific text in command output or files.
 
-`grep` is used to search for text.
+Example:
 
 ```bash
 ps -ef | grep amazon
 ```
 
----
+## Pipe (|)
 
-## 🔗 Pipe
-
-The pipe `|` sends the output of one command to another command.
-
-```bash
-command1 | command2
-```
+A pipe sends the output of one command as input to another command.
 
 Example:
 
@@ -685,83 +529,46 @@ ps -ef | grep amazon
 
 ```mermaid
 flowchart LR
-    CMD1["ps -ef"]
-    PIPE["|"]
-    CMD2["grep amazon"]
-    RESULT["📤 Filtered Output"]
-
-    CMD1 --> PIPE
-    PIPE --> CMD2
-    CMD2 --> RESULT
+    A["ps -ef"] --> B["Pipe |"]
+    B --> C["grep amazon"]
+    C --> D["Filtered Output"]
 ```
 
----
+## Linux Monitoring
 
-## 📊 Linux Monitoring
+I learned some basic commands to check server resources and running processes.
 
-### Commands Learned
-
-```bash
-top
-```
-
-Monitor running processes and resource usage.
-
-```bash
-df -h
-```
-
-Check disk usage.
-
-```bash
-free -h
-```
-
-Check memory usage.
-
-```bash
-ps -ef
-```
-
-View running processes.
+| Command | Purpose |
+|---|---|
+| `top` | Monitor running processes and resource usage |
+| `df -h` | Check disk usage |
+| `free -h` | Check memory usage |
+| `ps -ef` | View running processes |
 
 ```mermaid
 flowchart TD
-    SERVER["🖥️ Linux Server"]
+    SERVER["Linux Server"]
+    SERVER --> CPU["CPU"]
+    SERVER --> RAM["Memory"]
+    SERVER --> DISK["Disk"]
+    SERVER --> PROCESS["Processes"]
 
-    CPU["⚙️ CPU"]
-    RAM["🧠 Memory"]
-    DISK["💾 Disk"]
-    PROCESS["⚙️ Processes"]
-
-    MONITOR["📊 Monitoring Commands"]
-
-    SERVER --> CPU
-    SERVER --> RAM
-    SERVER --> DISK
-    SERVER --> PROCESS
-
-    CPU --> MONITOR
-    RAM --> MONITOR
-    DISK --> MONITOR
-    PROCESS --> MONITOR
+    CPU --> TOP["top"]
+    RAM --> FREE["free -h"]
+    DISK --> DF["df -h"]
+    PROCESS --> PS["ps -ef"]
 ```
 
----
+## Git Branching
 
-# 🌿 Git Branching
+A Git branch allows us to work on different features without directly changing the main branch.
 
-A Git branch allows development to happen separately without directly changing the main branch.
+### Branch Types
 
-### Concepts Covered
-
-- Branch
-- Main branch
-- Feature branch
-- Release branch
-- Hotfix branch
-- GitFlow
-- Merging
+- Main Branch
+- Feature Branch
+- Release Branch
+- Hotfix Branch
 
 ```mermaid
 gitGraph
@@ -771,268 +578,162 @@ gitGraph
     commit id: "Feature Work"
     checkout main
     merge feature
-    commit id: "Feature Merged"
+    commit id: "Updated Main"
 ```
 
----
+## GitFlow
 
-## 🔥 GitFlow
-
-```mermaid
-gitGraph
-    commit id: "Initial"
-    branch feature
-    checkout feature
-    commit id: "Feature"
-    checkout main
-    merge feature
-    branch release
-    checkout release
-    commit id: "Release Testing"
-    checkout main
-    merge release
-    branch hotfix
-    checkout hotfix
-    commit id: "Critical Fix"
-    checkout main
-    merge hotfix
-```
-
-### Branch Roles
+GitFlow is a branching model used to organize development and releases.
 
 | Branch | Purpose |
 |---|---|
-| 🌳 `main` | Production-ready code |
-| 🚀 `feature` | New feature development |
-| 📦 `release` | Release preparation |
-| 🔥 `hotfix` | Critical production fixes |
+| `main` | Production-ready code |
+| `feature` | Develop new features |
+| `release` | Prepare a new release |
+| `hotfix` | Fix critical production issues |
+
+**My takeaway:** Shell scripting helps automate repetitive tasks. Linux monitoring helps us understand server resources, and Git branching helps organize code changes.
 
 ---
 
-# 🔴 DAY 06 — GIT, GITHUB, REMOTE, CLONE, FORK & SSH
+# Day 06 – Git, GitHub, Remote, Clone, Fork & SSH
 
-## 🌳 Git Repository
+## Git Repository
 
-A Git repository stores project files and Git history.
+A Git repository stores project files and tracks their changes over time.
 
-Initialize a repository:
+To initialize a Git repository:
 
 ```bash
 git init
 ```
 
-This creates:
+This creates a hidden `.git` directory.
 
-```text
-.git/
-```
+## .git Directory
 
----
-
-## 📁 `.git` Directory
-
-The `.git` directory contains Git's internal repository information and history.
+The `.git` directory stores Git's internal information, including commit history, branches and repository configuration.
 
 ```mermaid
 flowchart TD
-    PROJECT["📁 Project"]
-    GIT["📁 .git"]
-
-    PROJECT --> GIT
-
-    GIT --> HISTORY["📜 History"]
-    GIT --> BRANCH["🌿 Branch Information"]
-    GIT --> CONFIG["⚙️ Repository Configuration"]
+    PROJECT["Project"]
+    PROJECT --> GIT[".git Directory"]
+    GIT --> HISTORY["Commit History"]
+    GIT --> BRANCH["Branch Information"]
+    GIT --> CONFIG["Repository Configuration"]
 ```
 
----
+## Git Workflow
 
-## 🔄 Git Workflow
+Git has three important areas:
+
+- Working Directory
+- Staging Area
+- Git Repository
 
 ```mermaid
 flowchart LR
-    WORK["📁 Working Directory"]
-    STAGE["📦 Staging Area"]
-    REPO["🗃️ Git Repository"]
-
-    WORK -->|"git add"| STAGE
-    STAGE -->|"git commit"| REPO
+    A["Working Directory"] -->|"git add"| B["Staging Area"]
+    B -->|"git commit"| C["Git Repository"]
 ```
 
----
+## Basic Git Commands
 
-## 📊 `git status`
+### 1. git status
 
 ```bash
 git status
 ```
 
-Shows:
+Shows the current branch and the status of modified, untracked and staged files.
 
-- Current branch
-- Modified files
-- Untracked files
-- Staged files
-- Changes ready to commit
+### 2. git add
 
----
+Adds changes to the staging area.
 
-## ➕ `git add`
-
-Add one file:
+Add a single file:
 
 ```bash
 git add calculator.sh
 ```
 
-Add everything:
+Add all changes:
 
 ```bash
 git add .
 ```
 
-```mermaid
-flowchart LR
-    FILE["📄 Modified File"]
-    STAGE["📦 Staging Area"]
+### 3. git commit
 
-    FILE -->|"git add"| STAGE
-```
-
----
-
-## 💾 `git commit`
+Saves staged changes into Git history.
 
 ```bash
 git commit -m "Add calculator script"
 ```
 
-A commit saves changes into Git history.
+### 4. git log
 
-```mermaid
-flowchart LR
-    STAGE["📦 Staging Area"]
-    COMMIT["💾 Commit"]
-    HISTORY["📜 Git History"]
-
-    STAGE --> COMMIT
-    COMMIT --> HISTORY
-```
-
----
-
-## 📜 `git log`
+Displays the commit history.
 
 ```bash
 git log
 ```
 
-Shows commit history.
+## Git Remote
 
-```mermaid
-flowchart LR
-    C1["Commit 1"]
-    C2["Commit 2"]
-    C3["Commit 3"]
-    C4["Commit 4"]
+A remote connects our local Git repository to a repository hosted on another platform, such as GitHub.
 
-    C1 --> C2 --> C3 --> C4
-```
-
----
-
-## 🌐 Git Remote
-
-A remote connects the local Git repository to a repository hosted somewhere else, such as GitHub.
-
-### Add Remote
+Add a remote:
 
 ```bash
 git remote add origin <repository-url>
 ```
 
-### Check Remote
+Check remote details:
 
 ```bash
 git remote -v
 ```
 
----
-
-## 🔗 Local → Remote
+## Local Repository and Remote Repository
 
 ```mermaid
 flowchart LR
-    LOCAL["💻 Local Repository"]
-    REMOTE["☁️ GitHub Repository"]
+    LOCAL["Local Repository"]
+    REMOTE["GitHub Repository"]
 
     LOCAL -->|"git push"| REMOTE
-    REMOTE -->|"git pull"| LOCAL
     REMOTE -->|"git fetch"| LOCAL
+    REMOTE -->|"git pull"| LOCAL
 ```
 
----
+## 5. git push
 
-## 🚀 `git push`
+Uploads local commits to the remote repository.
 
 ```bash
 git push
 ```
 
-Uploads local commits to the remote repository.
+## 6. git fetch
 
-```mermaid
-flowchart LR
-    LOCAL["💻 Local Git"]
-    PUSH["🚀 git push"]
-    GITHUB["🐙 GitHub"]
-
-    LOCAL --> PUSH --> GITHUB
-```
-
----
-
-## 📥 `git fetch`
+Downloads information about remote changes without merging them into the current branch.
 
 ```bash
 git fetch
 ```
 
-Downloads information about changes from the remote repository without directly merging those changes into the current branch.
+## 7. git pull
 
-```mermaid
-flowchart LR
-    GITHUB["🐙 GitHub"]
-    FETCH["📥 git fetch"]
-    LOCAL["💻 Local Repository"]
-
-    GITHUB --> FETCH --> LOCAL
-```
-
----
-
-## 🔄 `git pull`
+Downloads remote changes and integrates them into the current local branch.
 
 ```bash
 git pull
 ```
 
-Gets remote changes and integrates them into the current local branch.
+## 8. git clone
 
-```mermaid
-flowchart LR
-    GITHUB["🐙 GitHub"]
-    PULL["🔄 git pull"]
-    LOCAL["💻 Local Branch"]
-
-    GITHUB --> PULL --> LOCAL
-```
-
----
-
-## 📦 `git clone`
-
-`git clone` downloads an existing repository from GitHub to the local machine.
+Downloads an existing repository from GitHub to our local machine.
 
 ```bash
 git clone <repository-url>
@@ -1040,51 +741,41 @@ git clone <repository-url>
 
 ```mermaid
 flowchart LR
-    GITHUB["🐙 GitHub Repository"]
-    CLONE["📦 git clone"]
-    LOCAL["💻 Local Machine"]
-
-    GITHUB --> CLONE --> LOCAL
+    A["GitHub Repository"] --> B["git clone"]
+    B --> C["Local Machine"]
 ```
 
----
+## Git Fork
 
-## 🍴 Git Fork
+A fork creates a copy of another person's repository under our own GitHub account.
 
-A fork creates your own copy of another GitHub repository under your GitHub account.
+It is commonly used when contributing to open-source projects.
 
 ```mermaid
 flowchart LR
-    ORIGINAL["🐙 Original Repository"]
-    FORK["🍴 Fork"]
-    YOUR["🐙 Your GitHub Repository"]
-    CLONE["📦 Clone"]
-    LOCAL["💻 Local Machine"]
-
-    ORIGINAL --> FORK
-    FORK --> YOUR
-    YOUR --> CLONE
-    CLONE --> LOCAL
+    A["Original Repository"] --> B["Fork"]
+    B --> C["Your GitHub Repository"]
+    C --> D["Clone"]
+    D --> E["Local Machine"]
 ```
 
----
+## Clone vs Fork
 
-## 🆚 Clone vs Fork
-
-| 📦 Clone | 🍴 Fork |
+| Clone | Fork |
 |---|---|
-| Copies repository to local machine | Creates a copy on GitHub |
-| Local operation | GitHub operation |
-| Used to work locally | Useful for contributing |
-| `git clone` | GitHub Fork |
+| Copies a repository to your local machine | Creates a copy on GitHub |
+| Done using Git | Done through GitHub |
+| Used for local development | Commonly used for contributions |
 
 ---
 
-# 🔐 SSH AUTHENTICATION
+# SSH Authentication
 
-SSH allows secure authentication between a machine and GitHub.
+SSH stands for Secure Shell. It provides a secure way to connect to remote systems.
 
-### Concepts Covered
+I learned how SSH keys are used to authenticate a machine with GitHub.
+
+### Concepts I Learned
 
 - SSH
 - SSH Key Pair
@@ -1092,392 +783,245 @@ SSH allows secure authentication between a machine and GitHub.
 - Private Key
 - `ssh-keygen`
 - `~/.ssh`
-- Public Key Configuration
 - GitHub Authentication
-- EC2 → GitHub Authentication
+- EC2 to GitHub Authentication
 
----
+## SSH Key Generation
 
-## 🔑 SSH Key Generation
+Generate an SSH key pair:
 
 ```bash
 ssh-keygen
 ```
 
-Check generated keys:
+Check the generated keys:
 
 ```bash
 ls -al ~/.ssh
 ```
 
-View public key:
+View the public key:
 
 ```bash
 cat ~/.ssh/id_ed25519.pub
 ```
 
----
+## SSH Architecture
 
-## 🔐 SSH Architecture
+The private key stays on the machine, and the public key is added to GitHub.
 
 ```mermaid
 flowchart LR
-    EC2["🖥️ EC2 Server"]
-
-    PRIVATE["🔐 Private Key<br/>Stays on EC2"]
-    PUBLIC["🔓 Public Key<br/>Added to GitHub"]
-
-    GITHUB["🐙 GitHub"]
+    EC2["EC2 Server"]
+    PRIVATE["Private Key"]
+    PUBLIC["Public Key"]
+    GITHUB["GitHub"]
 
     EC2 --> PRIVATE
     EC2 --> PUBLIC
     PUBLIC --> GITHUB
-
     PRIVATE -.->|"Authentication"| GITHUB
 ```
 
-> 🔐 **Private Key stays private.**  
-> 🔓 **Public Key can be added to GitHub.**
+**Important:**
 
----
+- Private Key: Keep it secure and never share it.
+- Public Key: Add it to your GitHub account.
 
-## 🧪 Test SSH Connection
+## Test SSH Connection
 
 ```bash
 ssh -T git@github.com
 ```
 
-This tests whether SSH authentication with GitHub is working.
+This command checks whether SSH authentication with GitHub is working.
 
----
-
-# 🔄 COMPLETE SSH + GITHUB FLOW
+## Complete SSH and GitHub Flow
 
 ```mermaid
 sequenceDiagram
-    participant E as 🖥️ EC2
-    participant K as 🔑 SSH Keys
-    participant G as 🐙 GitHub
+    participant E as EC2
+    participant K as SSH Keys
+    participant G as GitHub
 
-    E->>K: ssh-keygen
-    K-->>E: Public + Private Key
+    E->>K: Generate keys using ssh-keygen
+    K-->>E: Public and Private Keys
     E->>G: Add Public Key
-    E->>G: SSH Connection
-    G->>E: Authenticate
-    E->>G: Git Operations
+    E->>G: Connect using SSH
+    G->>E: Verify authentication
+    E->>G: Perform Git operations
 ```
 
 ---
 
-# 🚀 COMPLETE GIT + GITHUB WORKFLOW
+# Complete Git and GitHub Workflow
+
+This is the basic workflow I followed to upload a local project to GitHub.
 
 ```mermaid
 flowchart TD
-    CREATE["📁 Create Project"]
-    INIT["git init"]
-    FILE["📄 Create / Modify Files"]
-    STATUS["git status"]
-    ADD["git add"]
-    COMMIT["git commit"]
-    REMOTE["git remote add origin"]
-    PUSH["git push"]
-    GITHUB["🐙 GitHub"]
-
-    CREATE --> INIT
-    INIT --> FILE
-    FILE --> STATUS
-    STATUS --> ADD
-    ADD --> COMMIT
-    COMMIT --> REMOTE
-    REMOTE --> PUSH
-    PUSH --> GITHUB
+    A["Create Project"] --> B["git init"]
+    B --> C["Create or Modify Files"]
+    C --> D["git status"]
+    D --> E["git add"]
+    E --> F["git commit"]
+    F --> G["git remote add origin"]
+    G --> H["git push"]
+    H --> I["GitHub Repository"]
 ```
 
----
+# GitHub Collaboration Workflow
 
-# 🌐 COMPLETE GITHUB COLLABORATION FLOW
+GitHub allows multiple developers to work on the same project.
 
 ```mermaid
 flowchart LR
-    DEV1["👨‍💻 Developer"]
-    LOCAL["💻 Local Repository"]
-    GITHUB["🐙 GitHub"]
-    DEV2["👩‍💻 Other Developer"]
-
-    DEV1 --> LOCAL
-    LOCAL -->|"git push"| GITHUB
-    GITHUB -->|"git clone / pull"| DEV2
-    DEV2 -->|"git push"| GITHUB
-    GITHUB -->|"git fetch / pull"| LOCAL
+    D1["Developer 1"] --> L1["Local Repository"]
+    L1 -->|"git push"| GH["GitHub"]
+    GH -->|"git clone / pull"| D2["Developer 2"]
+    D2 -->|"git push"| GH
+    GH -->|"git fetch / pull"| L1
 ```
 
 ---
 
-# ☁️ COMPLETE DEVOPS FLOW — DAY 01 → DAY 06
-
-```mermaid
-flowchart TD
-    DEVOPS["☁️ DEVOPS"]
-
-    D1["🟢 Day 01<br/>DevOps Fundamentals"]
-    D2["🔵 Day 02<br/>SDLC • HLD • LLD"]
-    D3["🟣 Day 03<br/>Servers • Virtualization • Cloud"]
-    D4["🟠 Day 04<br/>Linux • AWS • IaC"]
-    D5["🟡 Day 05<br/>Shell • Monitoring • Git"]
-    D6["🔴 Day 06<br/>GitHub • Remote • SSH"]
-
-    DEVOPS --> D1
-    D1 --> D2
-    D2 --> D3
-    D3 --> D4
-    D4 --> D5
-    D5 --> D6
-```
-
----
-
-# 🧠 COMPLETE CONCEPT MAP
+# Complete Concept Map
 
 ```mermaid
 mindmap
-    root((☁️ DevOps Cloud Journey))
-
-        🟢 Day 01
-            DevOps
-            Automation
-            Reliability
-            Collaboration
-            Monitoring
-            Feedback
-            Continuous Improvement
-
-        🔵 Day 02
-            SDLC
-            SRS
-            HLD
-            LLD
-            Planning
-            Design
-            Development
-            Testing
-            Deployment
-
-        🟣 Day 03
-            Servers
-            Virtualization
-            Virtual Machines
-            Hypervisor
-            Logical Isolation
-            Cloud
-            AWS EC2
-            APIs
-
-        🟠 Day 04
-            Linux
-            Operating System
-            Kernel
-            System Libraries
-            Compiler
-            Shell
-            AWS CLI
-            Infrastructure as Code
-            CloudFormation
-            AWS CDK
-            Terraform
-            EC2 Key Pair
-
-        🟡 Day 05
-            Shell Scripting
-            Bash
-            SH vs Bash
-            Vim
-            File Permissions
-            set -x
-            set -e
-            set -o
-            grep
-            Pipes
-            Linux Monitoring
-            top
-            df
-            free
-            ps
-            Git Branching
-            GitFlow
-            Feature Branch
-            Release Branch
-            Hotfix Branch
-
-        🔴 Day 06
-            Git Repository
-            .git
-            Working Directory
-            Staging Area
-            git status
-            git add
-            git commit
-            git log
-            Git Remote
-            git push
-            git pull
-            git fetch
-            git clone
-            Git Fork
-            SSH
-            SSH Key Pair
-            Public Key
-            Private Key
-            GitHub Authentication
+  root((DevOps and Cloud))
+    Day 01 - DevOps
+      Automation
+      Collaboration
+      Reliability
+      Monitoring
+      Feedback
+    Day 02 - Software Design
+      SDLC
+      SRS
+      HLD
+      LLD
+    Day 03 - Cloud
+      Servers
+      Virtualization
+      Hypervisor
+      Virtual Machines
+      AWS EC2
+      APIs
+    Day 04 - Linux and AWS
+      Operating System
+      Kernel
+      System Libraries
+      Compiler
+      Shell
+      AWS CLI
+      Infrastructure as Code
+      CloudFormation
+      AWS CDK
+      Terraform
+    Day 05 - Automation
+      Shell Scripting
+      Bash and SH
+      Vim
+      File Permissions
+      Debugging
+      grep and Pipes
+      Linux Monitoring
+      Git Branching
+      GitFlow
+    Day 06 - Git and GitHub
+      Git Repository
+      Working Directory
+      Staging Area
+      Commits
+      Remote
+      Push and Pull
+      Fetch
+      Clone and Fork
+      SSH Authentication
 ```
 
 ---
 
-# 📚 WHAT I HAVE BUILT SO FAR
+# What I Have Learned So Far
 
-| 🗓️ Day | 📚 Main Focus | 🛠️ Hands-On |
-|:---:|---|---|
-| 🟢 **01** | DevOps Fundamentals | DevOps lifecycle & workflow |
-| 🔵 **02** | SDLC • HLD • LLD | System design concepts |
-| 🟣 **03** | Servers • Virtualization • Cloud | AWS EC2 & API concepts |
-| 🟠 **04** | Linux • AWS CLI • IaC | Linux commands & AWS CLI |
-| 🟡 **05** | Shell • Monitoring • Git | Bash scripts, monitoring & branches |
-| 🔴 **06** | GitHub • Remote • SSH | GitHub workflows & SSH authentication |
+| Day | Main Focus | Hands-on Learning |
+|---|---|---|
+| 01 | DevOps Fundamentals | DevOps lifecycle and workflow |
+| 02 | SDLC, HLD and LLD | Software design concepts |
+| 03 | Servers and Virtualization | AWS EC2 and API concepts |
+| 04 | Linux, AWS CLI and IaC | Linux commands and AWS CLI |
+| 05 | Shell Scripting and Monitoring | Bash scripts, monitoring and Git branches |
+| 06 | Git, GitHub and SSH | Git commands, remote repositories and SSH authentication |
 
----
+# My Key Takeaways
 
-# 🎯 KEY TAKEAWAYS
+- **Day 01:** DevOps is about collaboration, automation and continuous improvement.
+- **Day 02:** SDLC explains the software development process. HLD and LLD explain system design at different levels.
+- **Day 03:** Virtualization allows multiple virtual machines to run on shared physical hardware.
+- **Day 04:** Linux, AWS CLI and IaC are important for managing cloud infrastructure.
+- **Day 05:** Shell scripting helps automate tasks, while monitoring helps us understand server performance.
+- **Day 06:** Git manages code history, GitHub hosts repositories, and SSH provides secure authentication.
 
-### 🟢 Day 01
+# What's Next?
 
-> DevOps is not just a tool. It is a culture of collaboration, automation and continuous improvement.
+I will continue learning and practising the following technologies.
 
-### 🔵 Day 02
-
-> SDLC explains the software development process, while HLD and LLD explain the system at different levels of detail.
-
-### 🟣 Day 03
-
-> Virtualization allows multiple isolated virtual environments to run on shared physical hardware.
-
-### 🟠 Day 04
-
-> Linux, AWS CLI and Infrastructure as Code are important foundations for working with modern cloud infrastructure.
-
-### 🟡 Day 05
-
-> Shell scripting helps automate repetitive tasks, while monitoring and Git help manage systems and code efficiently.
-
-### 🔴 Day 06
-
-> Git manages version history, GitHub hosts repositories, and SSH provides secure authentication.
-
----
-
-# 🚀 WHAT'S NEXT?
-
-The journey doesn't stop at Day 06.
-
-The next steps will take me deeper into:
-
-```text
-🐳 Docker
-   ↓
-☁️ AWS
-   ↓
-🔄 CI/CD
-   ↓
-🏗️ Terraform
-   ↓
-☸️ Kubernetes
-   ↓
-📊 Monitoring
-   ↓
-🔐 Security
-   ↓
-🤖 DevOps Automation
-   ↓
-🚀 Real-World Projects
+```mermaid
+flowchart TD
+    A["Docker"] --> B["AWS"]
+    B --> C["CI/CD"]
+    C --> D["Terraform"]
+    D --> E["Kubernetes"]
+    E --> F["Monitoring"]
+    F --> G["Security"]
+    G --> H["DevOps Automation"]
+    H --> I["Real-World Projects"]
 ```
 
----
+# My Learning Approach
 
-# 🧠 MY LEARNING PHILOSOPHY
+I don't want to just memorize commands. I want to understand what they do, why we use them and how to troubleshoot problems.
 
-I don't want to just memorize commands.
-
-I want to understand:
-
-```text
-❓ What does it do?
-      ↓
-❓ Why do we use it?
-      ↓
-💻 How do I use it?
-      ↓
-🐛 What happens when it fails?
-      ↓
-🔍 How do I troubleshoot it?
-      ↓
-🧠 What did I learn?
-      ↓
-📝 Document it
+```mermaid
+flowchart TD
+    A["Learn"] --> B["Practice"]
+    B --> C["Build"]
+    C --> D["Break"]
+    D --> E["Fix"]
+    E --> F["Understand"]
+    F --> G["Document"]
+    G --> A
 ```
 
-> **Learn → Practice → Break → Fix → Understand → Document → Repeat 🔁**
+# My Documentation Approach
+
+I follow a simple learning and documentation routine.
+
+**Monday to Friday**
+- Learn new concepts.
+- Practise commands.
+- Work on hands-on labs.
+- Build projects.
+- Debug problems.
+
+**Saturday and Sunday**
+- Review what I learned.
+- Organize my notes.
+- Document experiments.
+- Write technical blogs.
+- Update GitHub repositories.
+
+**Weekdays:** Learn, Practice and Build.
+
+**Weekends:** Review, Document and Publish.
 
 ---
 
-# 📖 DOCUMENTATION APPROACH
+# The Journey Continues
 
-My learning happens throughout the week.
+**Day 01 to Day 06 Complete**
 
-My documentation happens mainly on weekends.
+I am still learning, practising and improving every day. My goal is to understand how things work, gain hands-on experience and build real-world projects.
 
-### 🧠 Monday – Friday
-
-- Learn new concepts
-- Practice commands
-- Work on hands-on labs
-- Build projects
-- Experiment with tools
-- Debug problems
-- Understand how things work
-
-### 📝 Saturday – Sunday
-
-- Review what I learned
-- Organize my notes
-- Document my experiments
-- Write technical blogs
-- Update README files
-- Push my progress to GitHub
-
-> **Weekdays → Learn • Practice • Build**  
-> **Weekends → Document • Organize • Publish**
-
-
----
-
-<div align="center">
-
-# 🚀 THE JOURNEY CONTINUES
-
-### Learn → Build → Break → Fix → Automate → Document → Repeat 🔁
-
-<br>
-
-☁️ 🐧 🔀 🐳 ☸️ 🏗️ 🔄 📊 🔐 🚀
-
-<br>
-
-**DAY 01 → DAY 06 COMPLETE ✅**
-
-<br>
-
-<i>Still learning. Still building. Still improving.</i>
-
-<br>
-
-### ☁️ From Zero to DevOps Engineer 🚀
-
-</div>
+**Learn → Practice → Build → Break → Fix → Understand → Document → Repeat**
