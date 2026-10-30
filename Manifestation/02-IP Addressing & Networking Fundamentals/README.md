@@ -1,4 +1,4 @@
-# 🚀 IP Addressing & Subnetting
+# IP Addressing & Subnetting
 
 Today I continued my **Networking Fundamentals** preparation for Cloud Support Associate.
 
@@ -8,7 +8,7 @@ I am going to understand everything step by step instead of directly jumping int
 
 ---
 
-# 📚 Today's Flow
+# Today's Flow
 
 ```text
 1️⃣ IPv4 Address
