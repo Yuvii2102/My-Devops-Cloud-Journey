@@ -1,133 +1,69 @@
-<div align="center">
+# Deploying a Node.js Application on AWS EC2
 
-# 🚀 DEPLOYING A NODE.JS APPLICATION ON AWS EC2
+## 1. Project Overview
 
-### ☁️ Node.js • Express.js • AWS EC2 • Ubuntu • Git • npm • Security Groups
+In this project, I deployed a Node.js application on an AWS EC2 Ubuntu server and accessed it through the EC2 public IP address.
 
-<p>
-  <img src="https://img.shields.io/badge/AWS-EC2-FF9900?style=for-the-badge&logo=amazonaws&logoColor=white"/>
-  <img src="https://img.shields.io/badge/Node.js-22.x-339933?style=for-the-badge&logo=node.js&logoColor=white"/>
-  <img src="https://img.shields.io/badge/Express.js-Framework-000000?style=for-the-badge&logo=express&logoColor=white"/>
-  <img src="https://img.shields.io/badge/Ubuntu-Linux-E95420?style=for-the-badge&logo=ubuntu&logoColor=white"/>
-  <img src="https://img.shields.io/badge/Git-Version%20Control-F05032?style=for-the-badge&logo=git&logoColor=white"/>
-</p>
+The application runs on port `3000`.
 
-### 🚀 From Local Node.js Application → GitHub → AWS EC2 → Live Website
+### Deployment Flow
 
-</div>
-
----
-
-# 📌 PROJECT OVERVIEW
-
-In this project, I deployed a **Node.js application on an AWS EC2 Ubuntu server** and made it accessible through the internet using the EC2 public IP address and port `3000`.
-
-This project covers the complete deployment process:
-
-```text
-Local Node.js Application
-          │
-          ▼
-       GitHub
-          │
-          ▼
-     AWS EC2 Instance
-          │
-          ▼
-        Ubuntu
-          │
-          ├── Git
-          ├── Node.js
-          └── npm
-          │
-          ▼
-     Clone Application
-          │
-          ▼
-       Configure .env
-          │
-          ▼
-      npm install
-          │
-          ▼
-     npm run start
-          │
-          ▼
-      Port 3000
-          │
-          ▼
- AWS Security Group
-          │
-          ▼
-     Public IPv4
-          │
-          ▼
-      🌐 Browser
-          │
-          ▼
-   🚀 LIVE APPLICATION
+```mermaid
+flowchart TD
+    A[Local Node.js Application] --> B[GitHub]
+    B --> C[AWS EC2]
+    C --> D[Ubuntu]
+    D --> E[Install Git and Node.js]
+    E --> F[Clone Project]
+    F --> G[Configure .env]
+    G --> H[npm install]
+    H --> I[npm run start]
+    I --> J[Port 3000]
+    J --> K[Security Group]
+    K --> L[Public IP]
+    L --> M[Live Application]
 ```
 
----
-
-# 🎯 PROJECT OBJECTIVES
-
-Through this project, I learned how to:
-
-- Create an AWS EC2 instance
-- Configure Ubuntu on EC2
-- Connect to EC2 using SSH
-- Install Git
-- Install Node.js and npm
-- Clone a Node.js project from GitHub
-- Configure environment variables using `.env`
-- Install project dependencies
-- Run a Node.js/Express application
-- Configure AWS Security Group inbound rules
-- Open port `3000`
-- Access the application using the EC2 public IPv4 address
-- Deploy a Node.js application to AWS ☁️🚀
-
----
-
-# 🧰 TECHNOLOGIES USED
+## 2. Technologies Used
 
 | Technology | Purpose |
 |---|---|
-| ☁️ AWS EC2 | Cloud virtual server |
-| 🐧 Ubuntu | Operating system |
-| 🟢 Node.js | JavaScript runtime |
-| 📦 npm | Package and dependency management |
-| 🚂 Express.js | Backend web framework |
-| 🐙 GitHub | Source code hosting |
-| 🔧 Git | Version control |
-| 🔐 AWS Security Group | Network traffic control |
-| 🔑 `.env` | Environment configuration |
-| 💳 Stripe | Payment integration used by the application |
+| AWS EC2 | Cloud server |
+| Ubuntu | Operating system |
+| Node.js | JavaScript runtime |
+| npm | Package management |
+| Express.js | Backend framework |
+| Git | Version control |
+| GitHub | Source code hosting |
+| Security Group | Network traffic control |
+| `.env` | Environment configuration |
+| Stripe | Payment integration |
 
----
+## 3. Test the Project Locally
 
-# 🟢 PART 01 — TESTING THE PROJECT LOCALLY
+Before deploying the application, I checked the project locally.
 
-Before deploying the application to AWS, the project can be tested locally.
-
-## 1️⃣ Clone the Project
+### Clone the Project
 
 ```bash
 git clone https://github.com/verma-kunal/AWS-Session.git
 ```
 
-Move into the project:
+Move into the project directory:
 
 ```bash
 cd AWS-Session
 ```
 
----
+### Configure Environment Variables
 
-## 2️⃣ Configure Environment Variables
+Create a `.env` file in the project directory.
 
-Create a `.env` file in the project root.
+```bash
+vim .env
+```
+
+Add the required configuration:
 
 ```env
 DOMAIN=""
@@ -138,29 +74,23 @@ PUBLISHABLE_KEY=""
 SECRET_KEY=""
 ```
 
-### 🔑 Environment Variables
-
 | Variable | Purpose |
 |---|---|
-| `DOMAIN` | Domain/IP used by the application |
-| `PORT` | Port on which the Node.js server runs |
-| `STATIC_DIR` | Location of static/frontend files |
+| `DOMAIN` | Application domain or IP |
+| `PORT` | Server port |
+| `STATIC_DIR` | Frontend files location |
 | `PUBLISHABLE_KEY` | Stripe publishable key |
 | `SECRET_KEY` | Stripe secret key |
 
-> ⚠️ Never expose your Stripe `SECRET_KEY` publicly.
+Never expose the Stripe secret key publicly.
 
----
-
-## 3️⃣ Install Dependencies
+### Install Dependencies
 
 ```bash
 npm install
 ```
 
----
-
-## 4️⃣ Start the Application
+### Start the Application
 
 ```bash
 npm run start
@@ -172,44 +102,28 @@ Expected output:
 Server listening on port: 3000
 ```
 
-The application can now be tested locally.
+## 4. Create an AWS EC2 Instance
 
----
-
-# ☁️ PART 02 — SET UP AN AWS EC2 INSTANCE
-
-The next step is to create a cloud server where the Node.js application will run.
-
-## 1️⃣ Create an IAM User
-
-Create an IAM user and use it to access the AWS Console.
-
-For this learning project:
-
-- Access Type → Password
-- Permissions → Admin
-
-> ⚠️ In production environments, use the principle of least privilege instead of Administrator access.
-
----
-
-## 2️⃣ Create an EC2 Instance
+Next, I created an EC2 instance to host the application.
 
 Go to:
 
 ```text
 AWS Console
-     ↓
+    |
+    v
 EC2
-     ↓
+    |
+    v
 Instances
-     ↓
+    |
+    v
 Launch Instance
 ```
 
-Configure the instance:
+### Configuration
 
-| Configuration | Value |
+| Setting | Value |
 |---|---|
 | OS Image | Ubuntu |
 | Instance Type | t2.micro |
@@ -218,59 +132,51 @@ Configure the instance:
 
 Download the `.pem` file and keep it secure.
 
----
+## 5. Connect to EC2 Using SSH
 
-# 🔐 PART 03 — CONNECT TO THE EC2 INSTANCE USING SSH
-
-After launching the EC2 instance, connect to it using SSH.
+After launching the instance, I connected to it using SSH.
 
 ```bash
 ssh -i instance.pem ubuntu@<PUBLIC_IP_ADDRESS>
 ```
 
-> ⚠️ The correct Ubuntu username is `ubuntu`, not `ubunutu`.
+The default Ubuntu username is:
 
-After successful login, the terminal will look similar to:
+```text
+ubuntu
+```
+
+After connecting successfully, the terminal looks similar to:
 
 ```text
 ubuntu@ip-172-31-31-76:~$
 ```
 
-This means we are now connected to the AWS EC2 Ubuntu server.
+This means I am connected to the remote EC2 Ubuntu server.
 
----
+## 6. Configure Ubuntu
 
-# 🐧 PART 04 — CONFIGURING UBUNTU ON THE REMOTE VM
+Once connected, I prepared the server.
 
-Once connected to EC2, configure the Ubuntu environment.
-
-## 1️⃣ Update Packages
+### Update Package Lists
 
 ```bash
 sudo apt update
 ```
 
-This updates the package lists.
-
----
-
-## 2️⃣ Install Git
-
-Git is required to clone the project from GitHub.
+### Install Git
 
 ```bash
 sudo apt install git -y
 ```
 
-Verify Git:
+Verify:
 
 ```bash
 git --version
 ```
 
----
-
-## 3️⃣ Install Node.js and npm
+### Install Node.js and npm
 
 ```bash
 sudo apt install nodejs npm -y
@@ -288,57 +194,43 @@ Verify npm:
 npm -v
 ```
 
-During this deployment, Node.js was successfully installed and the application was running with:
+During this deployment, the Node.js version was:
 
 ```text
-Node.js v22.22.1
+v22.22.1
 ```
 
----
+## 7. Clone the Project on EC2
 
-# 🚀 PART 05 — DEPLOYING THE PROJECT ON AWS
-
-Now the Node.js application is deployed to the EC2 server.
-
-## 1️⃣ Clone the Project on the Remote VM
-
-Inside the EC2 Ubuntu terminal:
+Now I cloned the application from GitHub directly into the EC2 instance.
 
 ```bash
 git clone https://github.com/verma-kunal/AWS-Session.git
 ```
 
-Move into the project directory:
+Move into the project:
 
 ```bash
 cd AWS-Session
 ```
 
-Check the project files:
+Check the files:
 
 ```bash
 ls
 ```
 
----
+## 8. Configure the `.env` File on EC2
 
-# 🔐 PART 06 — CONFIGURE THE `.env` FILE ON EC2
+The application requires environment variables to run.
 
-The environment variables need to be configured on the EC2 server.
-
-Create the `.env` file using Vim:
+Create the file:
 
 ```bash
 vim .env
 ```
 
-Press:
-
-```text
-i
-```
-
-Then enter:
+Press `i` to enter insert mode and add:
 
 ```env
 DOMAIN=""
@@ -357,35 +249,27 @@ ESC
 ENTER
 ```
 
-Verify the file:
+Check the file:
 
 ```bash
 ls -la
 ```
 
-You should see:
+The `.env` file should be present.
 
-```text
-.env
-```
+**Important:** Keep `.env` private. Never upload secret keys to GitHub.
 
-> 🔒 Keep `.env` private and never commit your Stripe secret key to GitHub.
+## 9. Install Project Dependencies
 
----
-
-# 📦 PART 07 — INSTALL PROJECT DEPENDENCIES
-
-Inside the project directory:
+Inside the project directory, run:
 
 ```bash
 npm install
 ```
 
-This installs the dependencies required by the Node.js application.
+This installs the packages required by the application.
 
----
-
-# ▶️ PART 08 — START THE NODE.JS APPLICATION
+## 10. Start the Node.js Application
 
 Run:
 
@@ -402,41 +286,40 @@ Expected output:
 Server listening on port: 3000
 ```
 
-🎉 The Node.js application is now running on the EC2 server.
+The application is now running on the EC2 server.
 
----
+## 11. Configure AWS Security Group
 
-# 🔓 PART 09 — CONFIGURE AWS SECURITY GROUP
-
-The Node.js application is running on:
-
-```text
-Port: 3000
-```
-
-However, the application must be allowed through the EC2 Security Group before it can be accessed from the internet.
+The application is running on port `3000`. However, we also need to allow incoming traffic through the EC2 Security Group.
 
 Go to:
 
 ```text
 AWS Console
-     ↓
+    |
+    v
 EC2
-     ↓
+    |
+    v
 Instances
-     ↓
+    |
+    v
 Select Instance
-     ↓
+    |
+    v
 Security
-     ↓
+    |
+    v
 Security Groups
-     ↓
+    |
+    v
 Inbound Rules
-     ↓
+    |
+    v
 Edit Inbound Rules
 ```
 
-Add the following inbound rule:
+Add this rule for testing:
 
 | Type | Port | Source |
 |---|---:|---|
@@ -444,13 +327,13 @@ Add the following inbound rule:
 
 Save the rule.
 
-> 📌 The Security Group controls which incoming network traffic can reach the EC2 instance.
+The Security Group controls which incoming traffic can reach the EC2 instance.
 
----
+**Security note:** `0.0.0.0/0` allows access from any IPv4 address. For a real deployment, restrict access to trusted IP addresses or use a properly secured web architecture.
 
-# 🌐 PART 10 — ACCESS THE DEPLOYED APPLICATION
+## 12. Access the Application
 
-After configuring the Security Group, find the **Public IPv4 address** of the EC2 instance.
+After configuring the Security Group, find the EC2 Public IPv4 address.
 
 Example:
 
@@ -458,177 +341,83 @@ Example:
 18.207.96.65
 ```
 
-Since the Node.js server is running on port `3000`, open:
+Since the application runs on port `3000`, open:
 
 ```text
 http://18.207.96.65:3000
 ```
 
-Or:
+Or use:
 
 ```text
 http://<PUBLIC_IPV4>:3000
 ```
 
-🎉 The Node.js application is now accessible through the internet.
+The application should now be accessible through the browser.
 
----
+## 13. Deployment Architecture
 
-# 🏗️ DEPLOYMENT ARCHITECTURE
-
-```text
-                         🌐 INTERNET
-                              │
-                              │ HTTP :3000
-                              ▼
-                    ┌───────────────────┐
-                    │   EC2 PUBLIC IP   │
-                    │   :3000           │
-                    └─────────┬─────────┘
-                              │
-                              ▼
-                    ┌───────────────────┐
-                    │ AWS SECURITY      │
-                    │ GROUP             │
-                    │                   │
-                    │ Inbound TCP 3000  │
-                    └─────────┬─────────┘
-                              │
-                              ▼
-                    ┌───────────────────┐
-                    │    AWS EC2        │
-                    │    Ubuntu         │
-                    │                   │
-                    │    Node.js        │
-                    │       ↓           │
-                    │    Express.js     │
-                    │       ↓           │
-                    │    server.js      │
-                    │       ↓           │
-                    │      :3000        │
-                    └───────────────────┘
+```mermaid
+flowchart TD
+    A[Internet] --> B[EC2 Public IP]
+    B --> C[Security Group]
+    C -->|Allow TCP 3000| D[EC2 Ubuntu]
+    D --> E[Node.js]
+    E --> F[Express.js]
+    F --> G[Application Server]
+    G --> H[Port 3000]
 ```
 
----
+## 14. Troubleshooting
 
-# 🔄 COMPLETE DEPLOYMENT FLOW
+### Error: Unable to Locate Package npm
 
-```text
-┌──────────────────────┐
-│ Local Node.js App    │
-└──────────┬───────────┘
-           │
-           ▼
-┌──────────────────────┐
-│       GitHub         │
-│    Source Code       │
-└──────────┬───────────┘
-           │
-           │ git clone
-           ▼
-┌──────────────────────┐
-│      AWS EC2         │
-│       Ubuntu         │
-└──────────┬───────────┘
-           │
-           ├── Install Git
-           │
-           ├── Install Node.js
-           │
-           ├── Install npm
-           │
-           └── Configure .env
-                    │
-                    ▼
-             ┌──────────────┐
-             │ npm install  │
-             └──────┬───────┘
-                    │
-                    ▼
-             ┌──────────────┐
-             │ npm run start│
-             └──────┬───────┘
-                    │
-                    ▼
-               Node.js :3000
-                    │
-                    ▼
-             AWS Security Group
-                    │
-                    ▼
-               Public IPv4
-                    │
-                    ▼
-               🌐 Browser
-                    │
-                    ▼
-             🚀 LIVE WEBSITE
-```
-
----
-
-# 🧪 TROUBLESHOOTING
-
-## ❌ Error: Unable to locate package npm
-
-If npm cannot be found:
+Update the package lists and try installing again.
 
 ```bash
 sudo apt update
 sudo apt install nodejs npm -y
 ```
 
-Then verify:
+Verify:
 
 ```bash
 node -v
 npm -v
 ```
 
----
+### Error: Cannot Find Module 'express'
 
-## ❌ Error: Cannot find module 'express'
-
-Run:
+Install the project dependencies:
 
 ```bash
 npm install
 ```
 
-If Express is not listed in the project dependencies:
+If Express is missing from the project dependencies:
 
 ```bash
 npm install express
 ```
 
-Then:
+Then start the application again:
 
 ```bash
 npm run start
 ```
 
----
+### Error: `paths[1]` Argument Must Be a String
 
-## ❌ Error: `paths[1]` argument must be a string
+This happened because the application expected a required environment variable or configuration value.
 
-This occurred because the application expected a required environment variable/configuration value.
+Creating and configuring the `.env` file resolved the problem.
 
-Creating and configuring the `.env` file resolved the configuration problem.
+### Website Cannot Be Reached
 
----
-
-## ❌ Website Cannot Be Reached
-
-First check whether the Node.js application is running:
+First, check whether the application is running:
 
 ```bash
 npm run start
-```
-
-Expected:
-
-```text
-Server listening on port: 3000
 ```
 
 Check whether port `3000` is listening:
@@ -637,60 +426,23 @@ Check whether port `3000` is listening:
 sudo ss -tulpn | grep 3000
 ```
 
-Then verify the EC2 Security Group contains:
+Then verify the Security Group inbound rule:
 
 ```text
-Custom TCP
+Type: Custom TCP
 Port: 3000
 Source: 0.0.0.0/0
 ```
 
-Finally, use the **Public IPv4 address**:
+Finally, access the application using the EC2 Public IPv4 address:
 
 ```text
 http://PUBLIC_IP:3000
 ```
 
-Do not use the EC2 private IP:
+Do not use the private IP address such as `172.31.x.x` from an external browser.
 
-```text
-172.31.x.x
-```
-
----
-
-# 📸 DEPLOYMENT RESULT
-
-<div align="center">
-
-### 🚀 APPLICATION SUCCESSFULLY DEPLOYED ON AWS EC2
-
-The Node.js application is running successfully on the EC2 Ubuntu server and is accessible through the EC2 public IPv4 address on port `3000`.
-
-</div>
-
-### 🖼️ Live Deployment Screenshot
-
-Add the screenshot to your project repository:
-
-```text
-images/
-└── aws-ec2-nodejs-deployment.png
-```
-
-Then display it in this README:
-
-```html
-<div align="center">
-
-<img src="./images/aws-ec2-nodejs-deployment.png" width="95%" alt="Node.js Application Deployed on AWS EC2"/>
-
-</div>
-```
-
----
-
-# 📚 IMPORTANT COMMANDS USED
+## 15. Important Commands
 
 ```bash
 # Update Ubuntu packages
@@ -711,13 +463,13 @@ npm -v
 # Clone the project
 git clone https://github.com/verma-kunal/AWS-Session.git
 
-# Enter the project
+# Enter the project directory
 cd AWS-Session
 
 # Create environment file
 vim .env
 
-# Install project dependencies
+# Install dependencies
 npm install
 
 # Start the application
@@ -727,229 +479,98 @@ npm run start
 sudo ss -tulpn | grep 3000
 ```
 
----
+## 16. Security Notes
 
-# 🔐 SECURITY NOTES
+Never commit sensitive information to GitHub.
 
-Never commit sensitive credentials to GitHub.
+Keep these files and values private:
 
-Keep these values private:
+- Stripe secret key
+- AWS Access Keys
+- SSH private keys
+- `.env` files
+- `.pem` files
+
+Add the following to `.gitignore`:
 
 ```text
-SECRET_KEY
-AWS Access Keys
-Private SSH Keys
 .env
 instance.pem
 ```
 
-Add `.env` to `.gitignore`:
+Never upload private SSH keys or secret credentials to public repositories.
 
-```text
-.env
-```
-
-Never upload:
-
-```text
-instance.pem
-```
-
-to GitHub.
-
-> 🔒 Secret credentials should always be protected and stored securely.
-
----
-
-# 🧠 KEY LEARNINGS
+## 17. What I Learned
 
 Through this project, I learned:
 
-| Concept | What I Learned |
+| Concept | What I Practised |
 |---|---|
-| ☁️ AWS EC2 | How to create and use a cloud server |
-| 🐧 Ubuntu | How to configure a Linux server |
-| 🔐 SSH | How to remotely connect to EC2 |
-| 🐙 Git | How to clone source code |
-| 🟢 Node.js | How to run JavaScript applications on a server |
-| 📦 npm | How to install project dependencies |
-| 🚂 Express | How the Node.js web server runs |
-| 🔑 `.env` | How application configuration is managed |
-| 🔓 Security Groups | How AWS controls inbound traffic |
-| 🌐 Public IP | How to expose the application to users |
-| 🚀 Deployment | How to move an application from local development to AWS |
+| AWS EC2 | Creating a cloud server |
+| Ubuntu | Configuring a Linux server |
+| SSH | Connecting to EC2 remotely |
+| Git | Cloning source code |
+| Node.js | Running applications on a server |
+| npm | Installing dependencies |
+| Express.js | Running a backend application |
+| `.env` | Managing application configuration |
+| Security Groups | Allowing inbound traffic |
+| Public IP | Accessing an application over the internet |
+| Deployment | Moving an application from local development to AWS |
 
----
+## 18. Future Improvements
 
-# 🎯 WHAT I BUILT
+This was a basic EC2 deployment. It can be improved with:
 
-```text
-                 🚀 NODE.JS AWS DEPLOYMENT
+- GitHub Actions for CI/CD
+- PM2 for process management
+- Nginx as a reverse proxy
+- HTTPS using SSL/TLS
+- Custom domain
+- Monitoring and logging
+- Docker containerization
+- Kubernetes deployment
+- AWS Load Balancer
+- Auto Scaling
 
-                         GitHub
-                            │
-                            ▼
-                     Node.js Project
-                            │
-                            ▼
-                       AWS EC2
-                            │
-                    ┌───────┴───────┐
-                    │    Ubuntu     │
-                    │               │
-                    │    Node.js    │
-                    │       ↓       │
-                    │    Express    │
-                    │       ↓       │
-                    │   server.js   │
-                    └───────┬───────┘
-                            │
-                         Port 3000
-                            │
-                            ▼
-                    Security Group
-                            │
-                            ▼
-                       Public IP
-                            │
-                            ▼
-                        🌐 Browser
-                            │
-                            ▼
-                     🎉 LIVE APP
+### Future Deployment Architecture
+
+```mermaid
+flowchart TD
+    A[GitHub] --> B[GitHub Actions]
+    B --> C[CI/CD]
+    C --> D[AWS EC2]
+    D --> E[Nginx]
+    E --> F[Node.js / Express]
+    F --> G[PM2]
+    G --> H[HTTPS and Custom Domain]
+    H --> I[Users]
 ```
 
----
+## Final Summary
 
-# 📈 PROJECT STATUS
+In this project, I deployed a Node.js application on AWS EC2.
 
-| Stage | Status |
-|---|---|
-| Project cloned | ✅ Complete |
-| `.env` configured | ✅ Complete |
-| Dependencies installed | ✅ Complete |
-| AWS EC2 created | ✅ Complete |
-| Ubuntu configured | ✅ Complete |
-| Git installed | ✅ Complete |
-| Node.js installed | ✅ Complete |
-| npm installed | ✅ Complete |
-| Application started | ✅ Complete |
-| Port `3000` configured | ✅ Complete |
-| Security Group configured | ✅ Complete |
-| Application accessible from browser | ✅ Complete |
-| 🚀 AWS Deployment | ✅ COMPLETE |
+I cloned the source code from GitHub, configured Ubuntu, installed Git and Node.js, created the `.env` file, installed dependencies and started the application.
 
----
+Finally, I configured the EC2 Security Group to allow traffic on port `3000` and accessed the application using the public IP address.
 
-# 🔮 NEXT LEVEL DEVOPS IMPROVEMENTS
+### Complete Deployment Flow
 
-The current deployment is a basic EC2 deployment.
-
-It can later be improved into a more production-style DevOps architecture:
-
-```text
-                 GitHub
-                    │
-                    ▼
-              GitHub Actions
-                    │
-                    ▼
-                   CI/CD
-                    │
-                    ▼
-                 AWS EC2
-                    │
-                    ▼
-                  Nginx
-                    │
-                    ▼
-             Reverse Proxy
-                    │
-                    ▼
-             Node.js / Express
-                    │
-                    ▼
-              PM2 Process Manager
-                    │
-                    ▼
-               HTTPS / SSL
-                    │
-                    ▼
-              Custom Domain
-                    │
-                    ▼
-                 🌐 Users
+```mermaid
+flowchart TD
+    A[Local Development] --> B[GitHub]
+    B --> C[AWS EC2]
+    C --> D[Ubuntu]
+    D --> E[Git and Node.js]
+    E --> F[Clone Application]
+    F --> G[Configure .env]
+    G --> H[npm install]
+    H --> I[npm run start]
+    I --> J[Port 3000]
+    J --> K[Security Group]
+    K --> L[Public IP]
+    L --> M[Live Application]
 ```
 
-Possible future improvements:
-
-- 🔄 CI/CD using GitHub Actions
-- ⚙️ PM2 for process management
-- 🌐 Nginx reverse proxy
-- 🔒 HTTPS with SSL/TLS
-- 🌍 Custom domain
-- 📊 Monitoring and logging
-- 🐳 Docker containerization
-- ☸️ Kubernetes deployment
-- ☁️ AWS Load Balancer
-- 📈 Auto Scaling
-
----
-
-# 📝 PROJECT SUMMARY
-
-This project demonstrates the complete process of deploying a Node.js application to AWS EC2.
-
-The application was first tested locally, then the source code was cloned from GitHub onto an Ubuntu EC2 instance. Git, Node.js and npm were configured on the server, environment variables were created using `.env`, project dependencies were installed, and the Node.js server was started using `npm run start`.
-
-The EC2 Security Group was then configured to allow inbound traffic on port `3000`. Finally, the application was accessed through the EC2 public IPv4 address.
-
-```text
-Local Development
-        ↓
-      GitHub
-        ↓
-     AWS EC2
-        ↓
-      Ubuntu
-        ↓
-  Node.js + npm
-        ↓
-     Express
-        ↓
-      .env
-        ↓
-   npm install
-        ↓
-  npm run start
-        ↓
-     Port 3000
-        ↓
-Security Group
-        ↓
-   Public IPv4
-        ↓
-   🌐 Browser
-        ↓
-🚀 LIVE APPLICATION
-```
-
----
-
-<div align="center">
-
-# 🎉 PROJECT COMPLETE 🎉
-
-### 🚀 NODE.JS APPLICATION SUCCESSFULLY DEPLOYED ON AWS EC2
-
-**Local Machine → GitHub → EC2 → Ubuntu → Node.js → Express → Security Group → Live Website**
-
-<br>
-
-### ☁️ AWS • 🐧 Linux • 🐙 Git • 🟢 Node.js • 🚂 Express • 🔐 Networking
-
-<br>
-
-## ✅ DEPLOYMENT SUCCESSFUL
-
-</div>
+**Local Machine → GitHub → AWS EC2 → Ubuntu → Node.js → Live Application**
