@@ -1,217 +1,145 @@
-# 🐍 How to Run Python Code Using Command Prompt (CMD)
+# Run Python Code Using Command Prompt (CMD)
 
-This guide explains how to install Python on Windows and run your first Python program using Command Prompt (CMD), without using VS Code.
+This guide explains how to install Python on Windows and run a Python program using Command Prompt without using VS Code.
 
----
+## Step 1: Install Python
 
-## 🐍 STEP 1: Install Python
+1. Open your browser.
+2. Visit the official [Python website](https://www.python.org/downloads/windows/).
+3. Download the latest Python version for Windows.
+4. Open the downloaded installer.
+5. **Important:** Select **Add Python to PATH**.
+6. Click **Install Now** and wait for the installation to finish.
 
-### 1. Open Your Browser
+Python is now installed on your system.
 
-Open Google Chrome on your PC.
+## Step 2: Open Command Prompt
 
-### 2. Visit the Official Python Website
-
-Download Python from the official website:
-
-🔗 [Download Python for Windows](https://www.python.org/downloads/windows/)
-
-### 3. Download Python
-
-- Click the download button for the latest Python version.
-- Wait for the download to finish.
-
-### 4. Install Python
-
-1. Open the downloaded Python installer.
-2. **IMPORTANT:** Tick the checkbox that says **Add Python to PATH**.
-3. Click **Install Now**.
-4. Wait until the installation finishes.
-5. Click **Close**.
-
-✅ Python is now installed on your PC!
-
----
-
-## 💻 STEP 2: Open Command Prompt (CMD)
-
-Follow these steps to open the terminal.
-
-1. Press **Windows + R** on your keyboard.
-2. A small window called **Run** will appear.
-3. Type the following command:
+1. Press `Windows + R`.
+2. Type the following command:
 
 ```cmd
 cmd
 ```
 
-4. Press **Enter**.
+3. Press Enter.
 
-A black window will appear. This is your **Command Prompt (CMD)**!
+Command Prompt will open. You can enter commands here.
 
-It may look something like this:
+Example:
 
 ```text
 C:\Users\YourName>
 ```
 
-This is where you will enter commands.
+## Step 3: Check Python Installation
 
----
-
-## 🐍 STEP 3: Check Python Installation
-
-Inside the CMD window, type:
+Run the following command:
 
 ```cmd
 python --version
 ```
 
-Press **Enter**.
-
-If Python is installed correctly, you will see output similar to this:
+Example output:
 
 ```text
 Python 3.14.0
 ```
 
-Your Python version may be different.
+Your version may be different.
 
-### ⚠️ If the Command Doesn't Work
-
-Try the following command:
+If the command doesn't work, try:
 
 ```cmd
 py --version
 ```
 
-If neither command works, check whether Python was installed correctly and whether it was added to PATH.
+If neither command works, check your Python installation and PATH settings.
 
----
+## Step 4: Create a Folder for Python Programs
 
-## 📂 STEP 4: Create a Folder for Python
-
-We will create a folder to store our Python programs.
-
-### 1. Create the Folder
-
-In the same CMD window, type:
+Create a folder to store your Python files.
 
 ```cmd
 mkdir Python-Practice
 ```
 
-Press **Enter**.
-
-This creates a folder named `Python-Practice`.
-
-### 2. Enter the Folder
-
-Now type:
+Enter the folder:
 
 ```cmd
 cd Python-Practice
 ```
 
-Press **Enter**.
-
-Your terminal should now look something like this:
+Your terminal should now look like this:
 
 ```text
 C:\Users\YourName\Python-Practice>
 ```
 
-✅ Great! You have successfully created a folder and entered it.
+## Step 5: Create Your First Python File
 
----
+We will use Notepad to write our Python code.
 
-## 📝 STEP 5: Create Your First Python File
-
-Now, let's create a Python file using Notepad.
-
-### 1. Open Notepad
-
-In the same CMD window, type:
+Open Notepad from CMD:
 
 ```cmd
 notepad hello.py
 ```
 
-Press **Enter**.
-
 Notepad will open in a separate window.
 
-**Don't worry!** You haven't left the terminal permanently. You have simply opened a text editor to write your Python code.
-
-### 2. Write Your Python Code
-
-Inside Notepad, type the following code:
+Write the following code:
 
 ```python
 print("Hello, World!")
 print("I am learning Python!")
 ```
 
-### 3. Save the File
+Save the file using **File → Save** and close Notepad.
 
-1. Click **File → Save** in Notepad.
-2. Make sure the filename is `hello.py`.
-3. Close Notepad by clicking the **X** button.
+Your Python file is now saved as `hello.py`.
 
-🎉 Now you are back at your CMD window!
+## Step 6: Run Your Python Program
 
-Your Python code is saved in a file called `hello.py`.
+Make sure you are inside the `Python-Practice` folder.
 
----
-
-## 🚀 STEP 6: Run Your Python Code
-
-Now, let's execute the Python program you created.
-
-### 1. Check Your Current Directory
-
-Look at your CMD window.
-
-It should show something similar to this:
-
-```text
-C:\Users\YourName\Python-Practice>
-```
-
-If you are not inside the `Python-Practice` folder, enter it using:
-
-```cmd
-cd Python-Practice
-```
-
-### 2. Execute the Python File
-
-Type the following command:
+Run the following command:
 
 ```cmd
 python hello.py
 ```
 
-Press **Enter**.
-
-### 3. Check the Output
-
-If everything works correctly, you will see:
+Expected output:
 
 ```text
 Hello, World!
 I am learning Python!
 ```
 
-🎉 **Congratulations!** You have successfully executed your first Python program using CMD.
-
-### ⚠️ If the `python` Command Doesn't Work
-
-If `py --version` works but `python --version` doesn't, try running your program using:
+If the `python` command doesn't work but `py --version` works, use:
 
 ```cmd
 py hello.py
 ```
 
----
+## How the Process Works
 
+```mermaid
+flowchart TD
+    A[Install Python] --> B[Open CMD]
+    B --> C[Check Python Version]
+    C --> D[Create Practice Folder]
+    D --> E[Create hello.py Using Notepad]
+    E --> F[Write and Save Python Code]
+    F --> G[Run python hello.py]
+    G --> H[View Output]
+```
+
+## What I Learned
+
+- How to install Python on Windows.
+- How to open and use Command Prompt.
+- How to check the Python version.
+- How to create folders using CMD.
+- How to create Python files using Notepad.
+- How to execute Python programs from the terminal.
