@@ -1,346 +1,245 @@
-<div align="center">
+# My DevOps & Cloud Learning Journey
 
-# ☁️ DEVOPS CLOUD JOURNEY
+## Day 06 – Day 12
 
-## 🚀 DAY 06 → DAY 12
-
-### **Git • GitHub • AWS • Ansible • Terraform • Docker**
-
-<img src="https://img.shields.io/badge/DevOps-Learning-2496ED?style=for-the-badge&logo=docker&logoColor=white"/>
-<img src="https://img.shields.io/badge/Git-GitHub-F05032?style=for-the-badge&logo=git&logoColor=white"/>
-<img src="https://img.shields.io/badge/Ansible-Automation-EE0000?style=for-the-badge&logo=ansible&logoColor=white"/>
-<img src="https://img.shields.io/badge/AWS-EC2-FF9900?style=for-the-badge&logo=amazonaws&logoColor=white"/>
-<img src="https://img.shields.io/badge/Terraform-IaC-844FBA?style=for-the-badge&logo=terraform&logoColor=white"/>
-<img src="https://img.shields.io/badge/Docker-Containers-2496ED?style=for-the-badge&logo=docker&logoColor=white"/>
-
-### 🧑‍💻 From Version Control → Automation → Cloud → Containers
-
-**Learn → Practice → Automate → Deploy → Containerize**
-
-</div>
+My learning journey continued with Git, GitHub, AWS, Ansible, Terraform and Docker. During these days, I started understanding how different DevOps tools work together.
 
 ---
 
-# 🗺️ MY DAY 06 → DAY 12 JOURNEY
+# My Learning Roadmap
 
 ```mermaid
 flowchart LR
-    D6["🌳 DAY 06<br/>Git + GitHub + SSH"]
-    D7["🔀 DAY 07<br/>Advanced Git + AWS Deployment"]
-    D8["🤖 DAY 08<br/>Ansible Configuration Management"]
-    D9["⚙️ DAY 09<br/>Ansible Roles + Terraform + Operations"]
-    D10["🐳 DAY 10<br/>Docker + Containerization"]
-    D11["📦 DAY 11<br/>Containers + Images + Docker Hub"]
-    D12["⚙️ DAY 12<br/>Docker CLI + Daemon + Permissions"]
+    D6["Day 06<br/>Git, GitHub & SSH"]
+    D7["Day 07<br/>Advanced Git & AWS"]
+    D8["Day 08<br/>Ansible"]
+    D9["Day 09<br/>Ansible Roles & Terraform"]
+    D10["Day 10<br/>Docker Fundamentals"]
+    D11["Day 11<br/>Images & Containers"]
+    D12["Day 12<br/>Docker CLI & Daemon"]
 
     D6 --> D7 --> D8 --> D9 --> D10 --> D11 --> D12
-
-    style D6 fill:#F05032,color:#fff
-    style D7 fill:#FF9900,color:#fff
-    style D8 fill:#EE0000,color:#fff
-    style D9 fill:#844FBA,color:#fff
-    style D10 fill:#2496ED,color:#fff
-    style D11 fill:#2496ED,color:#fff
-    style D12 fill:#2496ED,color:#fff
 ```
 
----
+# Day 06 – Git, GitHub, Remote & SSH
 
-# 📚 WHAT I LEARNED FROM DAY 06 → DAY 12
+## Git Repository
 
-During these seven days, I moved from **Git and GitHub fundamentals** into advanced Git workflows, SSH authentication, AWS EC2 application deployment, Ansible automation, Terraform basics, DevOps operations, and finally Docker containerization.
+A Git repository stores project files and tracks their changes.
 
-The learning gradually connected these technologies into a real DevOps workflow:
-
-```mermaid
-flowchart TB
-    A["🌳 Git"]
-    --> B["☁️ GitHub"]
-
-    B --> C["🔐 SSH"]
-
-    C --> D["☁️ AWS EC2"]
-
-    D --> E["🤖 Ansible"]
-
-    E --> F["🏗️ Terraform"]
-
-    F --> G["🐳 Docker"]
-
-    G --> H["📦 Containers"]
-
-    H --> I["🚀 Application Deployment"]
-```
-
----
-
-# 🌳 DAY 06 — GITHUB, GIT REMOTE, CLONE, FORK & SSH
-
-> **Focus:** Connecting local Git repositories with GitHub, understanding remote repositories, cloning, forking, SSH authentication and GitFlow.
-
-My Day 06 learning focused on how Git works with GitHub and how a local repository communicates with a remote repository. I also learned how an EC2 server can authenticate with GitHub using SSH.
-
----
-
-## 📁 `.git` DIRECTORY
-
-When I run:
+To create a repository:
 
 ```bash
+mkdir gitdemo
+cd gitdemo
 git init
 ```
 
-Git creates a hidden `.git` directory.
+The `git init` command creates a hidden `.git` directory.
 
-```mermaid
-flowchart LR
-    A["📁 Project"] --> B["git init"]
-    B --> C["📁 .git"]
-    C --> D["🌳 Git Repository"]
-```
+### What is the .git directory?
 
-The `.git` directory contains information related to:
+The `.git` directory stores Git information such as:
 
-* 📝 Commits
-* 🌿 Branches
-* 📜 History
-* ⚙️ Configuration
-* 🔗 References
+- Commit history
+- Branch information
+- Repository configuration
+- References
 
-To see hidden files:
+To view hidden files:
 
 ```bash
 ls -a
 ```
 
----
+## Git Workflow
 
-## 🆕 CREATE A GIT REPOSITORY
+Git has three main areas:
 
-```bash
-mkdir gitdemo
-cd gitdemo
-pwd
-git init
-ls -la
+1. Working Directory
+2. Staging Area
+3. Git Repository
+
+```mermaid
+flowchart LR
+    A["Working Directory"] -->|"git add"| B["Staging Area"]
+    B -->|"git commit"| C["Git Repository"]
 ```
 
----
+### Basic Git Commands
 
-## 📄 CREATE A FILE
-
-I practiced creating a Shell script:
-
-```bash
-vim calculator.sh
-```
-
-Example:
-
-```bash
-#!/bin/bash
-echo "Hello Git"
-```
-
-Save in Vim:
-
-```text
-ESC → :wq → ENTER
-```
-
----
-
-## ➕ STAGING FILES
-
-```bash
-git add calculator.sh
-```
-
-or:
-
-```bash
-git add .
-```
-
----
-
-## 📊 CHECK STATUS
+**Check repository status**
 
 ```bash
 git status
 ```
 
-Git can show:
-
-* Untracked files
-* Modified files
-* Changes to be committed
-
----
-
-# 🌐 GIT REMOTE
-
-A Git remote connects a local repository to a remote repository such as GitHub.
-
-The common remote name is:
-
-```text
-origin
-```
-
-Add remote:
+**Add files to staging**
 
 ```bash
-git remote add origin https://github.com/YOUR-USERNAME/gitdemo.git
+git add calculator.sh
+git add .
 ```
 
-Check remote:
+**Commit changes**
+
+```bash
+git commit -m "Add calculator script"
+```
+
+**View commit history**
+
+```bash
+git log
+git log --oneline
+```
+
+## Git Remote
+
+A remote connects our local repository to a repository hosted on GitHub.
+
+The commonly used remote name is `origin`.
+
+Add a remote:
+
+```bash
+git remote add origin <repository-url>
+```
+
+Check remote details:
 
 ```bash
 git remote -v
 ```
 
-```mermaid
-flowchart LR
-    A["💻 Local Repository"] --> B["🌐 origin"]
-    B --> C["☁️ GitHub Repository"]
-```
+## Git Push and Fetch
 
----
+**git push**
 
-# 📤 GIT PUSH
+Uploads local commits to GitHub.
 
 ```bash
 git push -u origin main
 ```
 
-### Remember
+**git fetch**
 
-```text
-git push
-↓
-Upload local commits
-↓
-GitHub
-```
-
----
-
-# 📥 GIT FETCH
+Downloads information about remote changes without directly merging them into the current branch.
 
 ```bash
 git fetch
 ```
 
-`git fetch` downloads information about changes from the remote repository without directly modifying the working files.
+**git pull**
 
-### PUSH vs FETCH
-
-| Command     | Purpose                     |
-| ----------- | --------------------------- |
-| `git push`  | Upload local commits        |
-| `git fetch` | Download remote information |
-
----
-
-# 📦 GIT CLONE
+Downloads remote changes and integrates them into the current branch.
 
 ```bash
-git clone https://github.com/YOUR-USERNAME/gitdemo.git
+git pull
 ```
 
-Clone creates a complete local copy of an existing repository.
+## Git Clone
 
-Using SSH:
+`git clone` downloads an existing repository to our local machine.
 
 ```bash
-git clone git@github.com:YOUR-USERNAME/gitdemo.git
+git clone <repository-url>
 ```
 
----
+We can also clone using SSH:
 
-# 🍴 GITHUB FORK
+```bash
+git clone git@github.com:USERNAME/REPOSITORY.git
+```
 
-A GitHub Fork creates my own copy of another user's repository on GitHub.
+## Git Fork
+
+A fork creates a copy of another user's repository under our GitHub account.
+
+It is commonly used when contributing to open-source projects.
 
 ```mermaid
 flowchart LR
-    A["Original Repository"] --> B["🍴 Fork"]
+    A["Original Repository"] --> B["Fork"]
     B --> C["My GitHub Repository"]
-    C --> D["📦 Clone"]
-    D --> E["💻 Local Machine"]
+    C --> D["Clone"]
+    D --> E["Local Machine"]
 ```
 
 ### Clone vs Fork
 
-| Git Clone                    | GitHub Fork                       |
-| ---------------------------- | --------------------------------- |
-| Downloads repository locally | Creates repository copy on GitHub |
-| Git command                  | GitHub feature                    |
-| Local operation              | Remote GitHub operation           |
-| `git clone`                  | Fork button                       |
+| Clone | Fork |
+|---|---|
+| Downloads a repository locally | Creates a copy on GitHub |
+| Uses `git clone` | Uses GitHub Fork |
+| Local operation | GitHub operation |
+| Used for local development | Useful for contributing |
 
----
+## SSH Authentication
 
-# 🔐 SSH AUTHENTICATION
+SSH stands for Secure Shell. It provides a secure way to connect to remote systems.
 
-SSH allows secure communication between an EC2 server and GitHub.
+I learned how SSH keys help an EC2 instance authenticate with GitHub.
 
-SSH uses:
+SSH uses two keys:
 
-```text
-🔐 Private Key → EC2
-🔓 Public Key  → GitHub
-```
+- **Private Key:** Stays on the machine.
+- **Public Key:** Added to GitHub.
 
-> ⚠️ **Never share the private key.**
-
-Generate a key:
+Generate SSH keys:
 
 ```bash
 ssh-keygen
 ```
 
-Check keys:
+Check generated keys:
 
 ```bash
 ls -al ~/.ssh
 ```
 
-Display public key:
+View the public key:
 
 ```bash
 cat ~/.ssh/id_ed25519.pub
 ```
 
-Test GitHub authentication:
+Test the connection:
 
 ```bash
 ssh -T git@github.com
 ```
 
+### SSH Authentication Flow
+
 ```mermaid
 flowchart LR
-    A["☁️ AWS EC2"] --> B["🔐 Private Key"]
-    B --> C["🔑 SSH Authentication"]
-    C --> D["🔓 Public Key Registered"]
-    D --> E["☁️ GitHub"]
+    A["EC2 Server"] --> B["Generate SSH Keys"]
+    B --> C["Private Key"]
+    B --> D["Public Key"]
+    C --> E["Keep Secure"]
+    D --> F["Add to GitHub"]
+    F --> G["SSH Authentication"]
 ```
 
-After successful SSH authentication, EC2 can communicate with GitHub for:
+**Important:** Never share your private key.
 
-```text
-📦 clone
-📤 push
-📥 fetch
-⬇️ pull
-```
+After successful authentication, EC2 can communicate with GitHub using Git commands such as clone, push, pull and fetch.
 
----
+## Git Branching and GitFlow
 
-# 🌿 GIT BRANCHING & GITFLOW
+A branch allows developers to work on different features without directly changing the main branch.
 
-Branches allow developers to work independently without directly changing the main branch.
+Common branch types:
+
+| Branch | Purpose |
+|---|---|
+| `main` | Production-ready code |
+| `feature` | Develop new features |
+| `release` | Prepare a release |
+| `hotfix` | Fix critical production issues |
+
+Example:
 
 ```mermaid
 gitGraph
@@ -350,375 +249,257 @@ gitGraph
     commit id: "Feature Work"
     commit id: "Complete Feature"
     checkout main
-    commit id: "Main Work"
     merge feature
-    commit id: "Merged"
+    commit id: "Updated Main"
 ```
 
-### Feature Branch
-
-```text
-main
- ↓
-feature-login
- ↓
-Development
- ↓
-Testing
- ↓
-Merge
- ↓
-main
-```
-
-### Hotfix
-
-```text
-main
- ↓
-🔥 hotfix
- ↓
-Fix Critical Bug
- ↓
-Test
- ↓
-Merge
- ↓
-main
- ↓
-Production
-```
-
-### Day 06 Takeaway
-
-```text
-🌳 Git
- ↓
-☁️ GitHub
- ↓
-🔗 Remote
- ↓
-📦 Clone
- ↓
-🍴 Fork
- ↓
-🔐 SSH
- ↓
-🌿 GitFlow
-```
+**My takeaway:** Git manages code changes, GitHub hosts repositories, and SSH provides secure authentication.
 
 ---
 
-# 🔀 DAY 07 — ADVANCED GIT & AWS APPLICATION DEPLOYMENT
+# Day 07 – Advanced Git & AWS Application Deployment
 
-> **Focus:** Advanced Git operations, branches, recovery, collaboration, Ansible introduction and Node.js deployment on AWS EC2.
+During Day 07, I learned some advanced Git commands and understood how Git helps manage changes in a project.
 
-Day 07 expanded Git into change management, history, recovery and collaboration. I also got introduced to Ansible and practiced the basic flow of deploying a Node.js application on AWS EC2.
+I also got introduced to Ansible and practised the basic process of deploying a Node.js application on AWS EC2.
 
----
+## Advanced Git Commands
 
-# 🔍 GIT DIFF
+### git diff
+
+Shows the changes made to files.
 
 ```bash
 git diff
 ```
 
-Used to see changes made to files before committing.
+### git restore
 
----
-
-# ↩️ GIT RESTORE
-
-```bash
-git restore <file>
-```
-
-Used to restore file changes.
-
-Example:
+Restores file changes in the working directory.
 
 ```bash
 git restore file.txt
 ```
 
----
+Be careful because this can discard uncommitted changes.
 
-# 🗑️ GIT RM
+### git rm
+
+Removes a tracked file from the working directory and stages its removal.
 
 ```bash
-git rm <file>
+git rm file.txt
 ```
 
-Used to remove a tracked file.
+### git reset
 
----
-
-# ♻️ GIT RESET
+Used to move the current branch and update the staging area depending on the reset option.
 
 ```bash
 git reset
 ```
 
-I learned that Git provides mechanisms to undo, unstage and move Git state depending on how reset is used.
+### Git Configuration
 
----
-
-# 📜 GIT HISTORY
-
-```bash
-git log
-git log --oneline
-```
-
-Git history helps understand what happened to the project.
-
----
-
-# ⚙️ GIT CONFIGURATION
+We can configure our Git username and email.
 
 ```bash
 git config --global user.name "Your Name"
 git config --global user.email "your@email.com"
 ```
 
----
+## Advanced Branch Workflow
 
-# 🌿 ADVANCED BRANCH WORKFLOW
+Different branches allow developers to work on features and bug fixes separately.
 
 ```mermaid
-flowchart TB
-    A["🌿 main"] --> B["feature"]
-    A --> C["bugfix"]
-    A --> D["hotfix"]
+flowchart TD
+    A["Main Branch"] --> B["Feature Branch"]
+    A --> C["Bug Fix Branch"]
+    A --> D["Hotfix Branch"]
 
     B --> E["Development"]
     C --> F["Bug Fix"]
     D --> G["Critical Fix"]
 
-    E --> H["🔀 Merge"]
+    E --> H["Merge"]
     F --> H
     G --> H
 
-    H --> I["🌿 main"]
-    I --> J["🚀 Production"]
+    H --> I["Main Branch"]
+    I --> J["Production"]
 ```
 
----
+## Introduction to Ansible
 
-# 🤖 ANSIBLE INTRODUCTION
+Ansible is an automation and configuration management tool.
 
-Ansible is a configuration-management and automation tool.
+It helps automate repetitive server tasks such as:
 
-It can automate:
+- Software installation
+- Server configuration
+- Package updates
+- File management
+- Application deployment
 
-* Software installation
-* Server configuration
-* Package updates
-* File management
-* Application deployment
-* Repetitive server tasks
+## AWS EC2 – Node.js Application Deployment
 
----
+I practised the basic steps involved in deploying a Node.js application on an AWS EC2 instance.
 
-# ☁️ AWS EC2 + NODE.JS DEPLOYMENT
-
-I practiced the basic deployment flow of a Node.js application on an AWS EC2 instance.
+### Deployment Flow
 
 ```mermaid
 flowchart LR
-    A["👨‍💻 Developer"] --> B["☁️ GitHub"]
+    A["Developer"] --> B["GitHub"]
     B --> C["git clone"]
-    C --> D["☁️ AWS EC2"]
-    D --> E["📦 npm install"]
-    E --> F["🟢 Node.js"]
-    F --> G["🚀 Application"]
+    C --> D["AWS EC2"]
+    D --> E["npm install"]
+    E --> F["Node.js"]
+    F --> G["Running Application"]
 ```
 
-Clone application:
+### Step 1: Clone the Application
 
 ```bash
 git clone <repository-url>
 cd <project-folder>
 ```
 
-Update packages:
+### Step 2: Update Packages
 
 ```bash
 sudo apt update
 ```
 
-Install npm:
+### Step 3: Install npm
 
 ```bash
 sudo apt install npm
 ```
 
-Install dependencies:
+### Step 4: Install Dependencies
 
 ```bash
 npm install
 ```
 
-Start application:
+### Step 5: Start the Application
 
 ```bash
 npm run start
 ```
 
----
+## EC2 Access Concepts
 
-# 🔐 EC2 ACCESS CONCEPTS
+I also learned about:
 
-I also learned the importance of:
+- EC2 instances
+- SSH connections
+- IAM
+- Permissions
+- Security
+- Application access
 
-* ☁️ EC2
-* 🔑 SSH
-* 👤 IAM
-* 🛡️ Permissions
-* 🔐 Security
-* 🌐 Application access
-
----
-
-# 🧠 DAY 07 TAKEAWAY
-
-```text
-🌳 Advanced Git
- ↓
-🌿 Branch Management
- ↓
-🔍 Diff / Restore / Reset
- ↓
-🌐 Remote Collaboration
- ↓
-🤖 Ansible Introduction
- ↓
-☁️ AWS EC2
- ↓
-🟢 Node.js
- ↓
-🚀 Application Deployment
-```
+**My takeaway:** Advanced Git commands help manage code changes, while AWS EC2 provides a server where we can deploy applications.
 
 ---
 
-# 🤖 DAY 08 — ANSIBLE & CONFIGURATION MANAGEMENT
+# Day 08 – Ansible & Configuration Management
 
-> **Focus:** Automating infrastructure, managing servers, Playbooks, Inventory, SSH and scaling configuration operations.
+Day 08 focused on understanding Configuration Management and how Ansible helps automate server administration.
 
-Day 08 focused on understanding why Configuration Management is required and how Ansible can automate server administration.
+## What is Configuration Management?
 
----
+Configuration Management is the process of managing and maintaining server configurations.
 
-# ⚙️ CONFIGURATION MANAGEMENT
+Without automation, we need to connect to every server and configure it manually.
 
-Configuration Management is the process of automatically managing server and infrastructure configuration.
-
-Without automation:
+For example:
 
 ```text
 SSH → Server 1 → Configure
 SSH → Server 2 → Configure
 SSH → Server 3 → Configure
-...
 SSH → Server 500 → Configure
 ```
 
-Problems:
+This becomes difficult when the number of servers increases.
 
-* ⏳ Time-consuming
-* 👤 Human errors
-* 🔁 Repetitive work
-* 📈 Difficult to scale
-* 🐛 Configuration differences
+### Problems with Manual Configuration
 
-With Ansible:
+- Takes more time
+- Human errors
+- Repetitive work
+- Difficult to manage multiple servers
+- Configuration differences between servers
 
-```mermaid
-flowchart LR
-    A["🤖 Ansible Controller"] --> B["🔐 SSH"]
-    B --> C["🖥️ Server 1"]
-    B --> D["🖥️ Server 2"]
-    B --> E["🖥️ Server 3"]
-    B --> F["🖥️ Server N"]
-```
+## What is Ansible?
 
----
+Ansible is an automation tool that allows us to manage multiple servers from one controller.
 
-# 🤖 WHAT IS ANSIBLE?
+It can automate:
 
-> **Ansible allows us to automate the configuration and management of multiple servers from one controller.**
+- Software installation
+- Package updates
+- Server configuration
+- File management
+- Application deployment
+- Repetitive tasks
 
-Ansible can automate:
+## Ansible Architecture
 
-```text
-📦 Software Installation
-🔄 Updates
-⚙️ Configuration
-📁 Files
-🚀 Deployment
-🖥️ Administration
-🔐 Remote Execution
-🔁 Repetitive Tasks
-```
-
----
-
-# 🏗️ ANSIBLE ARCHITECTURE
+Ansible uses a controller to communicate with managed servers.
 
 ```mermaid
 flowchart LR
-    A["🤖 Ansible Controller"] --> B["🔐 SSH"]
-    B --> C["🖥️ Managed Server 1"]
-    B --> D["🖥️ Managed Server 2"]
-    B --> E["🖥️ Managed Server 3"]
+    A["Ansible Controller"] --> B["SSH"]
+    B --> C["Server 1"]
+    B --> D["Server 2"]
+    B --> E["Server 3"]
+    B --> F["Server N"]
 ```
 
-Ansible commonly uses an **agentless approach** for Linux/Unix management through SSH.
+Ansible commonly uses an agentless approach for Linux server management through SSH.
 
----
+## Master-Agent vs Agentless
 
-# ⚔️ MASTER-AGENT VS AGENTLESS
+| Master-Agent | Ansible |
+|---|---|
+| Requires agents | No agent required for common SSH-based Linux management |
+| Master communicates with agents | Controller connects through SSH |
+| More components to manage | Simpler setup |
 
-| Feature       | Master-Agent    | Ansible                                      |
-| ------------- | --------------- | -------------------------------------------- |
-| Architecture  | Master + Agents | Controller + Remote Connection               |
-| Agent         | Required        | Not required for common SSH Linux management |
-| Communication | Master ↔ Agents | Controller → SSH → Servers                   |
-| Setup         | More components | Simpler                                      |
-| Automation    | Yes             | Yes                                          |
+## Push vs Pull
 
----
+**Push Model**
 
-# 📤 PUSH VS 📥 PULL
+The controller sends configurations or tasks to managed servers.
 
-### Push
-
-```text
-Controller
-    ↓
-Servers
+```mermaid
+flowchart LR
+    A["Controller"] --> B["Server 1"]
+    A --> C["Server 2"]
+    A --> D["Server 3"]
 ```
 
-The controller pushes configuration/tasks to managed systems.
+**Pull Model**
 
-### Pull
+Managed servers obtain their configuration from a central source.
 
-```text
-Servers
-    ↓
-Central Configuration Source
+```mermaid
+flowchart LR
+    A["Central Configuration Source"] --> B["Server 1"]
+    A --> C["Server 2"]
+    A --> D["Server 3"]
 ```
 
-Managed systems obtain their configuration from a central source.
+## Ansible Playbook
 
----
+A Playbook defines what Ansible should do.
 
-# 📋 ANSIBLE PLAYBOOK
+Playbooks are written in YAML.
 
-A Playbook defines **what Ansible should do**.
-
-Playbooks use YAML.
+Example:
 
 ```yaml
 - name: Install Git
@@ -731,19 +512,9 @@ Playbooks use YAML.
         state: present
 ```
 
-### Remember
+## Ansible Inventory
 
-```text
-📋 PLAYBOOK
-↓
-WHAT should be done?
-```
-
----
-
-# 🗂️ ANSIBLE INVENTORY
-
-Inventory defines **where tasks should run**.
+Inventory defines which servers Ansible should manage.
 
 Example:
 
@@ -754,7 +525,7 @@ server2
 server3
 ```
 
-or:
+We can also use IP addresses:
 
 ```ini
 [webservers]
@@ -763,98 +534,62 @@ or:
 192.168.1.12
 ```
 
-### Remember
+Remember:
 
-```text
-🗂️ INVENTORY
-↓
-WHERE should it be done?
-```
+- **Playbook:** What should be done?
+- **Inventory:** Where should it be done?
 
----
+## Dynamic Inventory
 
-# 🔄 DYNAMIC INVENTORY
+Cloud infrastructure can change frequently. New EC2 instances may be created and existing instances may be removed.
 
-Cloud infrastructure can change dynamically.
+Dynamic Inventory helps Ansible identify the available infrastructure automatically.
 
 ```mermaid
 flowchart LR
-    A["☁️ AWS"] --> B["EC2 Instances"]
-    B --> C["➕ New Instances"]
-    B --> D["➖ Removed Instances"]
-    C --> E["🔄 Dynamic Inventory"]
-    D --> E
+    A["AWS"] --> B["EC2 Instances"]
+    B --> C["Dynamic Inventory"]
+    C --> D["Ansible"]
 ```
 
----
+## SSH Authentication
 
-# 🔐 SSH AUTHENTICATION
+Ansible commonly uses SSH to connect to Linux servers.
 
-Ansible commonly connects to Linux servers using SSH.
-
-```text
-🤖 Ansible Controller
-        ↓
-      🔐 SSH
-        ↓
-🖥️ Linux Server
+```mermaid
+flowchart LR
+    A["Ansible Controller"] --> B["SSH"]
+    B --> C["Linux Server"]
 ```
 
-SSH key concept:
+The private key stays with the client, and the corresponding public key is configured on the server.
 
-```text
-Client
- ├── 🔐 Private Key
- └── 🔓 Public Key
-
-Server
- └── 🔓 Authorized Public Key
-```
-
-> 🔐 The private key must be kept secure.
-
----
-
-# 🐍 ANSIBLE & PYTHON
+## Ansible and Python
 
 Ansible is built using Python and has a Python-based ecosystem.
 
----
-
-# 🏆 DAY 08 — THE 3 THINGS I REMEMBER
+## Three Important Ansible Concepts
 
 ```mermaid
-flowchart TB
-    A["📋 PLAYBOOK"] --> B["WHAT should be done?"]
-    C["🗂️ INVENTORY"] --> D["WHERE should it be done?"]
-    E["🔐 SSH"] --> F["HOW does Ansible connect?"]
+flowchart TD
+    A["Playbook"] --> B["What should be done?"]
+    C["Inventory"] --> D["Where should it be done?"]
+    E["SSH"] --> F["How does Ansible connect?"]
 ```
 
-Together:
-
-```text
-📋 Playbook
-+
-🗂️ Inventory
-+
-🔐 SSH
-=
-🤖 Automated Server Management
-```
+**My takeaway:** Ansible helps manage multiple servers without configuring each server manually.
 
 ---
 
-# ⚙️ DAY 09 — ANSIBLE ROLES, TERRAFORM & DEVOPS OPERATIONS
+# Day 09 – Ansible Roles, Terraform & DevOps Operations
 
-> **Focus:** Reusable Ansible automation, roles, tasks, handlers, variables, templates, Terraform, incident management, change management and DevOps operations.
+Day 09 focused on making Ansible automation more organized and reusable. I also learned the basics of Terraform and some important DevOps operations concepts.
 
-Day 09 moved from basic Ansible automation toward **structured and reusable automation**. The main concepts included Playbooks, Roles, Tasks, Handlers, Variables, Templates, Inventory, Terraform, Incident Management, Change Management, JIRA, ServiceNow, Containerization, Docker and Linux permissions.
+## Ansible Playbook
 
----
+A Playbook defines the automation tasks that Ansible should perform.
 
-# 📋 ANSIBLE PLAYBOOK
-
-A Playbook defines what Ansible should do on target machines.
+Example:
 
 ```yaml
 - hosts: webservers
@@ -862,14 +597,14 @@ A Playbook defines what Ansible should do on target machines.
     - nginx
 ```
 
----
-
-# 🧩 ANSIBLE ROLE
+## Ansible Roles
 
 A Role organizes automation into reusable components.
 
+Example folder structure:
+
 ```text
-Ansible Project
+ansible-project/
 │
 ├── site.yml
 │
@@ -886,16 +621,13 @@ Ansible Project
 
 Roles make automation:
 
-* ♻️ Reusable
-* 🧹 Organized
-* 📦 Modular
-* 📖 Easier to understand
-* 🔧 Easier to maintain
-* 🚀 Easier to scale
+- Reusable
+- Organized
+- Modular
+- Easier to understand
+- Easier to maintain
 
----
-
-# ⚙️ TASKS
+## Tasks
 
 Tasks contain the actual work Ansible performs.
 
@@ -913,22 +645,16 @@ Example:
     state: started
 ```
 
-```text
-TASK
-↓
-What work should be performed?
-```
+## Handlers
 
----
+Handlers are tasks that run when another task notifies them.
 
-# 🔔 HANDLERS
-
-Handlers are tasks triggered when something changes.
+For example, when an Nginx configuration changes, we can notify a handler to restart Nginx.
 
 Example:
 
 ```yaml
-- name: Update nginx configuration
+- name: Update Nginx configuration
   template:
     src: nginx.conf.j2
     dest: /etc/nginx/nginx.conf
@@ -944,19 +670,19 @@ Handler:
     state: restarted
 ```
 
+### Handler Workflow
+
 ```mermaid
-flowchart LR
-    A["⚙️ Task"] --> B{"Changed?"}
-    B -->|Yes| C["🔔 Notify Handler"]
+flowchart TD
+    A["Task"] --> B{"Configuration Changed?"}
+    B -->|Yes| C["Notify Handler"]
     C --> D["Restart Nginx"]
-    B -->|No| E["No Handler"]
+    B -->|No| E["No Handler Execution"]
 ```
 
----
+## Variables
 
-# 📦 VARIABLES
-
-Variables store reusable values.
+Variables store values that can be reused in Playbooks and Roles.
 
 Example:
 
@@ -964,20 +690,18 @@ Example:
 nginx_port: 80
 ```
 
-Variables can be used inside automation to make it flexible.
+We can use variables inside tasks:
 
 ```yaml
-- name: Install package
+- name: Install Package
   package:
     name: "{{ package_name }}"
     state: present
 ```
 
----
+## Templates
 
-# 📝 TEMPLATES
-
-Ansible commonly uses Jinja2 templates to dynamically generate configuration files.
+Ansible uses Jinja2 templates to generate configuration files dynamically.
 
 Example:
 
@@ -991,9 +715,7 @@ server {
 }
 ```
 
----
-
-# 📁 FILES
+## Files
 
 The `files/` directory stores static files that Ansible can copy to managed servers.
 
@@ -1006,30 +728,26 @@ roles/
         └── index.html
 ```
 
----
+## Playbook vs Role
 
-# 🧠 ROLE VS PLAYBOOK
+| Concept | Purpose |
+|---|---|
+| Playbook | Defines the automation flow |
+| Role | Organizes reusable automation |
+| Task | Performs an action |
+| Handler | Runs when notified |
+| Variable | Stores reusable values |
+| Template | Generates dynamic configuration |
+| Files | Stores static files |
+| Inventory | Defines managed servers |
 
-| Concept       | Purpose                         |
-| ------------- | ------------------------------- |
-| 📋 Playbook   | Defines automation flow         |
-| 🧩 Role       | Organizes reusable automation   |
-| ⚙️ Task       | Performs an action              |
-| 🔔 Handler    | Runs when notified              |
-| 📦 Variable   | Stores reusable values          |
-| 📝 Template   | Generates dynamic configuration |
-| 📁 Files      | Stores static files             |
-| 🗂️ Inventory | Defines managed hosts           |
+## Terraform Basics
 
----
+Terraform is an Infrastructure as Code tool.
 
-# 🏗️ TERRAFORM BASICS
+It allows us to define and manage infrastructure using configuration files.
 
-Terraform was introduced as an **Infrastructure as Code (IaC)** tool.
-
-It is used to define and manage infrastructure using configuration files.
-
-### Commands
+### Important Terraform Commands
 
 ```bash
 terraform init
@@ -1043,133 +761,97 @@ terraform destroy
 
 ```mermaid
 flowchart LR
-    A["📝 Configuration"] --> B["terraform init"]
+    A["Configuration Files"] --> B["terraform init"]
     B --> C["terraform validate"]
     C --> D["terraform plan"]
     D --> E["terraform apply"]
-    E --> F["☁️ Infrastructure"]
+    E --> F["Cloud Infrastructure"]
 ```
 
----
+## Incident Management
 
-# 🚨 INCIDENT MANAGEMENT
+Incident Management deals with unexpected problems that affect services.
 
-Incident Management handles unexpected problems affecting services.
+Example: A production server suddenly stops working.
 
 ```mermaid
 flowchart LR
-    A["🚨 Incident"] --> B["Investigation"]
+    A["Incident"] --> B["Investigation"]
     B --> C["Troubleshooting"]
     C --> D["Resolution"]
-    D --> E["✅ Service Restored"]
+    D --> E["Service Restored"]
 ```
 
-Example:
+## Change Management
 
-```text
-🚨 Production Server Down
-↓
-Incident Created
-↓
-Investigation
-↓
-Troubleshooting
-↓
-Resolution
-↓
-Service Restored
+Change Management handles planned changes to systems and infrastructure.
+
+Example: Upgrading a production server.
+
+```mermaid
+flowchart LR
+    A["Plan"] --> B["Review"]
+    B --> C["Approval"]
+    C --> D["Implementation"]
+    D --> E["Verification"]
 ```
 
----
+### Incident Management vs Change Management
 
-# 🔄 CHANGE MANAGEMENT
+| Incident Management | Change Management |
+|---|---|
+| Handles unexpected issues | Handles planned changes |
+| Example: Server failure | Example: Server upgrade |
+| Focuses on restoring services | Focuses on implementing changes safely |
 
-Change Management handles planned changes safely.
+## JIRA
 
-```text
-Plan
- ↓
-Review
- ↓
-Approval
- ↓
-Implementation
- ↓
-Verification
-```
+JIRA is a tool used by teams to manage:
 
-### Incident vs Change
+- Projects
+- Tasks
+- Issues
+- Bugs
+- Team activities
 
-| Incident Management | Change Management                    |
-| ------------------- | ------------------------------------ |
-| 🚨 Unexpected issue | 🔄 Planned change                    |
-| Server Down         | Server Upgrade                       |
-| Restore service     | Make change safely                   |
-| Troubleshooting     | Planning + approval + implementation |
+## ServiceNow
 
----
+ServiceNow is commonly used for IT Service Management.
 
-# 🎫 JIRA
+It helps manage:
 
-JIRA was introduced as a tool used by software development teams for:
-
-* 📋 Projects
-* 📝 Tasks
-* 🐛 Issues
-* 🔄 Work
-* 👥 Team activities
-
----
-
-# 🛠️ SERVICENOW
-
-ServiceNow was introduced in the context of IT operations and service management.
-
-It can manage:
-
-* 🚨 Incidents
-* 🔄 Changes
-* 📋 Requests
-* 🛠️ IT Operations
+- Incidents
+- Changes
+- Service requests
+- IT operations
 
 ### JIRA vs ServiceNow
 
-| Tool           | Main Context                                           |
-| -------------- | ------------------------------------------------------ |
-| 🎫 JIRA        | Software development, projects, tasks and issues       |
-| 🛠️ ServiceNow | IT service management, incidents, changes and requests |
+| JIRA | ServiceNow |
+|---|---|
+| Software development and project management | IT Service Management |
+| Tasks and issues | Incidents and changes |
+| Development workflows | IT operations workflows |
 
----
+## Root and Sudo
 
-# 🔐 ROOT & SUDO
+**Root**
 
-### Root
+Root is the superuser in Linux. It has extensive administrative permissions.
 
-`root` is the Linux superuser with extensive system privileges.
+**sudo**
 
-```text
-👤 Normal User
- ↓
-Limited Permissions
+The `sudo` command allows an authorized user to execute commands with elevated privileges.
 
-👑 root
- ↓
-Administrative Permissions
-```
-
-### sudo
+Example:
 
 ```bash
 sudo command
 ```
 
-Allows an authorized user to execute commands with elevated privileges.
+## Docker Permissions
 
----
-
-# 🐳 DOCKER PERMISSIONS
-
-Docker may require appropriate permissions.
+Docker commands may require additional permissions.
 
 Example:
 
@@ -1177,7 +859,7 @@ Example:
 sudo docker ps
 ```
 
-A user can also be added to the Docker group:
+We can also add the current user to the Docker group:
 
 ```bash
 sudo usermod -aG docker $USER
@@ -1185,81 +867,67 @@ newgrp docker
 docker ps
 ```
 
-> ⚠️ Docker group access grants powerful privileges and must be handled carefully.
+Note: Docker group membership provides powerful access to the system. It should be treated as privileged access.
 
----
-
-# 🧠 DAY 09 FLOW
+### Day 09 Learning Flow
 
 ```mermaid
-flowchart TB
-    A["🤖 Ansible"] --> B["📋 Playbook"]
-    B --> C["🧩 Role"]
-    C --> D["⚙️ Tasks"]
-    D --> E["🔔 Handlers"]
-    E --> F["📦 Variables"]
-    F --> G["📝 Templates"]
-    G --> H["🖥️ Managed Servers"]
+flowchart TD
+    A["Ansible"] --> B["Playbooks"]
+    B --> C["Roles"]
+    C --> D["Tasks"]
+    D --> E["Handlers"]
+    E --> F["Variables"]
+    F --> G["Templates"]
 
-    I["🏗️ Terraform"] --> J["☁️ Infrastructure"]
+    H["Terraform"] --> I["Infrastructure as Code"]
 
-    K["🚨 Incident"] --> L["Troubleshoot"] --> M["Resolve"]
-    N["🔄 Change"] --> O["Plan"] --> P["Approve"] --> Q["Implement"]
+    J["Incident Management"] --> K["Troubleshooting"]
+    K --> L["Resolution"]
+
+    M["Change Management"] --> N["Planning"]
+    N --> O["Approval"]
+    O --> P["Implementation"]
 ```
 
----
-
-# 🐳 DAY 10 — DOCKER & CONTAINERIZATION
-
-> **Focus:** Understanding containerization, Docker, Dockerfiles, images, containers, Docker Engine, registries, OCI, Buildah and Podman.
+**My takeaway:** Ansible Roles help organize automation, Terraform helps manage infrastructure through code, and Incident and Change Management are important parts of DevOps operations.
 
 ---
 
-# 📦 CONTAINERIZATION
+# Day 10 – Docker & Containerization
 
-Containerization packages an application together with its required:
+Day 10 introduced me to Docker and the basic concepts of containerization.
 
-* Application code
-* Dependencies
-* Libraries
-* Configuration
-* Runtime requirements
+I learned how applications are packaged and run inside containers.
+
+## What is Containerization?
+
+Containerization is a way of packaging an application with its required dependencies and configuration.
+
+It helps applications run consistently across different environments.
 
 ```mermaid
 flowchart LR
     A["Application"] --> B["Dependencies"]
-    B --> C["Configuration"]
-    C --> D["📦 Container"]
-    D --> E["🚀 Running Application"]
+    B --> C["Libraries"]
+    C --> D["Configuration"]
+    D --> E["Container"]
+    E --> F["Running Application"]
 ```
 
-### Key Idea
+## What is Docker?
 
-> **Build once → Package once → Run consistently.**
+Docker is a platform used to build, package and run applications inside containers.
 
----
+A container can include:
 
-# 🐳 WHAT IS DOCKER?
+- Application code
+- Runtime
+- Libraries
+- Dependencies
+- Configuration
 
-Docker is a platform used to build, package, distribute and run applications inside containers.
-
-```text
-Application
-+
-Runtime
-+
-Libraries
-+
-Dependencies
-+
-Configuration
-↓
-📦 Container
-```
-
----
-
-# 📄 DOCKERFILE
+## Dockerfile
 
 A Dockerfile contains instructions used to build a Docker image.
 
@@ -1273,365 +941,272 @@ RUN apt update
 CMD ["echo", "Hello Docker"]
 ```
 
-Important instructions:
+### Important Dockerfile Instructions
 
-| Instruction | Purpose                                       |
-| ----------- | --------------------------------------------- |
-| `FROM`      | Specifies base image                          |
-| `RUN`       | Executes command during image build           |
-| `CMD`       | Specifies default command when container runs |
+| Instruction | Purpose |
+|---|---|
+| `FROM` | Specifies the base image |
+| `RUN` | Executes commands during image build |
+| `CMD` | Defines the default command when a container starts |
 
----
+## Docker Image
 
-# 🖼️ DOCKER IMAGE
+A Docker image is a read-only template used to create containers.
 
-A Docker Image is a packaged, read-only template used to create containers.
+It contains the application and its required dependencies.
 
-It can contain:
+## Docker Container
 
-* Application code
-* Dependencies
-* Libraries
-* Runtime
-* Configuration
-* Required files
-
-```text
-🖼️ IMAGE
-↓
-Blueprint / Template
-
-📦 CONTAINER
-↓
-Running instance of Image
-```
-
----
-
-# 🐳 DOCKER CONTAINER
-
-A container is a lightweight environment used to run an application and its required dependencies.
+A container is a running instance of a Docker image.
 
 Containers:
 
-* Are lightweight
-* Do not contain a full OS
-* Share the host OS kernel
-* Provide logical isolation
-* Can run multiple applications on the same host
+- Are lightweight
+- Share the host OS kernel
+- Provide isolation
+- Package applications with dependencies
+- Can run multiple applications on the same host
 
-```mermaid
-flowchart TB
-    A["🖥️ Host Operating System + Kernel"]
-    --> B["⚙️ Docker"]
-    
-    B --> C["🐳 Container 1"]
-    B --> D["🐳 Container 2"]
-    B --> E["🐳 Container 3"]
+### Image vs Container
 
-    C --> F["Application A"]
-    D --> G["Application B"]
-    E --> H["Application C"]
-```
+| Image | Container |
+|---|---|
+| Template or blueprint | Running instance of an image |
+| Used to create containers | Used to run applications |
+| Read-only image layers | Has a writable container layer |
 
----
+## Virtual Machine vs Container
 
-# 🆚 VM VS CONTAINER
+| Virtual Machine | Container |
+|---|---|
+| Has a guest OS | Shares the host OS kernel |
+| Heavier | Lightweight |
+| Uses more resources | Generally uses fewer resources |
+| Usually slower to start | Usually faster to start |
+| Provides a complete OS environment | Packages an application and dependencies |
 
-| Virtual Machine     | Container                       |
-| ------------------- | ------------------------------- |
-| Requires guest OS   | Shares host OS kernel           |
-| Heavier             | Lightweight                     |
-| More resource usage | Less resource usage             |
-| Slower startup      | Faster startup                  |
-| Complete OS         | Application + dependencies      |
-| Strong isolation    | Logical/process-level isolation |
+### Main Difference
 
-### Main Idea
+A virtual machine generally runs its own guest operating system. A container shares the host operating system kernel.
 
-> A VM generally contains a complete guest OS, while a container shares the host OS kernel and packages the application with its required dependencies.
+## Docker Engine
 
----
-
-# ⚙️ DOCKER ENGINE
-
-Docker Engine / Docker Daemon manages Docker resources and executes Docker operations.
+Docker Engine manages Docker resources and operations.
 
 It manages:
 
-* 🖼️ Images
-* 📦 Containers
-* 🌐 Networks
-* 💾 Volumes
+- Images
+- Containers
+- Networks
+- Volumes
 
 ```mermaid
-flowchart TB
-    A["👨‍💻 Docker CLI"] --> B["⚙️ Docker Engine / Daemon"]
-    B --> C["🖼️ Images"]
-    B --> D["📦 Containers"]
-    B --> E["🌐 Networks"]
-    B --> F["💾 Volumes"]
+flowchart TD
+    A["Docker CLI"] --> B["Docker Engine / Daemon"]
+    B --> C["Images"]
+    B --> D["Containers"]
+    B --> E["Networks"]
+    B --> F["Volumes"]
 ```
 
----
-
-# 🏗️ DOCKER WORKFLOW
+## Docker Workflow
 
 ```mermaid
 flowchart LR
-    A["📄 Dockerfile"] --> B["🔨 docker build"]
-    B --> C["🖼️ Docker Image"]
-    C --> D["▶️ docker run"]
-    D --> E["📦 Docker Container"]
-    E --> F["🚀 Application"]
+    A["Dockerfile"] --> B["docker build"]
+    B --> C["Docker Image"]
+    C --> D["docker run"]
+    D --> E["Docker Container"]
+    E --> F["Application"]
 ```
 
----
+## OCI – Open Container Initiative
 
-# 🏛️ OCI
+OCI stands for Open Container Initiative.
 
-OCI stands for **Open Container Initiative**.
+It provides standards for container images and container runtimes.
 
-OCI provides standards for container images and container runtimes.
+## Docker vs Buildah vs Podman
 
----
+| Tool | Main Purpose |
+|---|---|
+| Docker | Build images and run containers |
+| Buildah | Build container images |
+| Podman | Run and manage containers |
 
-# 🛠️ DOCKER VS BUILDAH VS PODMAN
-
-| Tool       | Main Purpose                         |
-| ---------- | ------------------------------------ |
-| 🐳 Docker  | Build images + run/manage containers |
-| 🔨 Buildah | Build container images               |
-| 🦭 Podman  | Run/manage containers                |
-
----
-
-# 🌐 DOCKER REGISTRY
+## Docker Registry
 
 A Docker Registry stores and distributes container images.
 
 ```mermaid
 flowchart LR
-    A["👨‍💻 Developer"] --> B["🖼️ Build Image"]
-    B --> C["📤 Push"]
-    C --> D["🌐 Registry"]
-    D --> E["📥 Pull"]
-    E --> F["🖼️ Image"]
-    F --> G["🐳 Container"]
+    A["Developer"] --> B["Build Image"]
+    B --> C["Push"]
+    C --> D["Container Registry"]
+    D --> E["Pull"]
+    E --> F["Docker Host"]
+    F --> G["Container"]
 ```
 
----
-
-# 🐳 DAY 10 TAKEAWAY
-
-```text
-📦 Containerization
- ↓
-🐳 Docker
- ↓
-📄 Dockerfile
- ↓
-🔨 Build
- ↓
-🖼️ Image
- ↓
-▶️ Run
- ↓
-📦 Container
- ↓
-🚀 Application
-```
+**My takeaway:** Docker makes it easier to package applications and run them in consistent environments.
 
 ---
 
-# 📦 DAY 11 — DOCKER CONTAINERS, IMAGES & DOCKER HUB
+# Day 11 – Docker Containers, Images & Docker Hub
 
-> **Focus:** Containers, logical isolation, Linux filesystem inside containers, VM vs container, Docker images, Dockerfile, Docker Engine, Docker CLI, Registry and Docker Hub.
+Day 11 focused on understanding Docker containers in more detail. I learned about logical isolation, Linux filesystems inside containers, images, registries and Docker Hub.
 
-Day 11 went deeper into what actually exists inside containers, why containers are lightweight, how images create containers and how images move through registries.
+## Logical Isolation
 
----
+Containers provide isolated environments for applications.
 
-# 🔐 LOGICAL ISOLATION
-
-Containers need logical isolation so one container does not unnecessarily interfere with another.
+This helps prevent unnecessary interference between containers.
 
 ```mermaid
 flowchart LR
-    A["🐳 Container A"] --> B["Application A"]
-    C["🐳 Container B"] --> D["Application B"]
+    A["Container A"] --> B["Application A"]
+    C["Container B"] --> D["Application B"]
 
-    B -. "🚫 Unnecessary Access" .- D
+    B -.-> E["Separate Environments"]
+    D -.-> E
 ```
 
-Proper isolation helps reduce:
+Isolation helps reduce:
 
-* Security risks
-* Unwanted file access
-* Exposure of sensitive information
-* Application interference
+- Unwanted file access
+- Application interference
+- Exposure of sensitive information
+- Security risks
 
----
+## Linux Filesystem Inside Containers
 
-# 📂 FILESYSTEM INSIDE CONTAINERS
+I learned about some important Linux directories.
 
-Important Linux directories include:
+| Directory | Purpose |
+|---|---|
+| `/bin` | Binary executable files |
+| `/sbin` | System administration binaries |
+| `/etc` | Configuration files |
+| `/lib` | Libraries |
+| `/usr` | Utilities and applications |
+| `/root` | Root user's home directory |
 
-| Directory | Purpose                        |
-| --------- | ------------------------------ |
-| `/bin`    | Binary executable files        |
-| `/sbin`   | System administration binaries |
-| `/etc`    | Configuration files            |
-| `/lib`    | Libraries                      |
-| `/usr`    | Utilities and applications     |
-| `/root`   | Root user's home directory     |
+## Why Are Containers Lightweight?
 
----
-
-# ⚡ WHY ARE CONTAINERS LIGHTWEIGHT?
-
-Containers share the host operating system kernel rather than requiring a complete guest OS.
+Containers share the host operating system kernel instead of requiring a complete guest operating system.
 
 ```mermaid
-flowchart TB
+flowchart TD
     A["Physical Machine"] --> B["Host OS + Kernel"]
     B --> C["Docker Engine"]
     C --> D["Container"]
     D --> E["Application + Dependencies"]
 ```
 
-Advantages:
+### Advantages of Containers
 
-* ⚡ Fast startup
-* 🪶 Lightweight
-* 💾 Less resource usage
-* 📦 Portable
-* 🚀 Easy deployment
+- Fast startup
+- Lightweight
+- Lower resource usage
+- Portability
+- Easier deployment
 
----
-
-# 🖼️ ONE IMAGE → MULTIPLE CONTAINERS
-
-```mermaid
-flowchart TB
-    A["🖼️ NGINX Image"] --> B["🐳 Container 1"]
-    A --> C["🐳 Container 2"]
-    A --> D["🐳 Container 3"]
-```
+## One Image to Multiple Containers
 
 One Docker image can be used to create multiple containers.
 
----
-
-# 📄 DOCKERFILE → IMAGE → CONTAINER
-
-```text
-📄 Dockerfile
- ↓
-🔨 docker build
- ↓
-🖼️ Docker Image
- ↓
-▶️ docker run
- ↓
-📦 Docker Container
- ↓
-🚀 Application
+```mermaid
+flowchart TD
+    A["NGINX Image"] --> B["Container 1"]
+    A --> C["Container 2"]
+    A --> D["Container 3"]
 ```
 
----
+## Dockerfile to Container
 
-# 🌐 DOCKER HUB
+```mermaid
+flowchart TD
+    A["Dockerfile"] --> B["docker build"]
+    B --> C["Docker Image"]
+    C --> D["docker run"]
+    D --> E["Docker Container"]
+    E --> F["Application"]
+```
+
+## Docker Hub
 
 Docker Hub is a public registry used to store and share Docker images.
 
+Developers can upload images and other users can download them.
+
 ```mermaid
 flowchart LR
-    A["👨‍💻 Developer"] --> B["🖼️ Build Image"]
-    B --> C["📤 docker push"]
-    C --> D["🌐 Docker Hub"]
-    D --> E["📥 docker pull"]
-    E --> F["👨‍💻 Another Developer"]
-    F --> G["🐳 Container"]
+    A["Developer"] --> B["Build Image"]
+    B --> C["docker push"]
+    C --> D["Docker Hub"]
+    D --> E["docker pull"]
+    E --> F["Another Developer"]
+    F --> G["Run Container"]
 ```
 
----
+### Docker Pull
 
-# 📥 DOCKER PULL
-
-```bash
-docker pull <image-name>
-```
-
-Example:
+Downloads an image from a registry.
 
 ```bash
 docker pull nginx
 ```
 
-Used to download an image from a registry.
+### Docker Push
 
----
-
-# 📤 DOCKER PUSH
+Uploads an image to a registry.
 
 ```bash
 docker push <username>/<image-name>
 ```
 
-Used to upload a local image to a registry.
+## Important Docker Concepts
 
----
+| Concept | Meaning |
+|---|---|
+| Container | Environment used to run an application |
+| Isolation | Separates application environments |
+| Image | Template used to create containers |
+| Dockerfile | Instructions for building an image |
+| Docker Engine | Manages Docker operations |
+| Docker CLI | Interface used to communicate with Docker |
+| Registry | Stores and distributes images |
+| Docker Hub | Public Docker registry |
+| Pull | Downloads an image |
+| Push | Uploads an image |
+| Run | Creates and starts a container |
 
-# 🧠 DAY 11 KEY CONCEPTS
-
-| Concept          | Meaning                                        |
-| ---------------- | ---------------------------------------------- |
-| 🐳 Container     | Lightweight environment running an application |
-| 🔐 Isolation     | Keeps container resources separated            |
-| 🖼️ Image        | Blueprint for containers                       |
-| 📄 Dockerfile    | Instructions for building an image             |
-| ⚙️ Docker Engine | Manages Docker operations                      |
-| 🖥️ Docker CLI   | Interface used to interact with Docker         |
-| 🗃️ Registry     | Stores/distributes images                      |
-| 🌐 Docker Hub    | Public Docker registry                         |
-| 📥 Pull          | Download image                                 |
-| 📤 Push          | Upload image                                   |
-| 🚀 Run           | Create/start container                         |
-
-These definitions and the Day 11 workflow are directly reflected in the learning notes.
-
----
-
-# 🔄 COMPLETE DAY 11 WORKFLOW
+### Day 11 Workflow
 
 ```mermaid
 flowchart LR
-    A["👨‍💻 Developer"] --> B["📄 Dockerfile"]
-    B --> C["🔨 Build"]
-    C --> D["🖼️ Docker Image"]
-    D --> E["📤 Push"]
-    E --> F["🌐 Docker Hub"]
-    F --> G["📥 Pull"]
-    G --> H["🖼️ Docker Image"]
-    H --> I["▶️ Run"]
-    I --> J["📦 Container"]
-    J --> K["🚀 Application"]
+    A["Developer"] --> B["Dockerfile"]
+    B --> C["Build"]
+    C --> D["Docker Image"]
+    D --> E["Push"]
+    E --> F["Docker Hub"]
+    F --> G["Pull"]
+    G --> H["Run"]
+    H --> I["Container"]
+    I --> J["Application"]
 ```
 
----
-
-# ⚙️ DAY 12 — DOCKER CLI, DAEMON & PERMISSIONS
-
-> **Focus:** Docker CLI, Docker Daemon, Docker resources, permissions, Docker group, images, containers, networks, volumes and the complete Docker workflow.
-
-Day 12 focused on understanding what happens when a Docker command is executed and how the Docker CLI communicates with the Docker Daemon.
+**My takeaway:** Docker images act as templates, while containers are created from those images. Docker Hub makes it easier to share images with other developers.
 
 ---
 
-# 🖥️ DOCKER CLI
+# Day 12 – Docker CLI, Daemon & Permissions
 
-Docker CLI is the command-line interface used by users and DevOps engineers to communicate with Docker.
+Day 12 focused on understanding how Docker works internally and how the Docker CLI communicates with the Docker Daemon.
+
+## Docker CLI
+
+Docker CLI is the command-line interface used to interact with Docker.
 
 Examples:
 
@@ -1650,140 +1225,112 @@ docker network ls
 docker volume ls
 ```
 
----
+## Docker Daemon
 
-# ⚙️ DOCKER DAEMON
+The Docker Daemon is a background service that manages Docker resources and operations.
 
-The Docker Daemon is the background service responsible for managing Docker resources and executing Docker operations.
+It is commonly represented by:
 
-It is commonly represented as:
-
-```text
+```bash
 dockerd
 ```
 
-Responsibilities:
+### Responsibilities
 
-* Creates containers
-* Starts containers
-* Stops containers
-* Removes containers
-* Builds images
-* Pulls images
-* Manages networks
-* Manages volumes
-* Communicates with registries
+- Create containers
+- Start and stop containers
+- Remove containers
+- Build images
+- Pull images
+- Manage networks
+- Manage volumes
+- Communicate with registries
 
----
+## Docker CLI and Docker Daemon
 
-# 🔗 DOCKER CLI → DOCKER DAEMON
+The Docker CLI sends commands to the Docker Daemon. The Daemon performs the requested operations.
 
 ```mermaid
 flowchart LR
-    A["👤 User"] --> B["💻 Docker CLI"]
-    B --> C["⚙️ Docker Daemon"]
-
-    C --> D["🖼️ Images"]
-    C --> E["📦 Containers"]
-    C --> F["🌐 Networks"]
-    C --> G["💾 Volumes"]
+    A["User"] --> B["Docker CLI"]
+    B --> C["Docker Daemon"]
+    C --> D["Images"]
+    C --> E["Containers"]
+    C --> F["Networks"]
+    C --> G["Volumes"]
 ```
 
-### Example
+### Example: docker run ubuntu
 
-When I run:
+When I execute:
 
 ```bash
 docker run ubuntu
 ```
 
-the flow is:
-
-```text
-User
- ↓
-Docker CLI
- ↓
-Docker Daemon
- ↓
-Check Image
- ↓
-Create Container
- ↓
-Start Container
-```
-
----
-
-# 🧩 DOCKER RESOURCES
-
-The Docker Daemon manages:
+The basic flow is:
 
 ```mermaid
-flowchart TB
-    A["🐳 Docker Daemon"]
-    A --> B["🖼️ Images"]
-    A --> C["📦 Containers"]
-    A --> D["🌐 Networks"]
-    A --> E["💾 Volumes"]
+flowchart TD
+    A["docker run ubuntu"] --> B["Docker CLI"]
+    B --> C["Docker Daemon"]
+    C --> D{"Image Available?"}
+    D -->|Yes| E["Create Container"]
+    D -->|No| F["Pull Image"]
+    F --> E
+    E --> G["Start Container"]
 ```
 
----
+## Docker Images
 
-# 🖼️ DOCKER IMAGES
+To view locally available images:
 
 ```bash
 docker images
 ```
 
-Displays images available locally.
+## Docker Containers
 
----
-
-# 📦 DOCKER CONTAINERS
+To view running containers:
 
 ```bash
 docker ps
 ```
 
-Shows running containers.
+To view all containers, including stopped ones:
 
 ```bash
 docker ps -a
 ```
 
-Shows all containers, including stopped containers.
+| Command | Purpose |
+|---|---|
+| `docker ps` | Shows running containers |
+| `docker ps -a` | Shows all containers |
 
-| Command        | Purpose            |
-| -------------- | ------------------ |
-| `docker ps`    | Running containers |
-| `docker ps -a` | All containers     |
+## Docker Networks
 
----
+Docker networks allow containers to communicate with other containers, the host and external networks.
 
-# 🌐 DOCKER NETWORKS
+List networks:
 
 ```bash
 docker network ls
 ```
 
-Docker networks allow containers to communicate with other containers, the host and external networks.
+## Docker Volumes
 
----
+Docker volumes are used for persistent storage.
 
-# 💾 DOCKER VOLUMES
+They allow data to exist independently of a container's lifecycle.
+
+List volumes:
 
 ```bash
 docker volume ls
 ```
 
-Volumes are used for persistent storage.
-
-They allow data to exist independently from the container lifecycle.
-
----
-
-# 🔐 DOCKER PERMISSIONS
+## Docker Permissions
 
 Sometimes Docker commands fail because the current user does not have permission to communicate with the Docker Daemon.
 
@@ -1793,23 +1340,11 @@ Example:
 docker ps
 ```
 
-Possible flow:
+A permission error may occur.
 
-```text
-👤 User
- ↓
-docker ps
- ↓
-⚙️ Docker Daemon
- ↓
-❌ Permission Denied
-```
+### Using sudo
 
----
-
-# 🔑 USING SUDO
-
-A temporary approach is:
+One way to run Docker commands with elevated permissions is:
 
 ```bash
 sudo docker ps
@@ -1818,11 +1353,9 @@ sudo docker run ubuntu
 sudo docker pull ubuntu
 ```
 
----
+### Docker Group
 
-# 👥 DOCKER GROUP
-
-Instead of using `sudo` every time:
+We can add the current user to the Docker group.
 
 ```bash
 sudo usermod -aG docker $USER
@@ -1840,115 +1373,81 @@ Test:
 docker ps
 ```
 
-```mermaid
-flowchart LR
-    A["👤 User"] --> B["docker ps"]
-    B --> C["👥 docker Group"]
-    C --> D["⚙️ Docker Daemon"]
-    D --> E["✅ Docker Operation"]
-```
+**Important:** Docker group membership provides powerful access to the Docker Daemon. Treat it as privileged access.
 
-> ⚠️ Membership in the Docker group grants powerful access to the Docker Daemon and should be treated as privileged access.
-
----
-
-# 📥 DOCKER PULL
+## Docker Pull Workflow
 
 ```bash
 docker pull ubuntu
 ```
 
-Flow:
-
 ```mermaid
 flowchart LR
-    A["💻 Docker CLI"] --> B["⚙️ Docker Daemon"]
-    B --> C["📦 Docker Registry"]
-    C --> D["🖼️ Ubuntu Image"]
-    D --> E["💻 Local Docker Host"]
+    A["Docker CLI"] --> B["Docker Daemon"]
+    B --> C["Docker Registry"]
+    C --> D["Ubuntu Image"]
+    D --> E["Local Docker Host"]
 ```
 
----
-
-# ▶️ DOCKER RUN
+## Docker Run Workflow
 
 ```bash
 docker run ubuntu
 ```
 
-Basic flow:
-
 ```mermaid
-flowchart TB
+flowchart TD
     A["docker run ubuntu"] --> B["Docker CLI"]
     B --> C["Docker Daemon"]
-    C --> D{"Ubuntu Image Exists?"}
+    C --> D{"Image Exists?"}
     D -->|Yes| E["Create Container"]
     D -->|No| F["Pull Image"]
     F --> E
     E --> G["Start Container"]
 ```
 
----
+## Other Docker Commands
 
-# 🛑 DOCKER STOP
+**Stop a container**
 
 ```bash
 docker stop <container_id>
 ```
 
-Stops a running container.
-
----
-
-# ▶️ DOCKER START
+**Start an existing container**
 
 ```bash
 docker start <container_id>
 ```
 
-Starts an existing stopped container.
-
----
-
-# 🗑️ DOCKER RM
+**Remove a container**
 
 ```bash
 docker rm <container_id>
 ```
 
-Removes a container.
-
----
-
-# 🗑️ DOCKER RMI
+**Remove an image**
 
 ```bash
 docker rmi <image_id>
 ```
 
-Removes a Docker image.
-
----
-
-# 🏗️ DOCKER BUILD
+**Build an image**
 
 ```bash
 docker build -t my-first-image .
 ```
 
-Used to create a Docker image from a Dockerfile.
+## Docker Build Workflow
 
 ```mermaid
 flowchart LR
-    A["📄 Dockerfile"] --> B["docker build"]
-    B --> C["⚙️ Docker Daemon"]
-    C --> D["🖼️ Docker Image"]
+    A["Dockerfile"] --> B["docker build"]
+    B --> C["Docker Daemon"]
+    C --> D["Docker Image"]
 ```
 
----
-
-# 🧠 DAY 12 DOCKER COMMAND CHEAT SHEET
+## Docker Command Cheat Sheet
 
 ```bash
 # Check Docker version
@@ -1960,7 +1459,7 @@ docker ps
 # Show all containers
 docker ps -a
 
-# Show images
+# List images
 docker images
 
 # Pull an image
@@ -1990,433 +1489,227 @@ docker volume ls
 # Build an image
 docker build -t my-image .
 
-# Run Docker command with sudo
+# Run Docker with sudo
 sudo docker ps
 
-# Add current user to Docker group
+# Add user to Docker group
 sudo usermod -aG docker $USER
 
-# Apply Docker group
+# Apply group change
 newgrp docker
 ```
 
-These are the core commands captured in the Day 12 notes.
-
----
-
-# 🧠 COMPLETE DAY 12 ARCHITECTURE
+### Day 12 Architecture
 
 ```mermaid
-flowchart TB
-    U["👤 USER"]
-    U --> CLI["💻 DOCKER CLI"]
-    CLI --> DAEMON["⚙️ DOCKER DAEMON"]
+flowchart TD
+    A["User"] --> B["Docker CLI"]
+    B --> C["Docker Daemon"]
 
-    DAEMON --> IMG["🖼️ IMAGES"]
-    DAEMON --> CON["📦 CONTAINERS"]
-    DAEMON --> NET["🌐 NETWORKS"]
-    DAEMON --> VOL["💾 VOLUMES"]
+    C --> D["Images"]
+    C --> E["Containers"]
+    C --> F["Networks"]
+    C --> G["Volumes"]
 
-    IMG --> CON
-    NET --> CON
-    VOL --> CON
+    D --> E
+    F --> E
+    G --> E
 ```
+
+**My takeaway:** Docker CLI is used to send commands, while Docker Daemon manages images, containers, networks and volumes.
 
 ---
 
-# 🔥 COMPLETE DAY 06 → DAY 12 DEVOPS ARCHITECTURE
+# Complete Day 06 – Day 12 DevOps Workflow
+
+During these days, I learned how different DevOps tools connect with each other.
 
 ```mermaid
-flowchart TB
+flowchart TD
+    A["Developer"] --> B["Git"]
+    B --> C["GitHub"]
+    C --> D["SSH"]
+    D --> E["AWS EC2"]
 
-    DEV["👨‍💻 DEVELOPER"]
+    E --> F["Node.js Application"]
 
-    DEV --> GIT["🌳 GIT"]
-    GIT --> GH["☁️ GITHUB"]
+    E --> G["Ansible"]
+    G --> H["Playbooks"]
+    H --> I["Roles"]
+    I --> J["Tasks"]
+    J --> K["Managed Servers"]
 
-    GH --> SSH["🔐 SSH"]
-    SSH --> EC2["☁️ AWS EC2"]
+    L["Terraform"] --> M["Cloud Infrastructure"]
 
-    EC2 --> NODE["🟢 NODE.JS APPLICATION"]
-
-    EC2 --> ANS["🤖 ANSIBLE"]
-    ANS --> PLAY["📋 PLAYBOOK"]
-    PLAY --> ROLE["🧩 ROLES"]
-    ROLE --> TASK["⚙️ TASKS"]
-    TASK --> SERVER["🖥️ MANAGED SERVERS"]
-
-    TF["🏗️ TERRAFORM"] --> INFRA["☁️ INFRASTRUCTURE"]
-
-    DEV --> DOCKERFILE["📄 DOCKERFILE"]
-    DOCKERFILE --> IMAGE["🖼️ DOCKER IMAGE"]
-    IMAGE --> REG["🌐 DOCKER HUB / REGISTRY"]
-    REG --> PULL["📥 PULL"]
-    PULL --> CONTAINER["📦 CONTAINER"]
-
-    CONTAINER --> APP["🚀 APPLICATION"]
-
-    ANS --> DOCKER["🐳 DOCKER"]
-    DOCKER --> CONTAINER
+    E --> N["Docker"]
+    N --> O["Dockerfile"]
+    O --> P["Docker Image"]
+    P --> Q["Docker Hub"]
+    Q --> R["Docker Container"]
+    R --> S["Running Application"]
 ```
 
----
+# Day 06 – Day 12 Skills Summary
 
-# 🧩 HOW EVERYTHING CONNECTS
+| Day | Main Focus | Concepts Learned |
+|---|---|---|
+| 06 | Git and GitHub | Remote, Clone, Fork, SSH and GitFlow |
+| 07 | Advanced Git and AWS | Diff, Restore, Reset, Branches and EC2 Deployment |
+| 08 | Ansible | Configuration Management, Playbooks, Inventory and SSH |
+| 09 | DevOps Operations | Roles, Tasks, Handlers, Terraform, Incidents and Changes |
+| 10 | Docker Fundamentals | Containerization, Dockerfile, Images, Containers and OCI |
+| 11 | Docker Deep Dive | Isolation, VM vs Container, Registry and Docker Hub |
+| 12 | Docker Operations | CLI, Daemon, Networks, Volumes and Permissions |
 
-```text
-                    ☁️ DEVOPS CLOUD JOURNEY
-                              │
-        ┌─────────────────────┼─────────────────────┐
-        ↓                     ↓                     ↓
-     🌳 GIT               🤖 ANSIBLE           🏗️ TERRAFORM
-        │                     │                     │
-        ↓                     ↓                     ↓
-    ☁️ GITHUB             📋 PLAYBOOK          ☁️ INFRASTRUCTURE
-        │                     │
-        ↓                     ↓
-     🔐 SSH                🧩 ROLES
-        │                     │
-        ↓                     ↓
-    ☁️ AWS EC2            ⚙️ TASKS
-        │
-        ↓
-   🟢 APPLICATION
-        │
-        ↓
-   🐳 DOCKER
-        │
-        ↓
-   📄 DOCKERFILE
-        │
-        ↓
-   🖼️ IMAGE
-        │
-        ↓
-   🌐 REGISTRY
-        │
-        ↓
-   📦 CONTAINER
-        │
-        ↓
-   🚀 APPLICATION
-```
+# Important Concepts I Learned
 
----
-
-# 📊 DAY 06 → DAY 12 SKILLS MATRIX
-
-| Day       | Major Learning      | Key Skills                                                                  |
-| --------- | ------------------- | --------------------------------------------------------------------------- |
-| 🟠 Day 06 | Git + GitHub        | Remote, Clone, Fork, SSH, GitFlow                                           |
-| 🟡 Day 07 | Advanced Git + AWS  | Diff, Restore, Reset, Branches, EC2, Node.js                                |
-| 🔴 Day 08 | Ansible             | Configuration Management, Playbooks, Inventory, SSH                         |
-| 🟣 Day 09 | DevOps Operations   | Roles, Tasks, Handlers, Variables, Templates, Terraform, Incidents, Changes |
-| 🔵 Day 10 | Docker Fundamentals | Containerization, Dockerfile, Image, Container, OCI                         |
-| 🔵 Day 11 | Docker Deep Dive    | Isolation, VM vs Container, Registry, Docker Hub, Push, Pull                |
-| 🔵 Day 12 | Docker Operations   | CLI, Daemon, Resources, Networks, Volumes, Permissions                      |
-
----
-
-# 🧠 MOST IMPORTANT CONCEPTS I CAN NOW EXPLAIN
-
-### 🌳 Git
+## Git
 
 ```text
 Repository
-→ Commit
-→ Remote
-→ Push
-→ Fetch
-→ Clone
-→ Fork
-→ Branch
-→ Merge
-→ GitFlow
+    ↓
+Commit
+    ↓
+Remote
+    ↓
+Push / Fetch / Pull
+    ↓
+Clone / Fork
+    ↓
+Branch / Merge
+    ↓
+GitFlow
 ```
 
-### 🔐 SSH
+## SSH
 
 ```text
-Private Key → EC2
-Public Key → GitHub
-↓
-Secure Authentication
+Private Key → Keep Secure
+Public Key → Add to GitHub
+    ↓
+SSH Authentication
 ```
 
-### 🤖 Ansible
+## Ansible
 
 ```text
 Controller
-→ SSH
-→ Inventory
-→ Playbook
-→ Roles
-→ Tasks
-→ Managed Servers
+    ↓
+SSH
+    ↓
+Inventory
+    ↓
+Playbook
+    ↓
+Roles
+    ↓
+Tasks
+    ↓
+Managed Servers
 ```
 
-### 🏗️ Terraform
+## Terraform
 
 ```text
 Configuration
-→ init
-→ validate
-→ plan
-→ apply
-→ Infrastructure
+    ↓
+terraform init
+    ↓
+terraform validate
+    ↓
+terraform plan
+    ↓
+terraform apply
+    ↓
+Infrastructure
 ```
 
-### 🐳 Docker
+## Docker
 
 ```text
 Dockerfile
-→ Build
-→ Image
-→ Registry
-→ Pull
-→ Run
-→ Container
-→ Application
+    ↓
+Build
+    ↓
+Image
+    ↓
+Registry
+    ↓
+Pull
+    ↓
+Run
+    ↓
+Container
+    ↓
+Application
 ```
 
-### ⚙️ Docker Architecture
+## Docker Architecture
 
 ```text
 User
- ↓
+    ↓
 Docker CLI
- ↓
+    ↓
 Docker Daemon
- ↓
+    ↓
 Images / Containers / Networks / Volumes
 ```
 
----
+# What I Understand After Day 06 – Day 12
 
-# 🧪 PRACTICAL COMMANDS I LEARNED
+Earlier, I was learning individual DevOps tools. Now I am starting to understand how these tools work together.
 
-## 🐧 Linux
+- **Git:** Helps track source code changes.
+- **GitHub:** Hosts repositories and supports collaboration.
+- **SSH:** Provides secure authentication.
+- **AWS EC2:** Provides cloud servers to run applications.
+- **Ansible:** Automates server configuration and repetitive tasks.
+- **Terraform:** Helps manage infrastructure using code.
+- **Docker:** Packages applications into containers.
+- **Docker Images:** Act as templates for containers.
+- **Docker Containers:** Provide isolated environments to run applications.
+- **Docker CLI:** Sends commands to Docker.
+- **Docker Daemon:** Manages Docker resources.
+- **Docker Hub:** Stores and shares Docker images.
 
-```bash
-pwd
-ls
-ls -a
-cd
-mkdir
-touch
-cat
-echo
-vim
-```
+# My Learning Approach
 
-## 🌳 Git
-
-```bash
-git init
-git status
-git add .
-git commit -m "message"
-git log
-git log --oneline
-git diff
-git restore
-git rm
-git reset
-git branch
-git checkout
-git switch
-git merge
-git remote -v
-git remote add origin <url>
-git push
-git fetch
-git pull
-git clone <url>
-```
-
-## 🔐 SSH
-
-```bash
-ssh-keygen
-ls -al ~/.ssh
-cat ~/.ssh/id_ed25519.pub
-ssh -T git@github.com
-```
-
-## 🤖 Ansible
-
-```bash
-ansible-playbook site.yml
-```
-
-## 🏗️ Terraform
-
-```bash
-terraform init
-terraform validate
-terraform plan
-terraform apply
-terraform destroy
-```
-
-## 🐳 Docker
-
-```bash
-docker --version
-docker ps
-docker ps -a
-docker images
-docker pull ubuntu
-docker run ubuntu
-docker start <container_id>
-docker stop <container_id>
-docker rm <container_id>
-docker rmi <image_id>
-docker network ls
-docker volume ls
-docker build -t my-image .
-```
-
-## 🔐 Docker Permissions
-
-```bash
-sudo docker ps
-sudo usermod -aG docker $USER
-newgrp docker
-docker ps
-```
-
----
-
-# 🎯 WHAT I UNDERSTAND AFTER DAY 06 → DAY 12
-
-Before these days, I was learning individual DevOps tools.
-
-Now I am beginning to understand how they fit together.
+I don't want to just memorize commands. I want to understand what they do, why we use them and how to troubleshoot problems.
 
 ```mermaid
-flowchart LR
-    A["🌳 Version Control"] --> B["☁️ Collaboration"]
-    B --> C["🔐 Secure Access"]
-    C --> D["☁️ Cloud Infrastructure"]
-    D --> E["🤖 Automation"]
-    E --> F["🏗️ Infrastructure as Code"]
-    F --> G["🐳 Containerization"]
-    G --> H["📦 Deployment"]
+flowchart TD
+    A["Learn"] --> B["Practice"]
+    B --> C["Build"]
+    C --> D["Break"]
+    D --> E["Fix"]
+    E --> F["Understand"]
+    F --> G["Document"]
+    G --> A
 ```
 
-### My understanding:
+# What's Next?
 
-> 🌳 **Git** manages source code and history.
-
-> ☁️ **GitHub** provides remote hosting and collaboration.
-
-> 🔐 **SSH** provides secure authentication.
-
-> ☁️ **AWS EC2** provides a cloud server where applications can run.
-
-> 🤖 **Ansible** automates server configuration and repetitive operations.
-
-> 🏗️ **Terraform** introduces Infrastructure as Code.
-
-> 🐳 **Docker** packages applications into containers.
-
-> 🖼️ **Images** act as templates for containers.
-
-> 📦 **Containers** provide lightweight isolated environments for applications.
-
-> ⚙️ **Docker CLI** sends commands to the Docker Daemon.
-
-> 🐳 **Docker Daemon** manages Docker resources.
-
-> 🌐 **Registries / Docker Hub** store and distribute images.
-
----
-
-# 🚀 THE DEVOPS MINDSET I AM BUILDING
+I will continue learning more about Docker and other DevOps technologies through practical work and projects.
 
 ```mermaid
-flowchart TB
-    A["💻 WRITE CODE"]
-    --> B["🌳 VERSION CONTROL"]
-
-    B --> C["☁️ COLLABORATE"]
-
-    C --> D["🔐 SECURE ACCESS"]
-
-    D --> E["☁️ PROVISION INFRASTRUCTURE"]
-
-    E --> F["🤖 CONFIGURE SERVERS"]
-
-    F --> G["📦 PACKAGE APPLICATION"]
-
-    G --> H["🌐 STORE IMAGE"]
-
-    H --> I["📥 DEPLOY"]
-
-    I --> J["🐳 RUN CONTAINER"]
-
-    J --> K["🚀 APPLICATION"]
+flowchart TD
+    A["Docker"] --> B["Docker Networking"]
+    B --> C["Docker Volumes"]
+    C --> D["Docker Compose"]
+    D --> E["CI/CD"]
+    E --> F["Terraform"]
+    F --> G["Kubernetes"]
+    G --> H["Monitoring"]
+    H --> I["Real-World Projects"]
 ```
 
 ---
 
-# 💡 BIGGEST TAKEAWAYS
+# Day 06 – Day 12 Complete
 
-### 01 — AUTOMATION
+These seven days helped me understand Git workflows, server automation, Infrastructure as Code and containerization.
 
-> If a task is repeated, think about how it can be automated.
+I am continuing to learn, practise and build projects to improve my understanding of DevOps and Cloud.
 
-### 02 — VERSION CONTROL
-
-> Never treat source code as something that exists only on one machine.
-
-### 03 — INFRASTRUCTURE
-
-> Infrastructure can be managed through automation and code.
-
-### 04 — CONTAINERIZATION
-
-> Applications can be packaged with their dependencies to create consistent environments.
-
-### 05 — SECURITY
-
-> SSH keys, permissions and Docker access must be handled carefully.
-
-### 06 — SCALABILITY
-
-> Manual server management becomes difficult as infrastructure grows, which is why automation matters.
-
-### 07 — DEVOPS
-
-> DevOps is not one tool. It is the combination of practices, automation and technologies used to build, deploy and operate software reliably.
-
----
-
-# 🏆 DAY 06 → DAY 12 COMPLETE
-
-```mermaid
-flowchart LR
-    A["🌳 GIT"] --> B["☁️ GITHUB"]
-    B --> C["🔐 SSH"]
-    C --> D["☁️ AWS"]
-    D --> E["🤖 ANSIBLE"]
-    E --> F["🏗️ TERRAFORM"]
-    F --> G["🐳 DOCKER"]
-    G --> H["📦 CONTAINERS"]
-    H --> I["🚀 DEPLOYMENT"]
-```
-
-<div align="center">
-
-## 🚀 DAY 06 → DAY 12 COMPLETE ✅
-
-### 🌳 Git → ☁️ GitHub → 🔐 SSH → ☁️ AWS → 🤖 Ansible → 🏗️ Terraform → 🐳 Docker
-
-**LEARN → PRACTICE → AUTOMATE → DEPLOY → CONTAINERIZE**
-
-### ☁️ DEVOPS CLOUD JOURNEY
-
-**From Zero to DevOps Engineer**
-
-</div>
+**Learn → Practice → Build → Break → Fix → Understand → Document → Repeat**
