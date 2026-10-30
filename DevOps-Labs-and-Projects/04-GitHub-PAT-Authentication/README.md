@@ -1,109 +1,47 @@
-<div align="center">
+# GitHub Personal Access Token Authentication from AWS EC2
 
-# 🔐 GITHUB PERSONAL ACCESS TOKEN (PAT) AUTHENTICATION FROM AWS EC2
+## 1. Overview
 
-### 🚀 AWS EC2 → Git → GitHub → PAT Authentication → Secure Push
+In this practical, I used a **GitHub Fine-grained Personal Access Token (PAT)** to authenticate GitHub from an AWS EC2 Ubuntu instance.
 
-![AWS](https://img.shields.io/badge/AWS-EC2-FF9900?style=for-the-badge\&logo=amazonaws\&logoColor=white)
-![Git](https://img.shields.io/badge/Git-Version%20Control-F05032?style=for-the-badge\&logo=git\&logoColor=white)
-![GitHub](https://img.shields.io/badge/GitHub-Repository-181717?style=for-the-badge\&logo=github\&logoColor=white)
-![PAT](https://img.shields.io/badge/GitHub-PAT-2088FF?style=for-the-badge\&logo=github\&logoColor=white)
-![Ubuntu](https://img.shields.io/badge/Ubuntu-EC2-E95420?style=for-the-badge\&logo=ubuntu\&logoColor=white)
+I also renamed a project folder, committed the changes and pushed them to GitHub.
 
-</div>
+### Complete Workflow
 
----
-
-## 📌 Overview
-
-This hands-on practical demonstrates how to authenticate with **GitHub from an AWS EC2 Ubuntu instance using a GitHub Fine-grained Personal Access Token (PAT)**.
-
-In this practical, I worked through the complete workflow of cloning a repository, renaming a project folder, committing the changes, creating a Fine-grained PAT, configuring repository permissions, authenticating GitHub from EC2, pushing the changes, and verifying the repository status.
-
-### 🔄 Complete Workflow
-
-```text
-AWS EC2
-   │
-   ▼
-Clone GitHub Repository
-   │
-   ▼
-Rename Project Folder
-   │
-   ▼
-git add
-   │
-   ▼
-git commit
-   │
-   ▼
-Create GitHub Fine-grained PAT
-   │
-   ▼
-Configure Repository Permissions
-   │
-   ▼
-GitHub Authentication
-   │
-   ▼
-git push origin main
-   │
-   ▼
-GitHub Repository Updated
-   │
-   ▼
-git status
-   │
-   ▼
-Working Tree Clean ✅
+```mermaid
+flowchart TD
+    A[AWS EC2] --> B[Clone GitHub Repository]
+    B --> C[Rename Project Folder]
+    C --> D[Stage Changes]
+    D --> E[Create Commit]
+    E --> F[Create Fine-grained PAT]
+    F --> G[Configure Repository Permissions]
+    G --> H[Authenticate Git]
+    H --> I[Push to GitHub]
+    I --> J[Verify Repository Status]
 ```
 
----
+## 2. Environment
 
-## 🎯 Objective
+| Component | Details |
+|---|---|
+| Cloud Platform | AWS |
+| Compute Service | EC2 |
+| Operating System | Ubuntu |
+| Version Control | Git |
+| Remote Repository | GitHub |
+| Authentication | Fine-grained PAT |
+| Branch | `main` |
 
-The objective of this practical was to:
+## 3. Clone the GitHub Repository
 
-* Work with a GitHub repository from AWS EC2
-* Rename an existing project folder
-* Track the rename using Git
-* Stage and commit the changes
-* Understand GitHub HTTPS authentication
-* Understand why a normal GitHub password cannot be used for Git HTTPS authentication
-* Create a Fine-grained GitHub Personal Access Token
-* Restrict the token to a specific repository
-* Configure the required repository permission
-* Authenticate Git from AWS EC2 using the PAT
-* Push the changes to GitHub
-* Verify that the local repository is synchronized with GitHub
-
----
-
-## ☁️ Environment
-
-| Component         | Details                            |
-| ----------------- | ---------------------------------- |
-| Cloud Platform    | AWS                                |
-| Compute Service   | EC2                                |
-| Operating System  | Ubuntu                             |
-| Version Control   | Git                                |
-| Remote Repository | GitHub                             |
-| Authentication    | Fine-grained Personal Access Token |
-| Branch            | `main`                             |
-| Repository        | `My-Devops-Cloud-Journey`          |
-
----
-
-# 01 — Clone the GitHub Repository
-
-First, move to the home directory of the EC2 Ubuntu user:
+First, I moved to the home directory.
 
 ```bash
 cd ~
 ```
 
-Clone the GitHub repository:
+Clone the repository:
 
 ```bash
 git clone https://github.com/Yuvii2102/My-Devops-Cloud-Journey.git
@@ -115,7 +53,7 @@ Enter the repository:
 cd My-Devops-Cloud-Journey
 ```
 
-Check the repository contents:
+Check the files:
 
 ```bash
 ls
@@ -127,31 +65,29 @@ Check the Git status:
 git status
 ```
 
-The repository is now available locally on the EC2 instance.
+The repository is now available locally on EC2.
 
----
+## 4. Rename the Project Folder
 
-# 02 — Rename the Project Folder
-
-The original project documentation folder was:
+The original folder name was:
 
 ```text
 What-I-Learnt
 ```
 
-I wanted to give it a more professional name:
+I wanted to rename it to:
 
 ```text
 DevOps-Labs-and-Projects
 ```
 
-Instead of using the normal Linux `mv` command, Git's rename command was used:
+I used Git's `mv` command:
 
 ```bash
 git mv What-I-Learnt DevOps-Labs-and-Projects
 ```
 
-Check the directory:
+Check the updated directory:
 
 ```bash
 ls
@@ -160,87 +96,56 @@ ls
 The repository now contains:
 
 ```text
-My-Journey/
-DevOps-Labs-and-Projects/
-README.md
+My-Devops-Cloud-Journey/
+│
+├── My-Journey/
+├── DevOps-Labs-and-Projects/
+└── README.md
 ```
 
-Using `git mv` allows Git to track the file and folder rename.
+Using `git mv` allows Git to track the rename.
 
----
+## 5. Check and Stage Changes
 
-# 03 — Check the Changes
-
-Check the repository status:
+Check the changes:
 
 ```bash
 git status
 ```
 
-Git detects the files as renamed from:
+Git detects the renamed files.
 
-```text
-What-I-Learnt/
-```
-
-to:
-
-```text
-DevOps-Labs-and-Projects/
-```
-
-The folder contains multiple README files, practical documentation, and screenshots, so Git detects the corresponding file changes.
-
----
-
-# 04 — Stage the Changes
-
-Stage all changes:
+Next, stage all changes:
 
 ```bash
 git add .
 ```
 
-The renamed files are now staged and ready to be committed.
+This prepares the changes for committing.
 
----
+## 6. Create a Git Commit
 
-# 05 — Create a Git Commit
-
-Create a commit describing the folder rename:
+I created a commit describing the folder rename.
 
 ```bash
 git commit -m "Rename What-I-Learnt to DevOps-Labs-and-Projects"
 ```
 
-Git records the rename in the local repository history.
+The commit is now saved in the local Git repository.
 
-Example:
+However, the changes are not yet available on GitHub.
 
-```text
-25 files changed
-```
+## 7. Attempt to Push Changes
 
-At this point, the changes exist in the local Git repository but have not yet been pushed to GitHub.
-
----
-
-# 06 — Attempt to Push to GitHub
-
-To upload the commit to GitHub:
+I tried pushing the changes using:
 
 ```bash
 git push origin main
 ```
 
-Git asks for authentication:
+Git asked for a username and password.
 
-```text
-Username for 'https://github.com':
-Password for 'https://Yuvii2102@github.com':
-```
-
-The first authentication attempt failed because a normal GitHub account password is not accepted for Git HTTPS operations.
+The authentication failed because GitHub does not accept normal account passwords for Git operations over HTTPS.
 
 Example error:
 
@@ -249,104 +154,86 @@ remote: Invalid username or token.
 fatal: Authentication failed
 ```
 
-This is where the **GitHub Personal Access Token (PAT)** is required.
+This is where a Personal Access Token is required.
 
----
+## 8. What Is a GitHub Personal Access Token?
 
-# 07 — What Is a GitHub Personal Access Token?
+A **Personal Access Token (PAT)** is a credential used to authenticate GitHub operations.
 
-A **Personal Access Token (PAT)** is a credential that can be used to authenticate GitHub operations.
+For Git operations over HTTPS, it can be used instead of a normal account password.
 
-For Git operations over HTTPS, the PAT can be used in place of the GitHub account password.
-
-```text
-Git on EC2
-     │
-     │ HTTPS
-     │
-     │ Username + PAT
-     ▼
-GitHub
-     │
-     ▼
-Repository
+```mermaid
+flowchart TD
+    A[Git on EC2] --> B[HTTPS Authentication]
+    B --> C[GitHub Username and PAT]
+    C --> D[GitHub]
+    D --> E[Repository Access]
 ```
 
-A **Fine-grained PAT** is useful because access can be restricted to specific repositories and permissions.
+A Fine-grained PAT allows us to restrict access to specific repositories and permissions.
 
----
-
-# 08 — Create a Fine-grained GitHub PAT
+## 9. Create a Fine-grained PAT
 
 Go to GitHub:
 
 ```text
 GitHub
-   ↓
+   |
+   v
 Settings
-   ↓
+   |
+   v
 Developer Settings
-   ↓
-Personal access tokens
-   ↓
-Fine-grained tokens
-   ↓
-Generate new token
+   |
+   v
+Personal Access Tokens
+   |
+   v
+Fine-grained Tokens
+   |
+   v
+Generate New Token
 ```
 
-The Fine-grained Personal Access Token page allows the token to be configured with specific repository access and permissions.
+## 10. Configure the PAT
 
----
+### Token Name
 
-# 09 — Configure the PAT
-
-## Token Name
-
-Use a descriptive name:
+I used:
 
 ```text
 EC2-GitHub-Access
 ```
 
-## Description
-
-Example:
+### Description
 
 ```text
 Git access for pushing DevOps Cloud Journey from AWS EC2
 ```
 
-The description explains the purpose of the token.
-
----
-
-# 10 — Configure Token Expiration
+### Expiration
 
 Choose an appropriate expiration period.
 
-For example:
+For this practical:
 
 ```text
 90 days
 ```
 
-An expiration date is recommended because it limits how long the credential remains valid.
+An expiration date limits how long the token remains valid.
 
-When the token expires, a new token can be created.
-
----
-
-# 11 — Configure Repository Access
+## 11. Configure Repository Access
 
 GitHub provides different repository access options.
 
-For this practical, instead of giving the token access to every repository, select:
+Instead of selecting all repositories, I selected:
 
 ```text
 Only select repositories
 ```
 
-Then select:
+Then I selected:
 
 ```text
 My-Devops-Cloud-Journey
@@ -354,92 +241,38 @@ My-Devops-Cloud-Journey
 
 This follows the principle of least privilege.
 
-```text
-❌ All repositories
+## 12. Configure Repository Permissions
 
-        vs.
-
-✅ My-Devops-Cloud-Journey only
-```
-
----
-
-# 12 — Configure Repository Permissions
-
-Under **Repository permissions**, configure:
+Under Repository Permissions, I configured:
 
 ```text
 Contents → Read and write
 ```
 
-This permission allows Git to read and write repository contents, which is required for pushing changes.
+This permission allows Git to read and update repository contents.
 
-The permission model is:
-
-```text
-Fine-grained PAT
-      │
-      ▼
-My-Devops-Cloud-Journey
-      │
-      ▼
-Contents
-      │
-      ▼
-Read and write
+```mermaid
+flowchart TD
+    A[Fine-grained PAT] --> B[My-Devops-Cloud-Journey]
+    B --> C[Contents Permission]
+    C --> D[Read and Write]
 ```
 
-Avoid granting unnecessary permissions.
+Only grant the permissions required for the task.
 
----
+## 13. Generate the Token
 
-# 13 — Generate the Token
-
-After configuring the token:
+After configuring the repository access and permissions, click:
 
 ```text
 Generate token
 ```
 
-GitHub generates a token similar to:
+GitHub generates a token.
 
-```text
-github_pat_xxxxxxxxxxxxxxxxxxxxxxxxx
-```
+Copy it immediately and store it securely because the token cannot simply be viewed again later.
 
-The actual token is secret.
-
-Copy it immediately and store it securely.
-
----
-
-# 🚨 PAT SECURITY
-
-A GitHub PAT should be treated like a password.
-
-## ❌ Never
-
-* Share your PAT with anyone
-* Send your PAT in chat
-* Upload your PAT to GitHub
-* Put your PAT inside source code
-* Put your PAT inside a README
-* Commit your PAT to Git
-* Store your PAT in a public `.env` file
-* Include your PAT in screenshots
-* Paste your PAT into a public issue or discussion
-
-## ✅ Always
-
-* Use the minimum required permissions
-* Restrict the token to required repositories
-* Set an expiration date
-* Store the token securely
-* Revoke the token if it becomes exposed
-
----
-
-# 14 — Authenticate Git Using the PAT
+## 14. Authenticate Git Using PAT
 
 Return to the EC2 terminal and run:
 
@@ -447,7 +280,7 @@ Return to the EC2 terminal and run:
 git push origin main
 ```
 
-Git asks:
+Git asks for a username:
 
 ```text
 Username for 'https://github.com':
@@ -459,29 +292,23 @@ Enter your GitHub username:
 Yuvii2102
 ```
 
-Git then asks:
+Next, Git asks for a password:
 
 ```text
 Password for 'https://Yuvii2102@github.com':
 ```
 
-At this point, paste the **GitHub Personal Access Token**.
+Paste the GitHub PAT instead of your account password.
 
-> 💡 Nothing will appear on the terminal while the token is being typed or pasted. This is normal behavior for password-style input.
+Nothing will appear in the terminal while entering the token. This is normal.
 
-Press:
-
-```text
-Enter
-```
+Press Enter to continue.
 
 GitHub verifies the token and its permissions.
 
----
+## 15. Successful Git Push
 
-# 15 — Successful Git Push
-
-After successful authentication, Git uploads the commit.
+After successful authentication, Git uploads the commit to GitHub.
 
 Typical output:
 
@@ -490,28 +317,19 @@ Enumerating objects...
 Counting objects...
 Compressing objects...
 Writing objects...
-Total...
 ```
 
-Then Git confirms the remote repository:
-
-```text
-To https://github.com/Yuvii2102/My-Devops-Cloud-Journey.git
-```
-
-And the branch update:
+The branch update looks similar to:
 
 ```text
 main -> main
 ```
 
-This confirms that the commit was successfully pushed to GitHub.
+This confirms that the changes were pushed successfully.
 
----
+## 16. Verify Repository Status
 
-# 16 — Verify the Repository
-
-After pushing the changes, run:
+After pushing, I checked the repository:
 
 ```bash
 git status
@@ -526,20 +344,9 @@ Your branch is up to date with 'origin/main'.
 nothing to commit, working tree clean
 ```
 
-This confirms:
+This confirms that the local repository is synchronized with GitHub.
 
-```text
-✅ Commit exists
-✅ Changes were pushed
-✅ Local branch is synchronized
-✅ Working tree is clean
-```
-
----
-
-# 17 — Verify the Remote Repository
-
-You can also check the configured remote:
+To check the remote repository:
 
 ```bash
 git remote -v
@@ -552,180 +359,59 @@ origin  https://github.com/Yuvii2102/My-Devops-Cloud-Journey.git (fetch)
 origin  https://github.com/Yuvii2102/My-Devops-Cloud-Journey.git (push)
 ```
 
-This confirms that the local repository is connected to the correct GitHub repository.
+## 17. Important Git Commands
 
----
+| Command | Purpose |
+|---|---|
+| `git clone` | Clone a repository |
+| `cd` | Enter a directory |
+| `git mv` | Rename tracked files or folders |
+| `git status` | Check repository status |
+| `git add .` | Stage changes |
+| `git commit` | Save changes locally |
+| `git push origin main` | Push changes to GitHub |
+| `git remote -v` | Check remote repository |
 
-# 18 — Before vs After
+## 18. Complete Command Sequence
 
-| Before                         | After                           |
-| ------------------------------ | ------------------------------- |
-| `What-I-Learnt`                | `DevOps-Labs-and-Projects`      |
-| Folder rename pending          | Rename committed                |
-| GitHub password authentication | Fine-grained PAT authentication |
-| Push authentication failed     | Push authentication successful  |
-| Changes only on EC2            | Changes pushed to GitHub        |
-| Repository not synchronized    | Repository synchronized         |
-| Uncommitted changes            | Working tree clean              |
-
----
-
-# 19 — Important Git Commands Learned
-
-### Clone Repository
+These are the commands used during this practical.
 
 ```bash
-git clone <repository-url>
-```
-
-### Enter Repository
-
-```bash
-cd <repository-name>
-```
-
-### Rename Tracked Folder
-
-```bash
-git mv <old-name> <new-name>
-```
-
-### Check Repository Status
-
-```bash
-git status
-```
-
-### Stage Changes
-
-```bash
-git add .
-```
-
-### Create Commit
-
-```bash
-git commit -m "commit message"
-```
-
-### Push Changes
-
-```bash
-git push origin main
-```
-
-### Check Remote
-
-```bash
-git remote -v
-```
-
----
-
-# 20 — Complete Command Sequence
-
-The complete Git workflow used in this practical:
-
-```bash
+# Move to home directory
 cd ~
+
+# Clone repository
 git clone https://github.com/Yuvii2102/My-Devops-Cloud-Journey.git
+
+# Enter repository
 cd My-Devops-Cloud-Journey
+
+# Check files and status
 ls
 git status
 
+# Rename project folder
 git mv What-I-Learnt DevOps-Labs-and-Projects
 
-git status
+# Stage changes
 git add .
+
+# Create commit
 git commit -m "Rename What-I-Learnt to DevOps-Labs-and-Projects"
 
+# Push changes
 git push origin main
 
+# Verify repository
 git status
 git remote -v
 ```
 
-During the `git push` step, GitHub authentication is performed using the Fine-grained PAT.
+During the push operation, GitHub authentication is performed using the Fine-grained PAT.
 
----
+## 19. Troubleshooting
 
-# 21 — Complete Architecture
-
-```text
-┌──────────────────────────────┐
-│          AWS EC2             │
-│           Ubuntu             │
-│                              │
-│  ┌────────────────────────┐  │
-│  │   Local Git Repository  │  │
-│  │                        │  │
-│  │ My-Devops-Cloud-Journey│  │
-│  └────────────┬───────────┘  │
-│               │              │
-│          git add             │
-│               │              │
-│          git commit          │
-│               │              │
-└───────────────┼──────────────┘
-                │
-                │ HTTPS
-                │ Username + PAT
-                ▼
-┌──────────────────────────────┐
-│           GitHub             │
-│                              │
-│  My-Devops-Cloud-Journey     │
-│                              │
-│  DevOps-Labs-and-Projects    │
-└──────────────────────────────┘
-                │
-                ▼
-       Repository Updated
-                │
-                ▼
-         git status
-                │
-                ▼
-      Working Tree Clean ✅
-```
-
----
-
-# 22 — Security Principle: Least Privilege
-
-This practical demonstrates the **Principle of Least Privilege**.
-
-Instead of allowing the PAT to access every repository:
-
-```text
-❌ All repositories
-```
-
-the PAT was restricted to:
-
-```text
-✅ My-Devops-Cloud-Journey
-```
-
-Instead of granting unnecessary permissions:
-
-```text
-❌ Unnecessary permissions
-```
-
-only the required permission was configured:
-
-```text
-✅ Contents → Read and write
-```
-
-This reduces the potential impact if the token is ever compromised.
-
----
-
-# 23 — Troubleshooting
-
-## Authentication Failed
+### Authentication Failed
 
 If you see:
 
@@ -736,139 +422,94 @@ fatal: Authentication failed
 
 Check the following:
 
-* GitHub username is correct
-* PAT is valid
-* PAT has not expired
-* Correct repository is selected
-* `Contents` permission is set to `Read and write`
-* PAT is being used instead of the GitHub account password
-* The token has not been revoked
+- GitHub username is correct.
+- PAT is valid and has not expired.
+- Correct repository is selected.
+- `Contents` permission is set to `Read and write`.
+- PAT is used instead of the normal GitHub password.
+- Token has not been revoked.
 
----
+### PAT Expired
 
-## PAT Expired
+Create a new Fine-grained PAT, select the required repository and configure the necessary permissions.
 
-If the token expires:
+Then use the new token during authentication.
 
-```text
-Create a new Fine-grained PAT
-        ↓
-Select required repository
-        ↓
-Grant Contents → Read and write
-        ↓
-Use the new token
-```
+### PAT Accidentally Exposed
 
----
+If a token is exposed:
 
-## PAT Accidentally Exposed
+1. Revoke the exposed token.
+2. Generate a new token.
+3. Update authentication.
+4. Check whether the token was committed.
+5. Remove exposed credentials from Git history if necessary.
 
-If a PAT is accidentally exposed:
+Never continue using an exposed token.
 
-```text
-1. Revoke the exposed token
-2. Create a new token
-3. Update authentication
-4. Check whether the token was committed
-5. Remove sensitive credentials from Git history if necessary
-```
+## 20. Security and Least Privilege
 
-Never continue using an exposed credential.
+A PAT should be treated like a password.
 
----
+Never:
 
-# 24 — Key Learnings
+- Share the token with anyone.
+- Upload it to GitHub.
+- Put it inside source code or README files.
+- Include it in screenshots.
+- Commit it to Git.
+- Store it in a public `.env` file.
+
+Always:
+
+- Use minimum required permissions.
+- Restrict access to required repositories.
+- Set an expiration date.
+- Store the token securely.
+- Revoke it if exposed.
+
+Instead of granting access to all repositories, I restricted the token to `My-Devops-Cloud-Journey` with `Contents → Read and write`.
+
+This reduces the possible impact if the token is compromised.
+
+## 21. What I Learned
 
 Through this practical, I learned:
 
-* How to clone a GitHub repository on AWS EC2
-* How Git tracks folder and file renames
-* How to use `git mv`
-* How to stage changes using `git add`
-* How to create commits using `git commit`
-* How `git push` transfers commits to GitHub
-* How GitHub HTTPS authentication works
-* Why a normal GitHub password cannot be used for Git HTTPS authentication
-* What a Personal Access Token is
-* How to create a Fine-grained PAT
-* How to restrict a PAT to a specific repository
-* How to configure `Contents → Read and write`
-* How to authenticate Git from an EC2 instance
-* How to verify a successful push
-* How to use `git status` to verify repository synchronization
-* Why credentials must never be committed or exposed
-* How the principle of least privilege applies to GitHub authentication
+- How to clone a GitHub repository on EC2.
+- How to rename folders using `git mv`.
+- How to stage and commit changes.
+- How GitHub HTTPS authentication works.
+- Why normal GitHub passwords cannot be used for Git HTTPS authentication.
+- What a Personal Access Token is.
+- How to create a Fine-grained PAT.
+- How to restrict a token to a specific repository.
+- How to configure repository permissions.
+- How to push changes from EC2 to GitHub.
+- How to verify repository synchronization.
+- Why the principle of least privilege is important.
 
----
+## Final Summary
 
-# 🏆 Practical Outcome
+In this practical, I renamed a project folder on my AWS EC2 instance, committed the changes and pushed them to GitHub using a Fine-grained Personal Access Token.
 
-Successfully completed a real-world Git and GitHub workflow from AWS EC2:
+The main thing I learned was how to authenticate GitHub securely from a remote Linux server.
 
-```text
-AWS EC2
-   │
-   ▼
-GitHub Repository Cloned
-   │
-   ▼
-What-I-Learnt
-   │
-   │ git mv
-   ▼
-DevOps-Labs-and-Projects
-   │
-   │ git add .
-   ▼
-Staged Changes
-   │
-   │ git commit
-   ▼
-Local Commit
-   │
-   │ GitHub PAT
-   ▼
-HTTPS Authentication
-   │
-   │ git push origin main
-   ▼
-GitHub Repository Updated
-   │
-   │ git status
-   ▼
-Working Tree Clean ✅
+### Complete Workflow
+
+```mermaid
+flowchart TD
+    A[AWS EC2] --> B[Clone Repository]
+    B --> C[Rename Folder]
+    C --> D[git add]
+    D --> E[git commit]
+    E --> F[Create Fine-grained PAT]
+    F --> G[Configure Permissions]
+    G --> H[GitHub Authentication]
+    H --> I[git push origin main]
+    I --> J[GitHub Repository Updated]
+    J --> K[git status]
+    K --> L[Working Tree Clean]
 ```
 
----
-
-# 📚 Practical Summary
-
-| Step | Action               | Command / Tool              |
-| ---- | -------------------- | --------------------------- |
-| 01   | Clone repository     | `git clone`                 |
-| 02   | Enter repository     | `cd`                        |
-| 03   | Rename folder        | `git mv`                    |
-| 04   | Check changes        | `git status`                |
-| 05   | Stage changes        | `git add .`                 |
-| 06   | Create commit        | `git commit`                |
-| 07   | Create PAT           | GitHub Settings             |
-| 08   | Restrict repository  | Fine-grained PAT            |
-| 09   | Configure permission | `Contents → Read and write` |
-| 10   | Authenticate         | GitHub PAT                  |
-| 11   | Push changes         | `git push origin main`      |
-| 12   | Verify               | `git status`                |
-
----
-
-<div align="center">
-
-# 🟢 PRACTICAL COMPLETE
-
-### 🔐 GitHub PAT Authentication from AWS EC2
-
-**AWS EC2 → Git → GitHub → Fine-grained PAT → Secure Push**
-
-### Learn • Practice • Troubleshoot • Document • Improve
-
-</div>
+**AWS EC2 → Git → GitHub → PAT Authentication → Secure Push**
