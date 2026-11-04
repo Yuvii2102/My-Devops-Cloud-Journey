@@ -56,7 +56,7 @@ Here, I'll document:
 
 ---
 
-## 🛠️ What I'm Learning
+##  What I'm Learning
 
 | Area                     | Technologies           |
 | ------------------------ | ---------------------- |
