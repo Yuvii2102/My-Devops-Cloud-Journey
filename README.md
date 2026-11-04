@@ -19,7 +19,7 @@
 
 It has been almost a month since I started my journey into **DevOps and Cloud Engineering**.
 
-I started learning, experimenting, and getting my hands dirty with different tools, technologies, commands, and cloud services.
+I started learning, experimenting, and getting my hands dirty with different tools, technologies, commands and cloud services.
 
 But there was one thing I wasn't doing...
 
@@ -29,7 +29,7 @@ At the beginning, I didn't really understand how valuable documentation would be
 
 Now, I'm changing that.
 
-From now onwards, this repository will document my journey — including the things I learn, the commands I practice, the problems I face, the mistakes I make, and the projects I build.
+From now onwards, this repository will document my journey including the things I learn, the commands I practice, the problems I face, the mistakes I make and the projects I build.
 
 <p align="center">
    <b>Learning Started:</b> July 2026
@@ -40,7 +40,7 @@ From now onwards, this repository will document my journey — including the thi
 
 ---
 
-## Why This Repository?
+## 📅 Why This Repository?
 
 This repository is my **DevOps & Cloud Engineering learning journal**.
 
@@ -56,7 +56,7 @@ Here, I'll document:
 
 ---
 
-##  What I'm Learning
+## 🛠️ What I'm Learning
 
 | Area                     | Technologies           |
 | ------------------------ | ---------------------- |
@@ -125,7 +125,7 @@ And that's exactly the point.
 
  I focus on **learning and hands-on implementation during the weekdays**.
  Every weekend, I dedicate time to documenting my progress, writing technical blogs,
- organizing my notes, and pushing structured updates to GitHub.
+ organizing my notes and pushing structured updates to GitHub.
 
 ---
 
