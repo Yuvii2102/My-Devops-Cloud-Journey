@@ -1,6 +1,6 @@
-# 🚀 Jenkins Docker Agent — Multi-Stage & Multi-Agent Practical
+#  Jenkins Docker Agent — Multi-Stage & Multi-Agent Practical
 
-## 🎯 Objective
+## Objective
 
 Demonstrate how Jenkins can use **different Docker agents for different stages** of the same pipeline.
 
@@ -296,7 +296,7 @@ The Jenkins pipeline is successful.
 
 ---
 
-# 🔄 Complete Execution Flow
+# Complete Execution Flow
 
 ```text
 Developer
@@ -332,7 +332,7 @@ agent none
 
 ---
 
-# 🧠 Key Concepts Learned
+# Key Concepts Learned
 
 ## `agent none`
 
@@ -395,7 +395,7 @@ Front-end → Node Docker Agent
 
 ---
 
-# 🎯 What This Practical Demonstrates
+#  What This Practical Demonstrates
 
 This practical demonstrates:
 
@@ -427,7 +427,7 @@ This approach allows each stage to use the tools and runtime versions it require
 
 ---
 
-# 🚀 Final Mental Model
+# Final Mental Model
 
 ```text
                      Jenkins
