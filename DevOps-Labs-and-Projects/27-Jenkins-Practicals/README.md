@@ -1,4 +1,4 @@
-# 🚀 Jenkins Pipelines + Kubernetes + Argo CD
+# Jenkins Pipelines + Kubernetes + Argo CD
 
 > **Part 2 of the CI/CD Learning Journey**  
 > This section continues from **14** and focuses on Jenkins Pipelines, Docker agents, Kubernetes deployment, Argo CD, and GitOps.
