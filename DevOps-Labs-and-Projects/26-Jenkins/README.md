@@ -1,41 +1,6 @@
-# 🚀 CI/CD + Jenkins + Docker Agents + Kubernetes + Argo CD
+#  CI/CD + Jenkins + Docker Agents + Kubernetes + Argo CD
 
 > A complete beginner-friendly reference for understanding modern CI/CD, Jenkins pipelines, Docker agents, multi-stage/multi-agent pipelines, Kubernetes deployment, and GitOps with Argo CD.
-
----
-
-# 📚 Table of Contents
-
-- [1. What is CI/CD?](#1-what-is-cicd)
-- [2. Why Do We Need CI/CD?](#2-why-do-we-need-cicd)
-- [3. Real-World CI/CD Flow](#3-real-world-cicd-flow)
-- [4. Continuous Integration](#4-continuous-integration)
-- [5. Continuous Delivery](#5-continuous-delivery)
-- [6. Common CI/CD Stages](#6-common-cicd-stages)
-- [7. Version Control System](#7-version-control-system)
-- [8. How Jenkins Fits Into CI/CD](#8-how-jenkins-fits-into-cicd)
-- [9. Jenkins as an Orchestrator](#9-jenkins-as-an-orchestrator)
-- [10. Jenkins Master and Worker Architecture](#10-jenkins-master-and-worker-architecture)
-- [11. Problems With Permanent Worker VMs](#11-problems-with-permanent-worker-vms)
-- [12. Docker as a Jenkins Agent](#12-docker-as-a-jenkins-agent)
-- [13. Why Docker Agents Are Useful](#13-why-docker-agents-are-useful)
-- [14. Your First Jenkins Pipeline](#14-your-first-jenkins-pipeline)
-- [15. Jenkins Pipeline Structure](#15-jenkins-pipeline-structure)
-- [16. Pipeline Syntax / Snippet Generator](#16-pipeline-syntax--snippet-generator)
-- [17. Multi-Stage Pipeline](#17-multi-stage-pipeline)
-- [18. Multi-Agent Pipeline](#18-multi-agent-pipeline)
-- [19. Legacy VM vs Docker Agent](#19-legacy-vm-vs-docker-agent)
-- [20. Python ToDo Application CI/CD](#20-python-todo-application-cicd)
-- [21. Docker Image and Container Flow](#21-docker-image-and-container-flow)
-- [22. Kubernetes Deployment](#22-kubernetes-deployment)
-- [23. Why Argo CD?](#23-why-argo-cd)
-- [24. GitOps](#24-gitops)
-- [25. GitHub as the Source of Truth](#25-github-as-the-source-of-truth)
-- [26. Complete End-to-End Architecture](#26-complete-end-to-end-architecture)
-- [27. Tool Responsibilities](#27-tool-responsibilities)
-- [28. Important Terms](#28-important-terms)
-- [29. Interview Explanation](#29-interview-explanation)
-- [30. Final Mental Model](#30-final-mental-model)
 
 ---
 
@@ -2806,4 +2771,4 @@ APPLICATION
 CUSTOMER
 ```
 
-> 🚀 **This is the core CI/CD + Docker + Kubernetes + GitOps architecture you should keep in your mind.**
+>  **This is the core CI/CD + Docker + Kubernetes + GitOps architecture you should keep in your mind.**
