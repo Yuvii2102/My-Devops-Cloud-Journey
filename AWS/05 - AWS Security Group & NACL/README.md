@@ -1,5 +1,5 @@
 
-# Day 5: AWS VPC - Security Groups and Network ACLs (NACLs)
+# Day 5 : AWS VPC - Security Groups and Network ACLs (NACLs)
 
 ## 1. Introduction
 
