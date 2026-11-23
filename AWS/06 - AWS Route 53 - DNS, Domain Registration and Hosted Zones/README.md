@@ -1,4 +1,3 @@
-i 
 # Day 6 : AWS Route 53 - DNS, Domain Registration and Hosted Zones
 
 ## 1. Introduction
