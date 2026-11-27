@@ -6,7 +6,7 @@
 
 <div align="center">
 
-# 🌐 Kubernetes Ingress with Flask
+# Kubernetes Ingress with Flask
 
 ### Flask → Docker → Docker Hub → Deployment → Pod → Service → Ingress → NGINX Ingress Controller → Host-Based Routing
 
@@ -14,7 +14,7 @@
 
 ---
 
-## 📌 What We Built
+## What I Built
 
 In this practical, I deployed a simple Flask application inside Kubernetes and exposed it through a Kubernetes Service and finally through an NGINX Ingress Controller.
 
